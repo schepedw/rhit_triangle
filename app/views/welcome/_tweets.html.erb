@@ -1,0 +1,28 @@
+<div class = 'container tweets'>
+  <div class = 'row'>
+    <div class = 'col-xs-3'>
+      <h6> <strong> TWEETS </strong> </h6>
+    </div>
+    <div class = 'col-xs-9 text-right'>
+      <a href='https://twitter.com/RHITTriangle' class = 'btn btn-default btn-red btn-xs follow-us'> FOLLOW US </a>
+    </div>
+  </div>
+  <% @tweets.each do |tweet| %>
+    <div class = 'row tweet'>
+      <div class = 'col-xs-3 col-sm-1'><%= image_tag 'house_thumbnail', class: 'author-pic' %></div>
+      <div class = 'col-xs-9'>
+        <div class = 'row'>
+          <div class = 'col-xs-12 tweet-metadata'>
+            <span class = 'tweet-metadata'><%= tweet[:author_name] %></span>
+            <span class = 'tweet-metadata'> @<%=tweet[:author_handle] %></span>
+            <span class = 'tweet-metadata'><%= tweet[:created_at].strftime('%b %-d') %></span>
+          </div>
+          <div class = 'col-xs-12'><%= tweet[:content] %></div>
+        </div>
+      </div>
+      <div class = 'col-xs-12 tweet-link'>
+        <a href='#'>View Tweet <i class = 'fa fa-arrow-right fa-1'></i></a>
+      </div>
+    </div>
+  <% end %>
+</div>

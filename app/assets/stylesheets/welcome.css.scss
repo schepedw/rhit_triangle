@@ -1,0 +1,69 @@
+.landing-hero{
+  color: white;
+  width: 100%;
+  background-image: image-url('house_front');
+  height: 18em;
+  background-size: cover;
+  h1, h2, h3, h4, h5{
+    margin: 0;
+  }
+  h4{
+    padding-top: 60px;
+    padding-bottom: 10px;
+  }
+  h1{
+    font-size: 22px;
+    font-weight: bold;
+    padding-bottom: 10px;
+  }
+  h3{
+    font-size: 20px;
+  }
+}
+
+.btn-red{
+  color: #B30D0D;
+  border-color: #B30D0D;
+  font-weight: bold;
+  border-radius: 0;
+  border-width: 2px;
+  &:hover{
+   color: #CA0000;
+   background-color: #ECECEC;
+   border-color: #B30D0D;
+  }
+}
+
+.tweets{
+  border: 20px solid #ECECEC;
+  h4{ margin-top: 10px; }
+  .follow-us{
+    margin-top: 7px;
+    height: 20px;
+    font-size: 9px;
+  }
+  .tweet{
+    border-top: 2px solid #ECECEC;
+    padding: 9px;
+    .tweet-metadata{
+      white-space: nowrap;
+      margin-top: -3px;
+      padding-bottom: 10px;
+      color: #A9A9A9;
+      font-size: 8.5px;
+    }
+    .author-pic{
+      height: 45px;
+    }
+    .tweet-link{
+      padding-top: 10px;
+      a{
+        font-weight: bold;
+        color: #A9A9A9;
+      }
+    }
+    a{
+      font-size: 10px;
+    }
+  }
+}
