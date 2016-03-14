@@ -75,10 +75,13 @@ td.white_cal {
   background: #ECECEC!important;
 }
 tbody.days_cal tr td a {
-  padding: 5px 7px;
+  padding: 5px 5px;
   text-decoration: none;
   color: #B9B9B9;
   line-height: 30px;
+  &.single-digit{
+    padding: 4px 8px;
+  }
 }
 tbody.days_cal tr td {
   padding: 0;
@@ -92,72 +95,78 @@ tbody.days_cal tr td {
   border-bottom: 1px solid #3498DB;
   transition: all 0.3s ease;
 }
+
+.event-info{
+  text-align: justify;
+}
 .today_cal.event {
   border-radius: 100%;
-  border-bottom: 1px solid #EE7171;
+  border-bottom: 1px solid #C1252A;
   transition: all 0.3s ease;
 }
-.today_cal.event:hover,
-.event:hover{
+
+.today_cal.event:hover, .event:hover{
   border-color: #E26D2B;
   color: #E26D2B;
   transition: all 0.3s ease;
 }
-.today{
-  background-color:pink !important;
+
+.days_cal .active a{
+  border: 2px solid #C1252A;
+  border-radius: 19px;
 }
-#calendar_data {
-  margin: 0;
-  padding: 0;
-  display: block;
-  width: 50%;
-  float: left;
-  height: 300px;
-  background: #fff;
-  border: 1px solid #E6E6E6;
-  color: #C5C2C2;
-  font-size: 13px;
-  font-family: sans-serif;
-  font-weight: 700;
+
+.days_cal a{
+  border: 2px solid transparent;
 }
-#calendar_data h3 {
-  text-align: center;
-  font-size: 20px;
-  padding: 5px 10px;
-  margin: 0;
-  color: #FF7676;
-  border-bottom: 1px solid #EEEBEB;
-  text-transform: capitalize;
+
+#calendar_data{
+  .event-title {
+    font-size: 15px;
+    padding-top: 5px;
+    margin: 0;
+    color: #C1252A;
+  }
+  .event-date{
+    font-size: 11px;
+    color: #BBBBBB;
+  }
+  .event-link{
+    color: #BBBBBB;
+    &:visited{
+      color: #BBBBBB;
+    }
+    &:hover{
+      color: #BBBBBB;
+      text-decoration: none;
+    }
+  }
 }
-#calendar_data  dl {
-  padding: 0.5em;
-  margin-left: -1em;
+
+.calendar-divider{
+  width: 93%;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 30px solid #eee;
+  top: 20px;
+  padding-top: 3px;
+  background-color: #DADADA;
+  border-color: white;
 }
-#calendar_data  dt {
-  float: left;
-  clear: left;
-  width: 100px;
-  text-align: right;
-  font-weight: bold;
-  color: #8F8F8F;
+
+.full-cal{
+  color: white;
+  background-color: #C43237;
+  padding: 10px 10px 20px;
 }
-#calendar_data  dd {
-  margin: 0 0 0 110px;
-  padding: 0 0 0.5em 0;
-}
-#calendar_data a {
-  color: #FF8585;
-  text-decoration: underline;
-}
-#json pre {
-  display: block;
-  clear: left;
-  margin-top: 21px;
-  word-wrap: break-word;
-  word-break: break-all;
-  overflow: auto;
-  height: 220px;
-  background: #E46868;
-  color: #FFF;
-  border: 1px solid #E47B7B;
+
+.calendar-link{
+  font-size: 12px;
+  border: 2px solid white;
+  color: white;
+  padding: 4px;
+  &:hover, &:visited{
+    color: white;
+    text-decoration: none;
+  }
 }

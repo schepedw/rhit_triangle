@@ -1,4 +1,6 @@
 .navbar{
+  font-weight: bold;
+  font-family: 'oswald';
   @media (max-width: 720px){
     .navbar-toggle.collapsed{
       padding-bottom: 0px;
@@ -18,7 +20,6 @@
     }
     .navbar-brand{
       color: black;
-      font-weight: bold;
       font-size: 22px;
       padding-top: 22px;
       padding-left: 7vw;

@@ -4,23 +4,29 @@ displayed_date = new Date();
 $(function(){
   $('#calendar').html(calendar(current_date));
 
-
   $('.calendar-scroll.pull-left').click(function(){
     displayed_date.setMonth(displayed_date.getMonth() - 1);
     $('#calendar').html(calendar(displayed_date));
   });
+
   $('.calendar-scroll.pull-right').click(function(){
     displayed_date.setMonth(displayed_date.getMonth() + 1);
     $('#calendar').html(calendar(displayed_date));
   });
+
+  $('.days_cal td').click(function(){
+    $('td.active').removeClass('active');
+    $(this).addClass('active');
+  });
+
 });
 
 function calendar(date) {
-  // show info on init
   showInfo();
   resetToday();
 
   var cal = new Date(date);
+
   // vars
   var day_of_week = new Array(
     'SUN', 'MON', 'TUE',
@@ -75,13 +81,17 @@ function calendar(date) {
             // this day
             var day = cal.getDate();
             var info = (cal.getMonth() + 1) + '/' + day + '/' + cal.getFullYear();
-
-            if (index == today - 1 && this_month == month){
-              html += '<td class="today"><a href="#" data-id="' + info + '" onclick="showInfo(\'' + info + '\')">' +
+            if (day < 10){
+              singleDigit = 'single-digit '
+            } else{
+              singleDigit = ' '
+            }
+            if (day == today - 1 && this_month == month){
+              html += '<td class="active"><a href="javascript:void(0); class="' + singleDigit +  '" data-id="' + info + '" onclick="showInfo(\'' + info + '\')">' +
                 day + '</a></td>';
             }
             else{
-              html += '<td><a href="#" data-id="' + info + '" onclick="showInfo(\'' + info + '\')">' +
+              html += '<td><a href="javascript:void(0);"; class="' + singleDigit +   'data-id="' + info + '" onclick="showInfo(\'' + info + '\')">' +
                 day + '</a></td>';
             }
 
@@ -94,10 +104,6 @@ function calendar(date) {
       } // end for loop
       return html;
 }
-// short queySelector
-function _(s) {
-  return document.querySelector(s);
-};
 
 // show info
 function showInfo(event) {
@@ -106,5 +112,3 @@ function showInfo(event) {
 function resetToday(){
   $('.today').removeClass('today');
 }
-
-// simple calendar

@@ -1,0 +1,16 @@
+<div class='container'>
+  <h4><strong>OFFICERS</strong></h4>
+  <p> These are our elected officials for the <%=Date.today.year%> calendar year </p>
+  <% @officers.each do |officer| %>
+    <div class='officer-container'>
+      <%= image_tag "#{officer[:name].downcase.gsub(' ', '_')}.jpg", class: 'officer-picture' %>
+      <div class = 'info-container'>
+        <span class='officer-name'><%= officer[:name].upcase %></span>
+        <span class='officer-title'><%= officer[:title] %></span>
+        <span class='officer-email'><%= officer[:email] %></span>
+        <span class='officer-phone'><%= officer[:phone] %></span>
+      </div>
+    </div>
+    <hr class = 'officer-separator'/>
+  <% end %>
+</div>
