@@ -23,6 +23,9 @@
   text-align: center;
   height: 42px;
   line-height: 2.3;
+  .month, .year{
+    display: inline;
+  }
 }
 .calendar-scroll{
   font: normal normal normal 14px/3 FontAwesome;
