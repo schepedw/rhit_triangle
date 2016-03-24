@@ -37,11 +37,15 @@
 }
 
 .tweets{
+  font-family: 'oswald';
   border: 10px solid #ECECEC;
   border-top: 15px solid #ECECEC;
   .tweet-header{
     padding-left: 10px;
     h4{ margin-top: 11px; }
+  }
+  .tweet-url{
+    color: #B30D0D;
   }
   .follow-us{
     margin-top: 7px;
@@ -51,15 +55,22 @@
     padding: 1.5px 15px;
   }
   .tweet{
-    font-family: 'oswald';
+    font-family: inherit;
     border-top: 2px solid #ECECEC;
     padding: 9px;
     padding-top: 12px;
+    .tweet-content{
+      font-family: inherit;
+      font-size: 10px;
+    }
     .tweet-metadata{
+      font-family: inherit;
       white-space: nowrap;
       margin-top: -3px;
-      color: #A9A9A9;
-      font-size: 8.5px;
+      color: #C9C9C9;
+      font-size: 7.5px;
+      letter-spacing: 0.5px;
+      padding-bottom: 6px;
     }
     .author-pic{
       width: 100%;
@@ -69,6 +80,7 @@
       a{
         font-weight: bold;
         color: #A9A9A9;
+        letter-spacing: 1px;
       }
     }
     a{

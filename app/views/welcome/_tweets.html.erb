@@ -10,15 +10,13 @@
   <% @tweets.each do |tweet| %>
     <div class = 'row tweet'>
       <div class = 'col-xs-3 col-sm-1'><%= image_tag 'house_thumbnail', class: 'author-pic' %></div>
-      <div class = 'row col-xs-9'>
-        <!-- is there really a point in making two col-12s? They're always going to be on top of each other
-        and using col-* means adding extra padding -->
-          <div class = 'col-xs-12 tweet-metadata'>
-            <span class = 'tweet-metadata'><%= tweet[:author_name] %></span>
-            <span class = 'tweet-metadata'> @<%=tweet[:author_handle] %></span>
-            <span class = 'tweet-metadata'><%= tweet[:created_at].strftime('%b %-d') %></span>
+      <div class = 'col-xs-9'>
+          <div class = 'row tweet-metadata'>
+            <span class = 'tweet-metadata'><%= tweet[:author_name] %> · </span>
+            <span class = 'tweet-metadata'> @<%=tweet[:author_handle] %> · </span>
+            <span class = 'tweet-metadata'> <%= tweet[:created_at].strftime('%b %-d') %></span>
           </div>
-          <div class = 'col-xs-12'><p><%= tweet[:content] %></p></div>
+          <div class = 'row'><p class='tweet-content'><%= auto_link(tweet[:content]).html_safe %></p></div>
       </div>
       <div class = 'col-xs-12 tweet-link'>
         <a href='#'>View Tweet <i class = 'fa fa-arrow-right fa-1'></i></a>

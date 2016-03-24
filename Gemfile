@@ -11,6 +11,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'twitter-bootstrap-rails'
 gem 'font-awesome-rails'
 gem 'twitter'
+gem 'twitter-text'
 
 gem "haml-rails", "~> 0.9"
 # Use jquery as the JavaScript library
