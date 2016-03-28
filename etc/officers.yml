@@ -1,0 +1,28 @@
+president:
+  name: 'Kris France'
+  email: 'francekm@rose-hulman.edu'
+  phone: '(513) 292-2706'
+vice_president:
+  name: 'Seth Dow'
+  email: 'dowsr@rose-hulman.edu'
+  phone: '(765) 516-3571'
+treasurer:
+  name: 'Tyler Newman'
+  email: 'newmanwt@rose-hulman.edu'
+  phone: '(513) 763-0019'
+secretary:
+  name: 'Dan Sutherland'
+  email: 'sutherdr@rose-hulman.edu'
+  phone: '(303) 915-3394'
+house_manager:
+  name: 'Dean Thomas'
+  email: 'thomasda@rose-hulman.edu'
+  phone: '(765) 571-0844'
+steward:
+  name: 'Matt Vogel'
+  email: 'vogelmr@rose-hulman.edu'
+  phone: '(630) 901-6198'
+activities_director:
+  name: 'Kris France'
+  email: 'currycj@rose-hulman.edu'
+  phone: '(317) 514-9879'

@@ -17,42 +17,6 @@ class WelcomeController < ApplicationController
         created_at: Date.yesterday,
         content: 'hey @ato, please #suckadick #frat'
       }]
-      @officers = [{
-        name: 'Kris France',
-        title: 'President',
-        email: 'francekm@rose-hulman.edu',
-        phone: '(513) 292-2706'
-      },{
-        name: 'Seth Dow',
-        title: 'Vice President',
-        email: 'dowsr@rose-hulman.edu',
-        phone: '(513) 292-2706'
-      },{
-        name: 'Kris France',
-        title: 'President',
-        email: 'francekm@rose-hulman.edu',
-        phone: '(513) 292-2706'
-      },{
-        name: 'Kris France',
-        title: 'President',
-        email: 'francekm@rose-hulman.edu',
-        phone: '(513) 292-2706'
-      },{
-        name: 'Kris France',
-        title: 'President',
-        email: 'francekm@rose-hulman.edu',
-        phone: '(513) 292-2706'
-      },{
-        name: 'Kris France',
-        title: 'President',
-        email: 'francekm@rose-hulman.edu',
-        phone: '(513) 292-2706'
-      },{
-        name: 'Kris France',
-        title: 'President',
-        email: 'francekm@rose-hulman.edu',
-        phone: '(513) 292-2706'
-      }
-      ]
+      @officers = AppConfig.officers
   end
 end

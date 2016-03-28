@@ -16,6 +16,8 @@ gem 'twitter-text'
 gem "haml-rails", "~> 0.9"
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'therubyracer'
+gem 'figgy'
 
 group :development, :test do
   gem 'pry'
