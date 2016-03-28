@@ -59,10 +59,6 @@
     border-top: 2px solid #ECECEC;
     padding: 9px;
     padding-top: 12px;
-    .tweet-content{
-      font-family: inherit;
-      font-size: 10px;
-    }
     .tweet-metadata{
       font-family: inherit;
       white-space: nowrap;
@@ -81,10 +77,10 @@
         font-weight: bold;
         color: #A9A9A9;
         letter-spacing: 1px;
+        font-size: 10px;
       }
     }
     a{
-      font-size: 10px;
     }
   }
 }

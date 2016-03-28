@@ -16,7 +16,7 @@
             <span class = 'tweet-metadata'> @<%=tweet[:author_handle] %> · </span>
             <span class = 'tweet-metadata'> <%= tweet[:created_at].strftime('%b %-d') %></span>
           </div>
-          <div class = 'row'><p class='tweet-content'><%= auto_link(tweet[:content]).html_safe %></p></div>
+          <div class = 'row'><p><%= auto_link(tweet[:content]).html_safe %></p></div>
       </div>
       <div class = 'col-xs-12 tweet-link'>
         <a href='#'>View Tweet <i class = 'fa fa-arrow-right fa-1'></i></a>
