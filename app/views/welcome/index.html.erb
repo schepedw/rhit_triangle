@@ -1,12 +1,43 @@
-<div class = 'landing-hero'>
+<div class = 'landing-hero container-fluid'>
   <center>
-  <h4> Welcome to </h4>
-  <h1> TRIANGLE FRATERNITY </h1>
-  <h3> ROSE-TECH CHAPTER </h3>
+    <h4> Welcome to </h4>
+    <h1> TRIANGLE FRATERNITY </h1>
+    <h3> ROSE-TECH CHAPTER </h3>
   </center>
 </div>
-<%= render 'tweets' %>
-<%= render 'layouts/calendar' %>
-<%= render 'layouts/officers' %>
-<%= render 'about_us' %>
-<%= render 'layouts/map' %>
+<div class = 'container-fluid'>
+  <div class = 'row'>
+    <div class = 'col-md-6 col-xs-12 pull-right'>
+      <%= render 'tweets' %>
+    </div>
+    <div class = 'col-md-6 col-xs-12 pull-left'>
+      <%= render 'layouts/calendar' %>
+    </div>
+<div class = 'col-xs-12'></div>
+  </div>
+</div>
+<div class='full-cal'>
+  <center>
+    <h6> Check out the full calendar by clicking below. </h6>
+    <a href = 'javascript:void(0);' class = 'calendar-link'>VIEW CALENDAR</a>
+  </center>
+</div>
+<div class = 'container-fluid'>
+  <%= render 'layouts/officers' %>
+</div>
+<div class='full-cal'>
+  <center>
+    <h6> Want to learn more about rush? </h6>
+    <a href = 'javascript:void(0);' class = 'calendar-link'>LEARN MORE</a>
+  </center>
+</div>
+<div class = 'container-fluid'>
+  <div class = 'row'>
+    <div class = 'col-xs-12 col-md-6'>
+      <%= render 'about_us' %>
+    </div>
+    <div class = 'col-xs-12 col-md-6'>
+      <%= render 'layouts/contact' %>
+    </div>
+  </div>
+</div>

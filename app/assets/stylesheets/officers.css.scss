@@ -1,12 +1,26 @@
-.officers{
-  padding-left: 33px;
+@media (min-width: 768px) {
+  .wrapper{
+    background: white;
+  }
 }
+
 .info-container{
   display: inline-block;
 }
 
 .officer-separator{
   border-top: 2px solid #eee;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    display: none;
+}
+}
+
+.officer-container{
+  @media (max-width: 768px) {
+    padding-bottom: 15px;
+  }
 }
 
 .officer-picture{
@@ -21,7 +35,11 @@
 }
 .officer-email{
   display:block;
+  @media (max-width: 768px) {
+    font-size: 11.25px;
+  }
 }
+
 .officer-phone{
   display:block;
 }

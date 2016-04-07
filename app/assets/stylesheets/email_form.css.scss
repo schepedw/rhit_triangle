@@ -1,0 +1,22 @@
+.email{
+  padding-top: 10px;
+}
+.new_message{
+  label{
+    display: block;
+    padding-left: 1px;
+    padding-top: 10px;
+  }
+
+  input:not([type='submit']), textarea{
+    width: 100%;
+  }
+  textarea{
+    @media(min-width: 767px){
+    min-height: 250px;
+    }
+    @media(max-width: 767px){
+      min-height: 100px;
+    }
+  }
+}

@@ -1,26 +1,38 @@
+@media (min-width: 768px){
+  .landing-hero{
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding-top: 20vh;
+  }
+}
+@media (max-width: 767px){
+  .landing-hero{ height: 40vh; }
+}
 .landing-hero{
   font-family: 'oswald';
   letter-spacing: 2.5px;
   color: white;
   width: 100%;
-  background-image: image-url('new_house');
-  height: 18em;
+  background: image-url('new_house') no-repeat center center;
+  height: 80vh;
   background-size: cover;
   h1, h2, h3, h4, h5{
     margin: 0;
-  }
-  h4{
-    padding-top: 60px;
-    padding-bottom: 10px;
-  }
-  h1{
-    font-size: 22px;
-    font-weight: bold;
-    padding-bottom: 10px;
-  }
-  h3{
-    font-size: 20px;
-  }
+}
+h4{
+  padding-top: 60px;
+  padding-bottom: 10px;
+}
+h1{
+  font-size: 22px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+h3{
+  font-size: 20px;
+}
 }
 
 .btn-red{
@@ -30,57 +42,9 @@
   border-radius: 0;
   border-width: 2px;
   &:hover{
-   color: #CA0000;
-   background-color: #ECECEC;
-   border-color: #B30D0D;
-  }
+    color: #CA0000;
+    background-color: #ECECEC;
+    border-color: #B30D0D;
+}
 }
 
-.tweets{
-  font-family: 'oswald';
-  border: 10px solid #ECECEC;
-  border-top: 15px solid #ECECEC;
-  .tweet-header{
-    padding-left: 10px;
-    h4{ margin-top: 11px; }
-  }
-  .tweet-url{
-    color: #B30D0D;
-  }
-  .follow-us{
-    margin-top: 7px;
-    height: 20px;
-    font-size: 8px;
-    letter-spacing: 1px;
-    padding: 1.5px 15px;
-  }
-  .tweet{
-    font-family: inherit;
-    border-top: 2px solid #ECECEC;
-    padding: 9px;
-    padding-top: 12px;
-    .tweet-metadata{
-      font-family: inherit;
-      white-space: nowrap;
-      margin-top: -3px;
-      color: #C9C9C9;
-      font-size: 7.5px;
-      letter-spacing: 0.5px;
-      padding-bottom: 6px;
-    }
-    .author-pic{
-      width: 100%;
-    }
-    .tweet-link{
-      padding-top: 5px;
-      a{
-        font-weight: bold;
-        color: #A9A9A9;
-        letter-spacing: 1px;
-        font-size: 10px;
-      }
-    }
-    a{
-    }
-  }
-}

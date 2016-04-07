@@ -113,7 +113,6 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
-    libv8 (3.16.14.13)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -163,7 +162,6 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.5.0)
-    ref (2.0.0)
     rspec-core (3.4.3)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
@@ -201,9 +199,9 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    therubyracer (0.12.2)
-      libv8 (~> 3.16.14.0)
-      ref
+    therubyrhino (2.0.4)
+      therubyrhino_jar (>= 1.7.3)
+    therubyrhino_jar (1.7.6)
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.2)
@@ -254,7 +252,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   spring
-  therubyracer
+  therubyrhino
   twitter
   twitter-bootstrap-rails
   twitter-text

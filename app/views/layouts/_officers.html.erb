@@ -1,16 +1,18 @@
-<div class='container officers'>
+<div class='container-fluid container-lg-padded'>
   <h4><strong>OFFICERS</strong></h4>
   <p> These are our elected officials for the <%=Date.today.year%> calendar year </p>
-  <% @officers.each do |(title, details)| %>
-    <div class='officer-container'>
-      <%= image_tag "#{ details[:name].downcase.gsub(' ', '_')}.jpg", class: 'officer-picture' %>
-      <div class = 'info-container'>
-        <span class='officer-name'><%= details[:name].upcase %></span>
-        <span class='officer-title'><%= title.titleize %></span>
-        <span class='officer-email'><%= details[:email] %></span>
-        <span class='officer-phone'><%= details[:phone] %></span>
+  <div class='row'>
+    <% @officers.each do |(title, details)| %>
+      <div class='officer-container col-xs-12 col-md-4'>
+        <%= image_tag "#{ details[:name].downcase.gsub(' ', '_')}.jpg", class: 'officer-picture' %>
+        <div class = 'info-container'>
+          <span class='officer-name'><%= details[:name].upcase %></span>
+          <span class='officer-title'><%= title.titleize %></span>
+          <span class='officer-email'><%= details[:email] %></span>
+          <span class='officer-phone'><%= details[:phone] %></span>
+        </div>
       </div>
-    </div>
-    <hr class = 'officer-separator'/>
-  <% end %>
+      <hr class = 'officer-separator'/>
+    <% end %>
+  </div>
 </div>

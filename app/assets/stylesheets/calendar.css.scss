@@ -101,7 +101,11 @@ tbody.days_cal tr td {
 }
 
 .event-info{
-  text-align: justify;
+//  text-align: justify; #this breaks the elipsis
+  &.multiline-elipsis{
+    margin-top: 5px;
+    margin-left: 0px;
+  }
 }
 .today_cal.event {
   border-radius: 100%;

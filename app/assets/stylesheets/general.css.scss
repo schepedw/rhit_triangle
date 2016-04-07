@@ -1,3 +1,33 @@
+@media(max-width: 768px){
+  body > .container-fluid > .row > *{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+$font-size: 13px;
+$line-height: 1.4;
+$lines-to-show: 2;
+
+.multiline-elipsis {
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  margin: 0 auto;
+  font-size: $font-size;
+  line-height: $line-height;
+  @media (max-width: 767px){
+    height: $font-size*$line-height*2; /* Fallback for non-webkit */
+    -webkit-line-clamp: 2;
+  }
+  @media (min-width: 768px){
+    height: $font-size*$line-height*5; /* Fallback for non-webkit */
+    -webkit-line-clamp: 5;
+  }
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 body{
   font-family: 'oswald';
   font-size: small;
@@ -16,4 +46,9 @@ a{
 h4{ // this is really for 'section-header'
   font-size: 14px;
   letter-spacing: 1px;
+}
+.container-lg-padded{
+  @media (min-width: 768px) {
+    padding-left: 33px;
+}
 }

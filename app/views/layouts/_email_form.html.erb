@@ -1,0 +1,33 @@
+<div class = 'container-fluid email'>
+  <%= form_for Message.new do |f| %>
+    <div class = 'form-group row'>
+      <div class = 'col-xs-12 col-md-6'>
+        <%= f.label :sender_name, 'Name' %>
+        <%= f.text_field :sender_name %>
+      </div>
+      <div class = 'col-xs-12 col-md-6'>
+        <%= f.label 'Email' %>
+        <%= f.text_field :from %>
+      </div>
+      <div class = 'col-xs-12 col-md-6'>
+        <%= f.label :phone_number, 'Phone Number' %>
+        <%= f.text_field :phone_number %>
+      </div>
+      <div class = 'col-xs-12 col-md-6'>
+        <%= f.label :dorm %>
+        <%= f.text_field :dorm %>
+      </div>
+      <div class = 'col-xs-12'>
+        <%= f.label :subject %>
+        <%= f.text_field :subject %>
+      </div>
+      <div class = 'col-xs-12'>
+        <%= f.label :content, 'Message' %>
+        <%= f.text_area :content %>
+      </div>
+      <div class = 'col-xs-12'>
+        <%= f.submit "Send" %>
+      </div>
+    </div>
+  <% end %>
+</div>

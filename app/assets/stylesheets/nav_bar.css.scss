@@ -1,4 +1,4 @@
-#nav{
+.nav{
   background-color: white;
   color: black;
   font-weight: bold;
@@ -16,6 +16,22 @@
   }
   .navbar-sm-icon{
     padding: 0px 30px;
+  }
+  &.nav-upper{
+    background-color: black;
+  }
+  &.nav-lower{
+    background-color: #1F1F1F;
+    .quick-links li a{
+      color: white;
+      padding-right: 15px;
+      font-size: 9px;
+    }
+    .brand{
+      padding-left: 5%;
+      color: white;
+      line-height: 1.5
+    }
   }
 }
 .dropdown-menu{
@@ -37,4 +53,11 @@
   background-color: black;
   opacity: 0.2;
   top: 41px;
+}
+
+.quick-links{
+  list-style: none;
+  li{
+    display:inline;
+  }
 }

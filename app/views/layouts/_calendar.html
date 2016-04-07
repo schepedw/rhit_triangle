@@ -1,35 +1,38 @@
-<div class="wrapper container">
+<div class="wrapper container-fluid">
   <h4> <strong>CALENDAR </strong></h4>
   <p> Here is a list of events coming up this month. Anyone and everyone is welcome to join us </p>
   <div class = 'row'>
-    <div class = 'col-xs-12 col-md-6'>
+    <div class = 'col-xs-12'>
       <div id='calendar_header'>
         <a href = 'javascript:void(0);' class = 'calendar-scroll pull-left'><i class = 'fa fa-chevron-left fa-1'></i></a>
         <h5 class = 'month'></h5 >
-        <h5 class = 'year'></h5 >
-        <a href = 'javascript:void(0);' class = 'calendar-scroll pull-right'><i class = 'fa fa-chevron-right fa-6'></i></a>
+          <h5 class = 'year'></h5 >
+            <a href = 'javascript:void(0);' class = 'calendar-scroll pull-right'><i class = 'fa fa-chevron-right fa-6'></i></a>
+          </div>
+          <div id="calendar"></div>
+        </div>
+        <hr class='calendar-divider'/>
+        <div id="calendar_data" class = 'col-xs-12'>
+          <h3 class='event-title'>Event Title </h3>
+          <span class='event-date'>May 5th, 2016</span>
+          <br />
+          <span class='event-info multiline-elipsis'>
+            This is an elaborate description of what will happen at the event.
+            We'll be going out to do things, and after that, some stuff will occur.
+            If you'd like to join, we would be delighted to have you.
+            But first, you must meet several qualifications.
+            For example, you must be able to tell us how many sides a triangle has.
+            Given that you achieve that successfully, you'll need to tell us how
+            many degrees there are in a  triangle.
+            What's the measure of each angle of an equilateral triangle?
+            Do you like scalene or isosceles triangles?
+          </span>
+          <br />
+          <a href='javascript:void(0);' class='event-link'>
+            Read More <i class = 'fa fa-arrow-right'></i>
+          </a>
+        </div>
       </div>
-      <div id="calendar"></div>
-    </div>
-    <hr class='calendar-divider'/>
-    <div id="calendar_data" class = 'col-xs-12 col-md-6'>
-      <h3 class='event-title'>Event Title </h3>
-      <span class='event-date'>May 5th, 2016</span>
-      <br />
-      <span class='event-info'>
-        First 25 words of the description go here. The next 25 words go
-        some other places.
-      </span>
-      <br />
-      <a href='javascript:void(0);' class='event-link'>
-        Read More <i class = 'fa fa-arrow-right'></i>
-      </a>
     </div>
   </div>
-</div>
-<div class='full-cal container'>
-  <center>
-  <h6> Check out the full calendar by clicking below. </h6>
-  <a href = 'javascript:void(0);' class = 'calendar-link'>VIEW CALENDAR</a>
-  </center>
 </div>
