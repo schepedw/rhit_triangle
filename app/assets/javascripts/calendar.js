@@ -86,12 +86,12 @@ function calendar(date) {
             } else{
               singleDigit = ' '
             }
-            if (day == today - 1 && this_month == month){
-              html += '<td class="active"><a href="javascript:void(0); class="' + singleDigit +  '" data-id="' + info + '" onclick="showInfo(\'' + info + '\')">' +
+            if (day == today && this_month == month){
+              html += '<td class="active"><a href="javascript:void(0);" class="' + singleDigit +  '" data-id="' + info + '" onclick="showInfo(\'' + info + '\')">' +
                 day + '</a></td>';
             }
             else{
-              html += '<td><a href="javascript:void(0);"; class="' + singleDigit +   'data-id="' + info + '" onclick="showInfo(\'' + info + '\')">' +
+              html += '<td><a href="javascript:void(0);"; class="' + singleDigit +   '" data-id="' + info + '" onclick="showInfo(\'' + info + '\')">' +
                 day + '</a></td>';
             }
 

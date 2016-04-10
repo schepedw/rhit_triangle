@@ -5,6 +5,7 @@ gem 'rails', '4.2.5.2'
 # Use postgres as the database for Active Record
 gem 'pg'
 
+gem 'capistrano', '2.15.4'
 # Frontend things
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -13,11 +14,14 @@ gem 'font-awesome-rails'
 gem 'twitter'
 gem 'twitter-text'
 
-gem "haml-rails", "~> 0.9"
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'therubyrhino'
 gem 'figgy'
+
+group :production do
+  gem 'unicorn-rails'
+end
 
 group :development, :test do
   gem 'pry'
