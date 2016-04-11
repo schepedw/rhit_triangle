@@ -38,6 +38,11 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.4.0)
     arel (6.0.3)
+    blue-daemons (1.1.11)
+    bluepill (0.1.1)
+      activesupport (>= 3.2, < 5)
+      blue-daemons (~> 1.1)
+      state_machine (~> 1.1)
     buftok (0.2.0)
     builder (3.2.2)
     capistrano (2.15.4)
@@ -199,6 +204,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    state_machine (1.2.0)
     therubyrhino (2.0.4)
       therubyrhino_jar (>= 1.7.3)
     therubyrhino_jar (1.7.6)
@@ -244,6 +250,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bluepill
   capistrano (= 2.15.4)
   cucumber-rails
   database_cleaner
