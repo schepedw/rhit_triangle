@@ -34,7 +34,7 @@ after 'deploy:update', 'bluepill:quit', 'bluepill:start'
 namespace :bluepill do
   desc "Stop processes that bluepill is monitoring and quit bluepill"
   task :quit, :roles => [:app] do
-    run "cd #{latest_release} && #{BP} adventure_glass stop && sleep 2 && #{BP} adventure_glass quit && sleep 2"
+    run "cd #{latest_release} && #{BP} rhit_triangle stop && sleep 2 && #{BP} rhit_triangle quit && sleep 2"
   end
 
   desc "Load bluepill configuration and start it"
@@ -74,7 +74,7 @@ before "deploy:assets:precompile", 'random:clear_files', "db:setup", "db:migrate
 namespace :db do
   desc "setup db"
   task :setup, :roles => :db do
-    run "cd #{release_path} && RAILS_ENV=#{rails_env} bundle exec rake db:setup"
+#    run "cd #{release_path} && RAILS_ENV=#{rails_env} bundle exec rake db:setup"
   end
   task :migrate, :roles => :db do
     run "cd #{release_path} && RAILS_ENV=#{rails_env} bundle exec rake db:migrate"
