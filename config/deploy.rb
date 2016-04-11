@@ -28,27 +28,26 @@ set :branch do
   tag
 end
 
-BP = 'bundle exec bluepill --no-privileged'
-
-after 'deploy:update', 'bluepill:quit', 'bluepill:start'
-namespace :bluepill do
-  desc "Stop processes that bluepill is monitoring and quit bluepill"
+EYE = 'bundle exec eye'
+after 'deploy:update', 'eye:quit', 'eye:start'
+namespace :eye do
+  desc "Stop processes that eye is monitoring and quit eye"
   task :quit, :roles => [:app] do
-    run "cd #{latest_release} && #{BP} rhit_triangle stop && sleep 2 && #{BP} rhit_triangle quit && sleep 2"
+    run "cd #{latest_release} && #{EYE} quit -s"
   end
 
-  desc "Load bluepill configuration and start it"
+  desc "Load eye configuration and start it"
   task :start, :roles => [:app] do
-    run "cd #{release_path} && #{BP} load #{latest_release}/config/unicorn.pill"
+    run "cd #{release_path} && #{EYE} load #{latest_release}/config/unicorn.eye && #{EYE} start rhit_triangle"
   end
 
-  desc "Prints bluepills monitored processes statuses"
+  desc "Prints eyes monitored processes statuses"
   task :status, :roles => [:app] do
-    run "bundle exec bluepill status"
+    run "#{EYE} info"
   end
 end
 
-before 'bluepill:start', 'secrets:generate'
+before 'eye:start', 'secrets:generate'
 namespace 'secrets' do
   task :generate do
     run "cd #{release_path} && sed -i '$ d' config/secrets.yml "
