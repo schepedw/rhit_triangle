@@ -39,9 +39,10 @@ GEM
     addressable (2.4.0)
     arel (6.0.3)
     blue-daemons (1.1.11)
-    bluepill (0.1.1)
-      activesupport (>= 3.2, < 5)
-      blue-daemons (~> 1.1)
+    bluepill (0.0.69)
+      activesupport (>= 3, < 5)
+      blue-daemons (~> 1.1.11)
+      i18n (~> 0.5)
       state_machine (~> 1.1)
     buftok (0.2.0)
     builder (3.2.2)
@@ -250,7 +251,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bluepill
+  bluepill (= 0.0.69)
   capistrano (= 2.15.4)
   cucumber-rails
   database_cleaner

@@ -21,7 +21,7 @@ gem 'figgy'
 
 group :production do
   gem 'unicorn-rails'
-  gem 'bluepill'
+  gem 'bluepill', '0.0.69'
 end
 
 group :development, :test do
