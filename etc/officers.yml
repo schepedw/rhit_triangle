@@ -26,3 +26,7 @@ activities_director:
   name: 'Cameron Curry'
   email: 'currycj@rose-hulman.edu'
   phone: '(317) 514-9879'
+chapter_advisor:
+  name: 'Cary Laxer'
+  email: 'laxer@rose-hulman.edu'
+  phone:

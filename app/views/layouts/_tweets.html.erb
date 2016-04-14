@@ -9,8 +9,8 @@
   </div>
   <% @tweets.each do |tweet| %>
     <div class = 'row tweet'>
-      <div class = 'col-xs-3 col-sm-1'><%= image_tag 'house_thumbnail.png', class: 'author-pic' %></div>
-      <div class = 'col-xs-9'>
+      <div class = 'col-xs-3 col-sm-2'><%= image_tag 'house_thumbnail.png', class: 'author-pic' %></div>
+      <div class = 'col-xs-9 col-sm-10'>
           <div class = 'row tweet-metadata'>
             <span class = 'tweet-metadata'><%= tweet[:author_name] %> · </span>
             <span class = 'tweet-metadata'> @<%=tweet[:author_handle] %> · </span>
