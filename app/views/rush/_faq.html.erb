@@ -1,0 +1,19 @@
+<h4 class='col-xs-12'><strong> FREQUENTLY ASKED QUESTIONS </strong></h4>
+<div class = 'faq col-xs-12'>
+  <div id="accordion">
+    <% @questions_and_answers.each do |faq| %>
+      <h3><strong><%= faq[:question].upcase %></strong></h3>
+      <div>
+        <hr />
+        <p> <%= faq[:answer] %> </p>
+      </div>
+    <% end %>
+  </div>
+</div>
+<script>
+  $('#accordion').accordion({
+    collapsible: true,
+    active: false,
+    heightStyle: "content"
+  });
+</script>

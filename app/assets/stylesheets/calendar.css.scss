@@ -178,3 +178,10 @@ tbody.days_cal tr td {
     text-decoration: none;
   }
 }
+
+.event-summary{
+  .multiline-elipsis{
+    -webkit-line-clamp: 3;
+    height: 53px;
+  }
+}

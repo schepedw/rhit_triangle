@@ -1,0 +1,29 @@
+<hr class='hidden-md hidden-lg'/>
+<div class = 'event-header'>
+  <h4> <strong> UPCOMING EVENTS</strong> </h4>
+</div>
+<div class = 'container-fluid calendar-events'>
+  <% @events.each do |event| %>
+    <div class = 'row calendar-event'>
+      <div class="event-summary" class = 'col-xs-12'>
+        <h5 class='event-title'>Event Title </h5>
+        <span class='event-date'>May 5th, 2016</span>
+        <br />
+        <span class='event-info multiline-elipsis'>
+          This is an elaborate description of what will happen at the event.
+          We'll be going out to do things, and after that, some stuff will occur.
+          If you'd like to join, we would be delighted to have you.
+          But first, you must meet several qualifications.
+          For example, you must be able to tell us how many sides a triangle has.
+          Given that you achieve that successfully, you'll need to tell us how
+          many degrees there are in a  triangle.
+          What's the measure of each angle of an equilateral triangle?
+          Do you like scalene or isosceles triangles?
+        </span>
+        <a href='javascript:void(0);' class='event-link'>
+          Read More <i class = 'fa fa-arrow-right'></i>
+        </a>
+      </div>
+    </div>
+  <% end %>
+</div>

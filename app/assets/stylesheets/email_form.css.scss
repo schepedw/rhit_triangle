@@ -1,5 +1,8 @@
 .email{
   padding-top: 10px;
+  @media(max-width:992px){
+    input, textarea{ outline: 1px solid #D2D2D2; }
+  }
 }
 .new_message{
   label{

@@ -16,6 +16,7 @@ gem 'twitter-text'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'therubyrhino'
 gem 'figgy'
 
@@ -26,6 +27,7 @@ end
 
 group :development, :test do
   gem 'pry'
+  gem 'faker'
 end
 
 group :development do
@@ -38,6 +40,5 @@ group :test do
   gem 'cucumber-rails', :require => false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
-  gem 'faker'
   gem 'factory_girl_rails'
 end
