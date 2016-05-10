@@ -18,7 +18,9 @@ gem 'twitter-text'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'therubyrhino'
+
 gem 'figgy'
+gem 'faker' # TODO: remove this when we get to a 'real' release
 
 group :production do
   gem 'unicorn-rails'
@@ -27,7 +29,6 @@ end
 
 group :development, :test do
   gem 'pry'
-  gem 'faker'
 end
 
 group :development do
@@ -37,8 +38,8 @@ end
 group :test do
   # NOTE: None of the test gems have been properly initialized
   gem 'rspec-rails'
-  gem 'cucumber-rails', :require => false
-  # database_cleaner is not required, but highly recommended
+  gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'factory_girl_rails'
+  gem 'rubocop', '~> 0.39.0', require: false
 end
