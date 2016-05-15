@@ -29,6 +29,7 @@ end
 
 group :development, :test do
   gem 'pry'
+  gem 'rubocop', '~> 0.39.0', require: false
 end
 
 group :development do
@@ -41,5 +42,4 @@ group :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'factory_girl_rails'
-  gem 'rubocop', '~> 0.39.0', require: false
 end
