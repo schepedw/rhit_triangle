@@ -1,49 +1,8 @@
 class RushController < ApplicationController
-  # rubocop:disable Metrics/MethodLength
-  # rubocop:disable Metrics/AbcSize
+  include CalendarHelper
+
   def index
-    @events = \
-      [{
-        author_thumbnail: nil, # not sure what to do with this one
-        author_handle: 'RHIT_triangle',
-        author_name: 'RHIT Triangle',
-        retweets: 3,
-        favorites: 5,
-        created_at: Time.zone.today,
-        content: '3 days till MAZE! #MAZEWeek'
-      }, {
-        author_thumbnail: nil, # not sure what to do with this one
-        author_handle: 'RHIT_triangle',
-        author_name: 'RHIT Triangle',
-        retweets: 3,
-        favorites: 5,
-        created_at: Time.zone.today,
-        content: '3 days till MAZE! #MAZEWeek'
-      }, {
-        author_thumbnail: nil, # not sure what to do with this one
-        author_handle: 'RHIT_triangle',
-        author_name: 'RHIT Triangle',
-        retweets: 3,
-        favorites: 5,
-        created_at: Time.zone.today,
-        content: '3 days till MAZE! #MAZEWeek'
-      }, {
-        author_thumbnail: nil, # not sure what to do with this one
-        author_handle: 'RHIT_triangle',
-        author_name: 'RHIT Triangle',
-        retweets: 3,
-        favorites: 5,
-        created_at: Time.zone.today,
-        content: '3 days till MAZE! #MAZEWeek'
-      }, {
-        author_thumbnail: nil, # not sure what to do with this one
-        author_handle: 'RHIT_triangle',
-        author_name: 'RHIT Triangle',
-        retweets: 3,
-        favorites: 5,
-        created_at: Time.zone.today,
-        content: '3 days till MAZE! #MAZEWeek'
-      }]
+    @events = search_events(today, one_month_from_today, default_event_fields, max_results: 7)
 
     @questions_and_answers = [
       { question: 'Who`s your favorite Disney character?', answer: Faker::Lorem.paragraph },
@@ -53,5 +12,19 @@ class RushController < ApplicationController
         answer: Faker::Lorem.paragraph },
       { question: 'Are you a smelly CS?', answer: Faker::Lorem.paragraph }
     ]
+  end
+
+  private
+
+  def today
+    Time.new.iso8601
+  end
+
+  def one_month_from_today
+    (Time.zone.now + 1.month).to_time.iso8601
+  end
+
+  def default_event_fields
+    %w[id summary location start description]
   end
 end

@@ -19,3 +19,4 @@
 
 # Ignore secrets
 etc/twitter_creds.yml
+service_account_creds.json

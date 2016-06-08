@@ -18,3 +18,11 @@ Documentation:
 Style/SingleLineMethods:
   Exclude:
     - 'app/models/contact.rb'
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    '%i': '[]'
+    '%w': '[]'

@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery-ui/accordion
+//= require jquery-ui/datepicker
 //= require twitter/bootstrap
 //= require calendar
 //= require_tree .

@@ -22,6 +22,8 @@ gem 'therubyrhino'
 gem 'figgy'
 gem 'faker' # TODO: remove this when we get to a 'real' release
 
+gem 'google-api-client', require: false
+
 group :production do
   gem 'unicorn-rails'
   gem 'eye'

@@ -185,3 +185,14 @@ tbody.days_cal tr td {
     height: 53px;
   }
 }
+
+.has-event{
+  position: relative;
+  top: 9px;
+}
+
+.calendar-container{
+  @media(min-width: 992px){
+    padding-left: 2.2%;
+}
+}
