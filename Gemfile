@@ -17,7 +17,7 @@ gem 'twitter-text'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'therubyrhino'
+gem 'therubyracer'
 
 gem 'figgy'
 gem 'faker' # TODO: remove this when we get to a 'real' release

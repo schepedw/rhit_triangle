@@ -160,6 +160,7 @@ GEM
     json (1.8.3)
     jwt (1.5.4)
     kgio (2.10.0)
+    libv8 (3.16.14.15)
     little-plugger (1.1.4)
     logging (2.1.0)
       little-plugger (~> 1.1)
@@ -228,6 +229,7 @@ GEM
     rainbow (2.1.0)
     raindrops (0.16.0)
     rake (11.1.2)
+    ref (2.0.0)
     representable (2.3.0)
       uber (~> 0.0.7)
     retriable (2.1.0)
@@ -279,9 +281,9 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     state_machine (1.2.0)
-    therubyrhino (2.0.4)
-      therubyrhino_jar (>= 1.7.3)
-    therubyrhino_jar (1.7.6)
+    therubyracer (0.12.2)
+      libv8 (~> 3.16.14.0)
+      ref
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.2)
@@ -346,7 +348,7 @@ DEPENDENCIES
   rubocop (~> 0.39.0)
   sass-rails (~> 5.0)
   spring
-  therubyrhino
+  therubyracer
   twitter
   twitter-bootstrap-rails
   twitter-text
