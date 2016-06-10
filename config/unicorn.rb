@@ -1,7 +1,7 @@
 DEPLOY_PATH = "/export/web/rhit_triangle"
 pid_path = "tmp/pids/unicorn.pid"
 socket_file = "#{DEPLOY_PATH}/shared/.dashboard_unicorn.sock"
-worker_processes 8
+worker_processes 4
 timeout 30
 preload_app true
 pid pid_path

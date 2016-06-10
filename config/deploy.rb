@@ -29,7 +29,7 @@ set :branch do
 end
 
 EYE = 'bundle exec eye'
-after 'deploy:update', 'eye:quit', 'eye:start'
+after 'deploy:update', 'eye:start'
 namespace :eye do
   desc "Stop processes that eye is monitoring and quit eye"
   task :quit, :roles => [:app] do
@@ -69,7 +69,7 @@ namespace :bundle do
   end
 end
 
-before "deploy:assets:precompile", 'random:clear_files', "db:setup", "db:migrate"
+before "deploy:assets:precompile", 'random:clear_files', "db:setup", "db:migrate", "eye:quit"
 namespace :db do
   desc "setup db"
   task :setup, :roles => :db do
@@ -77,7 +77,6 @@ namespace :db do
   end
   task :migrate, :roles => :db do
     run "cd #{release_path} && RAILS_ENV=#{rails_env} bundle exec rake db:migrate"
-  require 'pry'; binding.pry
   end
 end
 
