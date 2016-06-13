@@ -24,6 +24,10 @@ gem 'faker' # TODO: remove this when we get to a 'real' release
 
 gem 'google-api-client', require: false
 
+# Authentication + Authorization
+gem 'devise'
+gem 'rolify'
+
 group :production do
   gem 'unicorn-rails'
   gem 'eye'
