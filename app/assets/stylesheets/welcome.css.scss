@@ -1,5 +1,5 @@
 @media (min-width: 768px){
-  .landing-hero{
+  #hero-carousel > .carousel-inner > .item{
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -7,31 +7,44 @@
     padding-top: 20vh;
   }
 }
+
 @media (max-width: 767px){
   .landing-hero{ height: 40vh; }
 }
-.landing-hero{
-  font-family: 'oswald';
-  letter-spacing: 2.5px;
-  color: white;
-  width: 100%;
-  background: image-url('new_house') no-repeat center center;
+
+#hero-carousel > .carousel-inner {
+  top: -7px;
+  &  > .item{
   height: 80vh;
+  background-position-x: center;
+  background-position-y: center;
   background-size: cover;
-  h1, h2, h3, h4, h5{
-    margin: 0;
-}
-h4{
-  padding-top: 60px;
-  padding-bottom: 10px;
-}
-h1{
-  font-size: 22px;
-  font-weight: bold;
-  padding-bottom: 10px;
-}
-h3{
-  font-size: 20px;
+  width: 100%;
+  padding-top: 20vh;
+  &.item1{
+    background-image:  image-url('new_house');
+    h1, h2, h3, h4, h5{
+      font-family: 'oswald';
+      letter-spacing: 2.5px;
+      color: white;
+      margin: 0;
+    }
+    h4{
+      padding-top: 60px;
+      padding-bottom: 10px;
+    }
+    h1{
+      font-size: 22px;
+      font-weight: bold;
+      padding-bottom: 10px;
+    }
+    h3{ font-size: 20px; }
+  }
+  &.item2{ background-image:  image-url('pledge_class_2013_2'); }
+  &.item3{ background-image:  image-url('ski_trip_2'); }
+  &.item4{ background-image:  image-url('ski_trip_3'); }
+  &.item5{ background-image:  image-url('outdoor_trip_2'); }
+  &.item6{ background-image:  image-url('pledge_class_2010_3'); }
 }
 }
 
@@ -48,3 +61,9 @@ h3{
 }
 }
 
+.carousel-control {
+  bottom: 8px;
+  span{
+    padding-top: 40vh;
+  }
+}
