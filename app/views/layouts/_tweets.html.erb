@@ -7,20 +7,22 @@
       <a href='https://twitter.com/RHITTriangle' class = 'btn btn-default btn-red btn-xs follow-us'> FOLLOW US </a>
     </div>
   </div>
-  <% @tweets.each do |tweet| %>
-    <div class = 'row tweet'>
-      <div class = 'col-xs-3 col-sm-2'><%= image_tag 'house_thumbnail.png', class: 'author-pic' %></div>
-      <div class = 'col-xs-9 col-sm-10'>
+  <div id='tweet-container'>
+    <% AppConfig.twitter.default_tweet_count.times do |index| %>
+      <div class = 'row tweet' id='tweet-<%= index %>'>
+        <div class = 'col-xs-3 col-sm-2 img-container'><%# image_tag '', class: 'author-pic' %></div>
+        <div class = 'col-xs-9 col-sm-10'>
           <div class = 'row tweet-metadata'>
-            <span class = 'tweet-metadata'><%= tweet.user.name %> · </span>
-            <span class = 'tweet-metadata'> @<%=tweet.user.screen_name %> · </span>
-            <span class = 'tweet-metadata'> <%= tweet.created_at.strftime('%b %-d') %></span>
+            <span class = 'tweet-metadata user-name'><%# tweet.user.name %> · </span>
+            <span class = 'tweet-metadata user-handle'> @<%#tweet.user.screen_name %> · </span>
+            <span class = 'tweet-metadata tweet-created-at'> <%# tweet.created_at.strftime('%b %-d') %></span>
           </div>
-          <div class = 'row'><p><%= auto_link(tweet.text).html_safe %></p></div>
+          <div class = 'row tweet-content'><p>Loading...</p></div>
+        </div>
+        <div class = 'col-xs-12 tweet-link'>
+          <a>View Tweet <i class = 'fa fa-arrow-right fa-1'></i></a>
+        </div>
       </div>
-      <div class = 'col-xs-12 tweet-link'>
-        <a href='<%=tweet.url.to_s%>'>View Tweet <i class = 'fa fa-arrow-right fa-1'></i></a>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

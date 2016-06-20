@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   resources :messages, only: [:create] # TODO - this controller doesn't exist
   get '/rush' => 'rush#index'
+  get '/tweets' => 'tweets#index'
   namespace :calendar do
     resources :events, only: %i[index show]
   end

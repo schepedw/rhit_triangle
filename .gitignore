@@ -16,7 +16,8 @@
 /log/*
 !/log/.keep
 /tmp
+tags
 
 # Ignore secrets
-etc/twitter_creds.yml
+etc/twitter.yml
 service_account_creds.json

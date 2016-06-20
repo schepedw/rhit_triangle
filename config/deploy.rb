@@ -89,7 +89,7 @@ namespace 'random' do
   end
 
   task :move_files do
-    `scp etc/twitter_creds.yml deployuser@173.255.225.240:#{release_path}/etc`
+    `scp etc/twitter.yml deployuser@173.255.225.240:#{release_path}/etc`
   end
 end
 
