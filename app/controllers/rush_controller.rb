@@ -3,15 +3,7 @@ class RushController < ApplicationController
 
   def index
     @events = search_events(today, one_month_from_today, default_event_fields, max_results: 7)
-
-    @questions_and_answers = [
-      { question: 'Who`s your favorite Disney character?', answer: Faker::Lorem.paragraph },
-      { question: 'Do you like ice cream?', answer: Faker::Lorem.paragraph },
-      { question: 'Do you like toads?', answer: Faker::Lorem.paragraph },
-      { question: 'Would you describe yourself as easy to talk to, fun to hang out with?',
-        answer: Faker::Lorem.paragraph },
-      { question: 'Are you a smelly CS?', answer: Faker::Lorem.paragraph }
-    ]
+    @questions_and_answers = AppConfig.q_and_a
   end
 
   private
