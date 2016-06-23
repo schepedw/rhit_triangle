@@ -1,4 +1,5 @@
 <%= render 'layouts/hero_carousel' %>
+<%= render 'about_us_new' %>
 <div class = 'container-fluid'>
   <div class = 'row'>
     <div class = 'col-md-6 col-xs-12 pull-right'>
@@ -13,7 +14,7 @@
 <div class='full-cal'>
   <center>
     <h6> Check out the full calendar by clicking below. </h6>
-    <a href = 'javascript:void(0);' class = 'calendar-link'>VIEW CALENDAR</a>
+    <%= link_to 'VIEW CALENDAR', calendar_path, class: 'calendar-link' %>
   </center>
 </div>
 <div class = 'container-fluid'>
@@ -22,7 +23,7 @@
 <div class='full-cal'>
   <center>
     <h6> Want to learn more about rush? </h6>
-    <a href = 'javascript:void(0);' class = 'calendar-link'>LEARN MORE</a>
+    <%= link_to 'LEARN MORE', rush_path, class: 'calendar-link' %>
   </center>
 </div>
 <div class = 'container-fluid'>
