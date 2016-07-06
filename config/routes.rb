@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :members
   root 'welcome#index'
+  devise_for :members, controllers: { registrations: 'members/registrations', sessions: 'members/sessions' }
+  devise_scope :member do
+    get 'members/sign_out' => 'members/sessions#destroy'
+  end
   resources :messages, only: [:create] # TODO - this controller doesn't exist
   get '/rush' => 'rush#index'
   get '/tweets' => 'tweets#index'

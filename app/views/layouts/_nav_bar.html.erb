@@ -15,20 +15,46 @@
     <div class='dropdown-backdrop' style='visibility:hidden'></div>
   </div>
   <a href = '/'><h4 class = 'brand'><%=image_tag 'small_logo.png' %> <strong>TRIANGLE</strong></h4></a>
-  <a href = 'javascript:void(0);' class = 'navbar-sm-icon pull-right'><i class="fa fa-user fa-lg"></i></a>
+  <a href = 'javascript:void(0);' class = 'navbar-sm-icon pull-right' id="clabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i></a>
+    <ul class="dropdown-menu pull-right" aria-labelledby="clabel">
+      <% if current_member.present? %>
+        <li> <%= link_to 'Sign Out', destroy_member_session_path  %> </li>
+      <% else %>
+        <li> <%= link_to 'Sign In', new_member_session_path %> </li>
+        <li> <%= link_to 'Sign Up', new_member_registration_path %> </li>
+      <% end %>
+    </ul>
 </div>
 <div class='visible-md visible-lg'>
   <div class='nav nav-lower'>
     <a href = '/'><h4 class = 'brand pull-left'><%=image_tag 'small_logo_white.png' %> <strong>TRIANGLE</strong></h4></a>
     <ul class='quick-links pull-right'>
-      <li> <a href='#'>ACTIVE BODY</a></li>
-      <li> <a href='#'>HISTORY</a></li>
-      <li> <a href='/calendar'>CALENDAR</a></li>
-      <li> <a href='/rush'>RUSH</a></li>
-      <li> <a href='#'>ALUMNI</a></li>
-      <li> <a href='#'>FORUM</a></li>
+    <li> <a href='#'>ACTIVE BODY</a></li>
+    <li> <a href='#'>HISTORY</a></li>
+    <li> <a href='/calendar'>CALENDAR</a></li>
+    <li> <a href='/rush'>RUSH</a></li>
+    <li> <a href='#'>ALUMNI</a></li>
+    <li> <a href='#' data-toggle='popover' data-trigger='click'>FORUM</a>
+    <center class='login-buttons' role='group' style='display:none'>
+      <a href='http://rosetechtriangle.forumotion.com/' class='btn btn-primary'><i class="fa fa-sign-in"></i> Sign in</a>
+      <a href='/members/sign_up' class='btn btn-primary'><i class="fa fa-edit"></i> Register</a>
+      </center >
+      </li>
       <li> <a href='#'>GIVING BACK</a></li>
       <li> <a href='#'>CONTACT</a></li>
-    </ul>
-  </div>
+      <li class = 'dropdown'>
+      <a href='#' id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%=current_member.try(:first_name) || 'SIGN IN'%>
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="dLabel">
+        <% if current_member.present? %>
+          <li> <%= link_to 'Sign Out', destroy_member_session_path, :method => :delete  %> </li>
+        <% else %>
+          <li> <%= link_to 'Sign In', new_member_session_path %> </li>
+          <li> <%= link_to 'Sign Up', new_member_registration_path %> </li>
+        <% end %>
+      </ul>
+      </li>
+  </ul>
+</div>
 </div>

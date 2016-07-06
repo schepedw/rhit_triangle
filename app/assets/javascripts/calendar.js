@@ -1,7 +1,7 @@
-// Start
 current_date = new Date();
 displayed_date = new Date();
 $(function(){
+  if ($('#calendar').size() == 0) { return }
   populateCalendar(current_date);
 
   $('.calendar-scroll.pull-left').click(function(){
@@ -125,7 +125,7 @@ function retrieveInfo(date) {
   end.setUTCHours(23, 59, 59, 999); // TODO: this isn't entirely correct. Triangle events are presumably in EST (UTC - 4)
   data = { start_time: start.toISOString(), end_time: end.toISOString(), fields: fields }
   $('#calendar_data .event-date').text(formatDate(date));
-  $.ajax({url: 'calendar/events.json', data: data, success: populate_event_detail});
+  $.ajax({url: '/calendar/events.json', data: data, success: populate_event_detail});
 }
 
 function populate_event_detail(json_response) {

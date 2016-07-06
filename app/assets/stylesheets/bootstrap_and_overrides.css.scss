@@ -5,3 +5,15 @@
   To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
   =require twitter-bootstrap-static/fontawesome
   */
+
+.btn-primary{
+  background-color: #C1252A;
+  color: white;
+  border-color: #881115;
+  &:hover {
+    background-color: #881115;
+    border-color: #3c2425;
+}
+}
+
+.popover-title{ font-size: 12px; }

@@ -21,3 +21,4 @@ tags
 # Ignore secrets
 etc/twitter.yml
 service_account_creds.json
+etc/default_password.yml
