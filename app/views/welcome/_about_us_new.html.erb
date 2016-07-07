@@ -4,60 +4,35 @@
   </center>
 </div>
 <div class = 'container-fluid'>
-  <div classs = 'row'>
-    <div class = 'col-xs-6'>
-      <div id='image-carousel' class='carousel slide' data-ride='carousel'>
-        <ol class='carousel-indicators'>
-          <li data-target='#image-carousel' data-slide-to='0' class='active'></li>
-          <% (1..5).each do |i| %>
-            <li data-target='#image-carousel' data-slide-to='<%=i%>'></li>
-          <% end %>
-        </ol>
-
-        <div class='carousel-inner' role='listbox'>
-          <div class='item item1 active'> </div>
-          <% (2..6).each do |i| %>
-            <div class='item item<%=i%>'> </div>
-          <% end %>
-        </div>
-
-        <a class='left carousel-control' href='#image-carousel' role='button' data-slide='prev'>
-          <span class='fa fa-chevron-left' aria-hidden='true'></span>
-          <span class='sr-only'>Previous</span>
-        </a>
-        <a class='right carousel-control' href='#image-carousel' role='button' data-slide='next'>
-          <span class='fa fa-chevron-right' aria-hidden='true'></span>
-          <span class='sr-only'>Next</span>
-        </a>
-
+  <div class = 'col-xs-6'>
+    <div id='image-carousel' class='carousel slide' data-ride='carousel'>
+      <div class='carousel-inner' role='listbox'>
+        <div class='item item1 active'> </div>
+        <% (2..6).each do |i| %>
+          <div class='item item<%=i%>'> </div>
+        <% end %>
       </div>
+
+      <a class='left carousel-control' href='#image-carousel' role='button' data-slide='prev'>
+        <span class='fa fa-chevron-left' aria-hidden='true'></span>
+        <span class='sr-only'>Previous</span>
+      </a>
     </div>
-    <div class = 'col-xs-6'>
-      <div id='image-carousel' class='carousel slide' data-ride='carousel'>
-        <ol class='carousel-indicators'>
-          <li data-target='#image-carousel' data-slide-to='0' class='active'></li>
-          <% (1..5).each do |i| %>
-            <li data-target='#image-carousel' data-slide-to='<%=i%>'></li>
-          <% end %>
-        </ol>
-
-        <div class='carousel-inner' role='listbox'>
-          <div class='item item1 active'> </div>
-          <% (2..6).each do |i| %>
-            <div class='item item<%=i%>'> </div>
-          <% end %>
-        </div>
-
-        <a class='left carousel-control' href='#image-carousel' role='button' data-slide='prev'>
-          <span class='fa fa-chevron-left' aria-hidden='true'></span>
-          <span class='sr-only'>Previous</span>
-        </a>
-        <a class='right carousel-control' href='#image-carousel' role='button' data-slide='next'>
-          <span class='fa fa-chevron-right' aria-hidden='true'></span>
-          <span class='sr-only'>Next</span>
-        </a>
-
+  </div>
+  <div class = 'col-xs-6'>
+    <div id='info-carousel' class='carousel slide' data-ride='carousel' data-interval=false>
+      <div class='carousel-inner' role='listbox'>
+        <div class='item item1 active'> </div>
+        <% (2..6).each do |i| %>
+          <div class='item item<%=i%>'> </div>
+        <% end %>
       </div>
+
+      <a class='right carousel-control' href='#image-carousel' role='button' data-slide='next'>
+        <span class='fa fa-chevron-right' aria-hidden='true'></span>
+        <span class='sr-only'>Next</span>
+      </a>
+
     </div>
   </div>
 </div>
