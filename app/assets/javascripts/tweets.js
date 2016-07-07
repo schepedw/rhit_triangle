@@ -1,5 +1,5 @@
 $(function(){
-  if $('#tweet-0' + i).length < 1
+  if ($('#tweet-0').length < 1)
     return
   $.ajax({url: '/tweets.json', success: populateTweets});
 })
