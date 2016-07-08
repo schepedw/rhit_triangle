@@ -3,8 +3,8 @@
     <h6>WHAT IS TRIANGLE?</h6>
   </center>
 </div>
-<div class = 'container-fluid'>
-  <div class = 'col-xs-6'>
+<div class = 'container-fluid about-us-container'>
+  <div class = 'col-xs-6 about-us-carousel'>
     <div id='image-carousel' class='carousel slide' data-ride='carousel'>
       <div class='carousel-inner' role='listbox'>
         <div class='item item1 active'> </div>
@@ -19,13 +19,15 @@
       </a>
     </div>
   </div>
-  <div class = 'col-xs-6'>
+  <div class = 'col-xs-6 about-us-carousel'>
     <div id='info-carousel' class='carousel slide' data-ride='carousel' data-interval=false>
       <div class='carousel-inner' role='listbox'>
-        <div class='item item1 active'> </div>
+        <div class='item active'><%= render "about_pt_1" %> </div>
+        <!--
         <% (2..6).each do |i| %>
-          <div class='item item<%=i%>'> </div>
+          <div class='item'> <%= render "about_pt_#{i}" %></div>
         <% end %>
+        -->
       </div>
 
       <a class='right carousel-control' href='#image-carousel' role='button' data-slide='next'>
