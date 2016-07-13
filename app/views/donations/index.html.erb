@@ -9,8 +9,8 @@
       <h4><strong><%= project.title %></strong></h4>
       <p> <%= project.description %> </p>
       <div class = 'project-slider'>
-        <label for='progress' class = 'project-capital-progress'></label><span id='progress'> <%= project.capital_progress %> </span>
-        <label for='total-cost' class = 'project-total-cost'></label><span id='total-cost'> <%= project.total_cost %> </span>
+        <span class='capital-progress'>$<%=project.capital_progress%></span>
+        <span class='total-cost pull-right'> $<%= project.total_cost %> </span>
         <div id="project-slider" ></div>
       </div>
     </div>

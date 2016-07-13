@@ -1,0 +1,18 @@
+.capital-progress, .total-cost{
+  position: relative;
+  bottom: -10px;
+}
+
+.project-slider { position: relative; }
+
+#project-slider{
+  top: -18px;
+  position: relative;
+  height: 10px;
+  opacity: 1;
+  .ui-slider-range{
+    border-color: #B30D0D;
+    background: #B30D0D;
+    height: 100%;
+}
+}
