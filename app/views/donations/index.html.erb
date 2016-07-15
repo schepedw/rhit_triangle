@@ -4,7 +4,7 @@
     <div class = 'row'>
       <div class = 'col-xs-12 col-md-6 project-pic-container'>
 
-        <div id='project-carousel-<%=index%>' class='carousel slide' data-ride='carousel'>
+        <div id='project-carousel-<%=index%>' class='carousel slide' data-ride='carousel' data-interval='false'>
           <ol class='carousel-indicators'>
             <li data-target='#project-carousel-<%=index%>' data-slide-to='0' class='active'></li>
             <% (1..project.pictures.count).each do |i| %>
@@ -13,11 +13,9 @@
           </ol>
 
           <div class='carousel-inner' role='listbox'>
-            <div class='item item1 active'>
-              <img src=<%= project.pictures.first %>> </img>
-            </div>
+            <div class='item item1 active' style="background-image: url(<%=project.pictures.first%>)"> </div>
             <% project.pictures[1..-1].each_with_index do |picture, i| %>
-              <div class='item item<%=i%>'><img src=<%=picture%>> </img> </div>
+              <div class='item item<%=i%>' style="background-image: url(<%=picture%>)"></div>
             <% end %>
           </div>
 

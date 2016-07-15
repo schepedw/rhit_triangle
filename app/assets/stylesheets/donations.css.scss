@@ -16,3 +16,19 @@
     height: 100%;
 }
 }
+
+.project-pic-container{
+  .carousel-control {
+    span { padding-top: 17vh; }
+    height: 35vh;
+  }
+  .carousel-inner{
+  .item {
+    background-position-x: center;
+    background-position-y: center;
+    background-size: cover;
+    width: 100%;
+    height: 35vh;
+}
+}
+}
