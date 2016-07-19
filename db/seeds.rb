@@ -1,7 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+unstarted = ProjectStatus.find_or_create_by(status: 'Unstarted')
+
+Project.create([
+  { title: 'Replace Carpet in the Hallways',
+    description: "The existing carpet has been in place since 2005. We are seeking funds to tear out our current carpet in the hallways and replace them with new carpet squares. This will allow easier repair in the future without having to rip out the entire floor.",
+    project_status: unstarted,
+    price: 7000,
+    pictures: []
+}
+
+])
