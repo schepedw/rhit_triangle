@@ -7,7 +7,7 @@
         <div id='project-carousel-<%=index%>' class='carousel slide' data-ride='carousel' data-interval='false'>
           <ol class='carousel-indicators'>
             <li data-target='#project-carousel-<%=index%>' data-slide-to='0' class='active'></li>
-            <% (1..project.pictures.count).each do |i| %>
+            <% (1..project.pictures.count - 1).each do |i| %>
               <li data-target='#project-carousel-<%=index%>' data-slide-to='<%=i%>'></li>
             <% end %>
           </ol>
@@ -36,7 +36,7 @@
         <p> <%= project.description %> </p>
         <div class = 'project-slider'>
           <span class='capital-progress'>$<%=project.capital_progress%></span>
-          <span class='total-cost pull-right'> $<%= project.total_cost %> </span>
+          <span class='total-cost pull-right'> $<%= project.price %> </span>
           <div id="project-slider" ></div>
         </div>
       </div>
