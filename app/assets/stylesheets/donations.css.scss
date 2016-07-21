@@ -17,12 +17,18 @@
 }
 }
 
+.project{
+  padding-bottom: 25px;
+  padding-top: 25px;
+  border-bottom: 2px solid #ebebeb;
+  border-radius: 2px;
+}
 .project-pic-container{
   .carousel-control {
     span { padding-top: 17vh; }
     height: 35vh;
-  }
-  .carousel-inner{
+}
+.carousel-inner{
   .item {
     background-position-x: center;
     background-position-y: center;
@@ -31,4 +37,9 @@
     height: 35vh;
 }
 }
+}
+.section-title{
+  padding-top: 1px;
+  background-color: #ececec;
+  padding-bottom: 5px;
 }

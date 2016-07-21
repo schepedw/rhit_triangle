@@ -16,4 +16,15 @@
 }
 }
 
+.btn-secondary{
+  background-color: #EBEBEB;
+  color: black;
+  border-color: #c0c0c0;
+  &:hover {
+    background-color: #c0c0c0;
+    border-color: black;
+}
+
+}
+
 .popover-title{ font-size: 12px; }
