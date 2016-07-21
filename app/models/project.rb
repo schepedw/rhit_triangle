@@ -3,7 +3,8 @@ class Project < ActiveRecord::Base
   has_many :donations
 
   def pictures
-    Dir.glob(File.join('uploads', 'project_images', title.downcase.gsub(' ', '_'), '*'))
+    files = Dir.glob(File.join(Rails.root, 'public', 'uploads', 'project_images', title.downcase.gsub(' ', '_'), '*'))
+    files.map{|f| f.gsub(/^#{File.join(Rails.root, 'public')}/, '')}
   end
 
   def capital_progress

@@ -97,6 +97,6 @@ after 'deploy:assets:precompile', 'uploads:create_symlinks'
 namespace :uploads do
   task :create_symlinks do
     run "cd #{shared_path} && mkdir -p uploads"
-    run "cd #{release_path}/public && if ! [ -L ./uploads]; then ln -s #{shared_path}/uploads uploads; fi"
+    run "cd #{release_path}/public && if ! [ -L ./uploads ]; then ln -s /export/web/rhit_triangle/support/uploads uploads; fi"
   end
 end
