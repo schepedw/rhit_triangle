@@ -8,10 +8,6 @@
 /.bundle
 .DS_Store
 
-# Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
-
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
@@ -22,3 +18,5 @@ tags
 etc/twitter.yml
 service_account_creds.json
 etc/default_password.yml
+public/uploads
+uploads/

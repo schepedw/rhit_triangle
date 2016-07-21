@@ -11,4 +11,5 @@ Rails.application.routes.draw do
     resources :events, only: %i[index show]
   end
   get '/calendar' => 'calendar/events#index'
+  get '/projects_and_donations' => 'donations#index'
 end

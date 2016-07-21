@@ -1,0 +1,47 @@
+<div class = 'section-title'><h3><strong><center> DONATIONS & CAPITAL PROJECTS </strong></center></h3></div>
+<div class = 'container'>
+  <% @projects.each_with_index do |project, index| %>
+    <div class = 'row project'>
+      <div class = 'col-xs-12 col-md-6 project-pic-container'>
+
+        <div id='project-carousel-<%=index%>' class='carousel slide' data-ride='carousel' data-interval='false'>
+          <ol class='carousel-indicators'>
+            <li data-target='#project-carousel-<%=index%>' data-slide-to='0' class='active'></li>
+            <% (1..project.pictures.count - 1).each do |i| %>
+              <li data-target='#project-carousel-<%=index%>' data-slide-to='<%=i%>'></li>
+            <% end %>
+          </ol>
+
+          <div class='carousel-inner' role='listbox'>
+            <div class='item item1 active' style="background-image: url(<%=project.pictures.first%>)"> </div>
+            <% project.pictures[1..-1].each_with_index do |picture, i| %>
+              <div class='item item<%=i%>' style="background-image: url(<%=picture%>)"></div>
+            <% end %>
+          </div>
+
+          <a class='left carousel-control' href='#project-carousel-<%=index%>' role='button' data-slide='prev'>
+            <span class='fa fa-chevron-left' aria-hidden='true'></span>
+            <span class='sr-only'>Previous</span>
+          </a>
+          <a class='right carousel-control' href='#project-carousel-<%=index%>' role='button' data-slide='next'>
+            <span class='fa fa-chevron-right' aria-hidden='true'></span>
+            <span class='sr-only'>Next</span>
+          </a>
+
+        </div>
+      </div>
+
+      <div class = 'col-xs-12 col-md-6 project-description-container'>
+        <h4><strong><%= project.title %></strong></h4>
+        <p> <%= project.description %> </p>
+        <div class = 'project-slider'>
+          <span class='capital-progress'>$<%=project.capital_progress.to_i %></span>
+          <span class='total-cost pull-right'> $<%= project.price.to_i  %> </span>
+          <div id="project-slider" ></div>
+          <button class = 'btn btn-primary btn-sm btn-square'> DONATE </button>
+          <button class = 'btn btn-secondary btn-sm btn-square'> SEE WHO DONATED <i class = 'fa fa-caret-right'></i></button>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -96,9 +96,7 @@ end
 after 'deploy:assets:precompile', 'uploads:create_symlinks'
 namespace :uploads do
   task :create_symlinks do
-#    run "cd #{shared_path} && mkdir -p base_model_pictures"
-#    run "cd #{release_path}/public && mkdir -p images"
-#    run "cd #{release_path}/public/assets && if ! [ -L ./base_model_pictures ]; then ln -s #{shared_path}/base_model_pictures base_model_pictures; fi"
-#    run "cd #{release_path}/public/images && if ! [ -L ./base_model_pictures ]; then ln -s #{shared_path}/base_model_pictures base_model_pictures; fi"
+    run "cd #{shared_path} && mkdir -p uploads"
+    run "cd #{release_path}/public && if ! [ -L ./uploads]; then ln -s #{shared_path}/uploads uploads; fi"
   end
 end
