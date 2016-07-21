@@ -26,3 +26,6 @@ Style/PercentLiteralDelimiters:
   PreferredDelimiters:
     '%i': '[]'
     '%w': '[]'
+
+Performance/StringReplacement:
+  Enabled: false

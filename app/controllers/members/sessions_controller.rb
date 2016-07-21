@@ -1,5 +1,5 @@
 class Members::SessionsController < Devise::SessionsController
-# before_action :configure_sign_in_params, only: [:create]
+  # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -7,11 +7,11 @@ class Members::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-   def create
-     #TODO: show flash. Flash is set by super()
-     request.params[:member][:password] ||= AppConfig.default_password
-     super
-   end
+  def create
+    # TODO: show flash. Flash is set by super()
+    request.params[:member][:password] ||= AppConfig.default_password
+    super
+  end
 
   # DELETE /resource/sign_out
   # def destroy
