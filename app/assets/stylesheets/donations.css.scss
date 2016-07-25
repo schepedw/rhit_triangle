@@ -43,3 +43,29 @@
   background-color: #ececec;
   padding-bottom: 5px;
 }
+
+.btn-paypal{
+  background: linear-gradient(to bottom, #fee9c1 , #ffad32);
+  color: #0c3968;
+//  border-radius: 20px;
+  &:hover{
+  background: linear-gradient(to bottom, #ffad32 , #ffad32);
+  }
+}
+
+.donation-instructions input{ display: block }
+
+.donation-instructions input[type='radio']{ display: inline; }
+
+input[type='radio'] + label{
+  text-decoration: none;
+  font-size: 11px;
+  padding-right: 10px;
+  padding-left: 3px;
+}
+
+.donation-instructions label { text-decoration: underline; }
+.donation-instructions input[name='submit']{
+  margin-top: 10px;
+}
+.modal-content{ overflow: hidden }
