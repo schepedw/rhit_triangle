@@ -4,7 +4,7 @@ class Project < ActiveRecord::Base
 
   def pictures
     files = Dir.glob(File.join(Rails.root, 'public', 'uploads', 'project_images', title.downcase.gsub(' ', '_'), '*'))
-    files.map{|f| f.gsub(/^#{File.join(Rails.root, 'public')}/, '')}
+    files.map { |f| f.gsub(/^#{File.join(Rails.root, 'public')}/, '') }
   end
 
   def capital_progress

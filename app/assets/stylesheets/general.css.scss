@@ -56,3 +56,11 @@ h4{ // this is really for 'section-header'
 .btn-square{
   border-radius: 0px;
 }
+
+[required='required'].invalid{
+  &:after{
+    content: '*';
+    color: red;
+    text-decoration: none;
+  }
+}

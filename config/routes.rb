@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   end
   get '/calendar' => 'calendar/events#index'
   get '/projects_and_donations' => 'donations#index'
+  post '/donations' => 'donations#create'
 end

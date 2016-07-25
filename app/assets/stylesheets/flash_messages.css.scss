@@ -1,0 +1,10 @@
+.flash{
+  padding-left: 10%;
+  color: #FFF;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+  &.success{
+    background-image: linear-gradient(to bottom, #77bf27 0, #acdc92 100%);
+}
+}
