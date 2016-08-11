@@ -31,7 +31,6 @@
               <span class='sr-only'>Next</span>
             </a>
           <% end %>
-
         </div>
       </div>
 
@@ -42,14 +41,17 @@
           <span class='capital-progress'>$<%=project.capital_progress.to_i %></span>
           <span class='total-cost pull-right'> $<%= project.price.to_i  %> </span>
           <div id="project-slider" ></div>
-          <button type="button" class="btn btn-primary btn-sm btn-square" data-toggle="modal" data-target="#donation_choice_modal">
+          <button type="button" class="btn btn-primary btn-sm btn-square project-donation" data-toggle="modal" data-target="#donation_choice_modal" data-project-id=<%=project.id%>>
             DONATE
           </button>
-          <button class = 'btn btn-secondary btn-sm btn-square'> SEE WHO DONATED <i class = 'fa fa-caret-right'></i></button>
+          <button class = 'btn btn-secondary btn-sm btn-square' data-toggle="modal" data-action='donation_summary' data-target="#donation_summary_modal-<%=project.id%>">
+            SEE WHO DONATED <i class = 'fa fa-caret-right'></i>
+          </button>
+          <%= render partial: 'donation_summary', locals: { project: project } %>
         </div>
       </div>
     </div>
   <% end %>
 </div>
 
-<%= render 'donation_choice_modal' %>
+<%= render 'donations/donation_choice_modal' %>
