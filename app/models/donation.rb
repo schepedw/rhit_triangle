@@ -8,14 +8,15 @@ class Donation < ActiveRecord::Base
     Installment.create(donation_id: id, amount: recurring_amount)
   end
 
-  #TODO: rename this method
-  def amount(date = Date.today)
+  # TODO: rename this method
+  def amount(date = Time.zone.today)
     installments.where('created_at <= ?', date).to_a.sum(&:amount)
   end
 
-  def anonymous=(_anonymity)# right now, this only gets called when the the donation is private
-    #/projects/2/donations/new
-    #TODO: get the frontend to pass real values
+  def anonymous=(_anonymity)
+    # right now, this only gets called when the the donation is private
+    # /projects/2/donations/new
+    # TODO: get the frontend to pass real values
     self.visibility = 'private'
   end
 

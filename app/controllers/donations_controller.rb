@@ -1,8 +1,9 @@
 class DonationsController < ApplicationController
-
   def index
     respond_to do |format|
-      format.json { render json: { data: Project.find(params[:project_id]).donations.map(&:attributes_with_donor_name)}}
+      format.json do
+        render json: { data: Project.find(params[:project_id]).donations.map(&:attributes_with_donor_name) }
+      end
     end
   end
 
@@ -20,7 +21,7 @@ class DonationsController < ApplicationController
   private
 
   def member_params
-    {password: AppConfig.default_password}.merge(params.require(:member)).symbolize_keys
+    { password: AppConfig.default_password }.merge(params.require(:member)).symbolize_keys
   end
 
   def donation_params
