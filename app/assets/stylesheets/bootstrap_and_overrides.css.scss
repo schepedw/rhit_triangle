@@ -36,3 +36,8 @@
 }
 
 .popover-title{ font-size: 12px; }
+
+abbr[title=required]{
+  border-bottom: none;
+  color: red;
+}

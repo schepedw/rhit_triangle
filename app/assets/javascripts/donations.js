@@ -14,11 +14,17 @@ $(function(){
   });
   $('.ui-slider-handle').hide();
 
+  bindProjectToIframe();
   hideRoseIframe();
   bindPaymentSelection();
-  bindFrequencySelection();
   bindModalClosing();
 });
+
+var bindProjectToIframe = function(){
+  $('.project-donation').click(function(){
+    $('#donation_choice_modal').data('project-id', $(this).data('project-id'));
+  });
+}
 
 var charBasedOffset = function(charCount){
   return ({4: 7, 5: 14, 6: 21, 7: 28, 8: 35})[charCount]
@@ -35,52 +41,22 @@ var showRoseIframe = function(){
 }
 
 var bindPaymentSelection = function(){
-  $('input[name=submit]').click(function(){
+  $('button[name=submit].btn-donation').click(function(){
     paymentGateway = $(this).data('payment-gateway');
-    if (!donationFormValid())
-      return;
-
-    saveDonationDetails(paymentGateway);
     showPaymentGateway(paymentGateway);
   });
 }
 
-var saveDonationDetails = function(paymentGateway){
-  $.ajax(
-    '/donations',
-    {
-      method: 'post',
-      data:
-        {
-          authenticity_token: $('input[name=authenticity_token]').val(),
-          donation: {
-            amount: donationAmount(),
-            frequency: donationFrequency(),
-            payment_gateway: paymentGateway
-          }},
-          success: function() { console.log('success!') },
-          error: function() { console.log('error') },
-    }
-  )
-}
-
-var donationAmount = function(){
-  return parseInt($('#donation_amount').val()) || 0;
-}
-
-var donationFrequency = function(){
-  return $("[name='donation[frequency]']:checked").val();
-}
-
 var showPaymentGateway = function(gateway){
-  $('.modal-dialog').width('95%');
-  $('.modal-content').height('90vh');
-  $('iframe').height('78vh');
-  $('.donation-instructions').hide();
+  $('#donation_choice_modal').data('made_donation', true);
   if (gateway == 'rhit'){
+    $('.modal-dialog').width('95%');
+    $('.modal-content').height('90vh');
+    $('iframe').height('78vh');
+    $('.donation-instructions').hide();
     showRoseIframe();
   } else if (gateway == 'paypal') {
-
+    $('#donation_choice_modal').modal('hide');
   }
 }
 
@@ -88,34 +64,12 @@ var roseDonationIframe = function() {
   return $('iframe#rose-donation-frame')
 }
 
-var donationFormValid = function(){
-  if (donationAmount() == 0)
-    $('#donation_amount').siblings('label').addClass('invalid')
-  else
-    $('#donation_amount').siblings('label').removeClass('invalid')
-
-  if (donationFrequency() == undefined)
-    $("[name='donation[frequency]']").siblings('label[required=required]').addClass('invalid')
-  else
-    $("[name='donation[frequency]']").siblings('label[required=required]').removeClass('invalid')
-
-  return $('.donation-instructions .invalid').length == 0
-}
-
 var bindModalClosing = function(){
   $('#donation_choice_modal').on('hidden.bs.modal', function () {
+    if ($(this).data('made_donation')){
+      window.location = '/projects/' + $(this).data('project-id') + '/donations/new'
+    }
     $('.donation-instructions').show();
     hideRoseIframe();
-    // if we've made a donation, redirect to /donations/new
   })
-}
-
-var bindFrequencySelection = function(){
-  $("[name='donation[frequency]']").click(function(){
-    console.log('hello');
-  });
-}
-
-var updatePaypalForm = function(){
-
 }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160724192836) do
+ActiveRecord::Schema.define(version: 20160807231601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,13 +36,21 @@ ActiveRecord::Schema.define(version: 20160724192836) do
   end
 
   create_table "donations", primary_key: "donation_id", force: :cascade do |t|
-    t.integer  "member_id",                                              null: false
-    t.integer  "project_id",                                             null: false
-    t.decimal  "amount",     precision: 7, scale: 2,                     null: false
-    t.string   "visibility",                         default: "private", null: false
-    t.datetime "created_at",                                             null: false
-    t.datetime "updated_at",                                             null: false
-    t.string   "frequency",                                              null: false
+    t.integer  "member_id",                                                    null: false
+    t.integer  "project_id",                                                   null: false
+    t.string   "visibility",                               default: "private", null: false
+    t.datetime "created_at",                                                   null: false
+    t.datetime "updated_at",                                                   null: false
+    t.string   "frequency",                                                    null: false
+    t.text     "message"
+    t.decimal  "recurring_amount", precision: 7, scale: 2,                     null: false
+  end
+
+  create_table "installments", primary_key: "installment_id", force: :cascade do |t|
+    t.integer  "donation_id",                         null: false
+    t.decimal  "amount",      precision: 7, scale: 2, null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   create_table "members", primary_key: "member_id", force: :cascade do |t|
@@ -69,6 +77,7 @@ ActiveRecord::Schema.define(version: 20160724192836) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.string   "title"
   end
 
   add_index "members", ["email"], name: "index_members_on_email", unique: true, using: :btree
@@ -113,9 +122,12 @@ ActiveRecord::Schema.define(version: 20160724192836) do
   end
 
   create_table "phone_numbers", primary_key: "phone_number_id", force: :cascade do |t|
-    t.integer "member_id",                            null: false
-    t.string  "phone_number",                         null: false
-    t.string  "phone_number_type", default: "mobile"
+    t.integer  "member_id",                            null: false
+    t.string   "phone_number",                         null: false
+    t.string   "phone_number_type", default: "mobile"
+    t.boolean  "primary",           default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "project_pictures", primary_key: "project_picture_id", force: :cascade do |t|
@@ -150,6 +162,7 @@ ActiveRecord::Schema.define(version: 20160724192836) do
   add_foreign_key "addresses", "members", primary_key: "member_id"
   add_foreign_key "donations", "members", primary_key: "member_id"
   add_foreign_key "donations", "projects", primary_key: "project_id"
+  add_foreign_key "installments", "donations", primary_key: "donation_id"
   add_foreign_key "members", "members", column: "pledge_father_id", primary_key: "member_id"
   add_foreign_key "message_bcc_recipients", "contacts", primary_key: "contact_id"
   add_foreign_key "message_bcc_recipients", "messages", primary_key: "message_id"

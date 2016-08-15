@@ -8,6 +8,6 @@ class Project < ActiveRecord::Base
   end
 
   def capital_progress
-    donations.sum(:amount)
+    donations.to_a.sum(&:amount)
   end
 end
