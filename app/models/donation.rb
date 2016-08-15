@@ -13,8 +13,10 @@ class Donation < ActiveRecord::Base
     installments.where('created_at <= ?', date).to_a.sum(&:amount)
   end
 
-  def anonymous=(anonymity)
-    anonymity == '1' ?  self.visibility = 'private' : self.visibility = 'public'
+  def anonymous=(_anonymity)# right now, this only gets called when the the donation is private
+    #/projects/2/donations/new
+    #TODO: get the frontend to pass real values
+    self.visibility = 'private'
   end
 
   def attributes_with_donor_name

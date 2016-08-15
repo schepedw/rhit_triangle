@@ -1,84 +1,80 @@
+<h2>Please, Tell Us About Your Donation</h2>
 <div class = 'donation-container'>
   <!-- TODO: prefill this info with whatever current_member info we have -->
   <!-- TODO: the user would probably like to see visual confirmation of the project they're donating to -->
   <%= form_tag "/projects/#{@project.id}/donations" do %>
     <fieldset class = 'container'>
-      <h2>Personal Information</h2>
+      <h3>Personal Information</h3>
       <h4>This information helps keep track of our donors and thank you properly.</h4>
       <div class='row'>
-        <div class='col-sm-2 col-md-1'>
-          <div class='form-group select required member_title'><label class='select required' for='member_title'>Title <abbr title='required'>*</abbr></label><select class='select required form-control' name='member[title]' id='member_title'><option value=''>Select...</option>
-              <option value='mr'>Mr.</option>
-              <option value='mrs'>Mrs.</option>
-              <option value='ms'>Ms.</option>
-              <option value='other'>Other</option></select></div>
-        </div>
-        <div class='col-sm-3 col-md-4'>
-          <div class='form-group string required member_first_name'>
-            <label class='string required' for='member_first_name'>First Name <abbr title='required'>*</abbr></label>
-            <input class='string required form-control' type='text' name='member[first_name]' id='member_first_name' required>
+        <div class='col-sm-2'>
+          <div class='form-group select required member_title'>
+              <label class='select required' for='member_title'>Title <abbr title='required'>*</abbr></label>
+              <%= select_tag 'member[title]', options_from_collection_for_select(%w[Mr. Mrs. Ms. Other], :to_s, :to_s, current_member.try(:title)), class: 'select form-control', id: 'member_title', required: 'required' %>
+            </div>
+          </div>
+          <div class='col-sm-3'>
+            <div class='form-group string required member_first_name'>
+              <label class='string required' for='member_first_name'>First Name <abbr title='required'>*</abbr></label>
+              <%= text_field_tag 'member[first_name]', current_member.try(:first_name), class: 'string required form-control', required: 'required'%>
+            </div>
+          </div>
+          <div class='col-sm-3'>
+            <div class='form-group string member_middle_name'>
+              <label class='string required' for='member_middle_name'>Middle Name</label>
+              <%= text_field_tag 'member[middle_name]', current_member.try(:middle_name), class: 'string required form-control'%>
+            </div>
+          </div>
+          <div class='col-sm-4'>
+            <div class='form-group string required member_last_name'>
+              <label class='string required' for='member_last_name'>Last Name <abbr title='required'>*</abbr></label>
+              <%= text_field_tag 'member[last_name]', current_member.try(:last_name), class: 'string required form-control', required: 'required'%>
+            </div>
+          </div>
+          <div class='col-sm-2'>
+            <label class='required' for='member_graduation_year'>Year Graduated <abbr title='required'>*</abbr></label>
+            <%= select_tag 'member[graduation_year]', options_from_collection_for_select((1950.. Date.today.year).to_a, 'to_i', 'to_i', current_member.try(:graduation_year)), required: 'required' %>
+          </div>
+          <div class='col-sm-3'>
+            <div class='form-group string required member_email'>
+              <label class='string required' for='member_email'>Email <abbr title='required'>*</abbr></label>
+              <%= email_field_tag 'member[email]', current_member.try(:email), class: 'string required form-control', required: 'required'%>
+            </div>
+          </div>
+          <div class='col-sm-3'>
+            <div class='form-group string member_primary_phone_number'>
+              <label class='string' for='member_primary_phone_number'>Phone Number</label>
+              <%= phone_field_tag 'member[primary_phone_number]', current_member.try(:primary_phone_number), class: 'string form-control'%>
+            </div>
           </div>
         </div>
-        <div class='col-sm-3'>
-          <div class='form-group string member_middle_name'>
-            <label class='string required' for='member_middle_name'>Middle Name</label>
-            <input class='string required form-control' type='text' name='member[middle_name]' id='member_middle_name'>
+      </fieldset>
+      <fieldset class = 'container'>
+        <h2>Donation Information</h2>
+        <div class='row'>
+          <div class='col-md-2'>
+            <label class='required' for='donation_amount'>Donation Amount <abbr title='required'>*</abbr></label>
+            <%= number_field_tag 'donation[recurring_amount]', min: 0, required: true, required: 'required' %>
+          </div>
+          <div class='col-md-2'>
+            <label class='required' for='donation_frequency'>Donation Frequency <abbr title='required'>*</abbr></label>
+            <%= select_tag 'donation[frequency]', options_from_collection_for_select(%w[one_time monthly yearly], 'to_s','titleize'), required: 'required'%> <!-- TODO: what are real frequencies? -->
           </div>
         </div>
-        <div class='col-sm-4'>
-          <div class='form-group string required member_last_name'>
-            <label class='string required' for='member_last_name'>Last Name <abbr title='required'>*</abbr></label>
-            <input class='string required form-control' type='text' name='member[last_name]' id='member_last_name' required>
+        <br />
+        <div class='row'>
+          <div class='col-md-2'>
+            <%= text_area_tag 'donation[message]', nil, size: "40x10", placeholder: 'If you have any special requests with how your donation should be used, please specify them here' %>
+          </div>
+          <div class='col-xs-12'>
+            <%= check_box_tag 'donation[anonymous]', '0', false, id: 'donation_info_anonymous' %>
+            <label for='donation_info_anonymous'>Make My Donation Anonymous</label>
           </div>
         </div>
-        <div class='col-sm-4'>
-          <div class='form-group string required member_email'>
-            <label class='string required' for='member_email'>Email <abbr title='required'>*</abbr></label>
-            <input class='string required form-control' type='text' name='member[email]' id='member_email' required>
-          </div>
-        </div>
-        <div class='col-sm-4'>
-          <div class='form-group string member_primary_phone_number'>
-            <label class='string required' for='member_primary_phone_number'>Phone Number</label>
-            <input class='string required form-control' type='text' name='member[primary_phone_number]' id='member_primary_phone_number'>
-          </div>
-        </div>
-        <div class='col-md-2'>
-          <label class='required' for='member_initiation_year'>Initiation Year <abbr title='required'>*</abbr></label>
-          <%= select_tag 'member[initiation_year]', options_from_collection_for_select((1950.. Date.today.year).to_a, 'to_i', 'to_i') %>
-        </div>
-        <div class='col-md-2'>
-          <label class='required' for='member_graduation_year'>Graduation Year <abbr title='required'>*</abbr></label>
-          <%= select_tag 'member[graduation_year]', options_from_collection_for_select((1950.. Date.today.year).to_a, 'to_i', 'to_i') %>
+        <div class='form-actions'>
+          <button name='button' type='submit' class='btn btn-primary btn-lg submit-once' data-spinner-color='#fff'><span class='ladda-label'>Submit</span><span class='ladda-spinner'></span></button>
         </div>
       </div>
     </fieldset>
-    <fieldset class = 'container'>
-      <h2>Donation Information</h2>
-      <div class='row'>
-        <div class='col-md-2'>
-          <label class='required' for='donation_amount'>Donation Amount <abbr title='required'>*</abbr></label>
-          <%= number_field_tag 'donation[recurring_amount]', min: 0, required: true %>
-        </div>
-        <div class='col-md-2'>
-          <label class='required' for='donation_message'>Donation Message <abbr title='required'>*</abbr></label>
-          <%= text_field_tag 'donation[message]', 'Please include any instructions you on how you would like your donation to be used' %> <!-- TODO: add instructional placeholder text -->
-        </div>
-        <div class='col-md-2'>
-          <label class='required' for='donation_frequency'>Donation Frequency <abbr title='required'>*</abbr></label>
-          <%= select_tag 'donation[frequency]', options_from_collection_for_select(%w[one_time monthly yearly], 'to_s','titleize')%> <!-- TODO: what are real frequencies? -->
-          <!-- TODO: add 'Select...' option to be consistent with the title dropdown. Ensure that the placeholder isn't valid for submission -->
-        </div>
-        <div class='col-xs-12'>
-          <input name='donation[anonymous]' type='hidden' value='0'>
-          <input type='checkbox' value='0' name='donation[anonymous]' id='donation_info_anonymous'>
-          <label for='donation_info_anonymous'>Make My Donation Anonymous</label>
-        </div>
-      </div>
-      <div class='form-actions'>
-        <button name='button' type='submit' class='btn btn-primary btn-lg submit-once' data-spinner-color='#fff'><span class='ladda-label'>Submit</span><span class='ladda-spinner'></span></button>
-      </div>
-    </div>
-  </fieldset>
-<% end %>
+  <% end %>
 </div>
