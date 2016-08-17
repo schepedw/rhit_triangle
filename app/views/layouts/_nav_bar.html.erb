@@ -2,15 +2,15 @@
   <div class='dropdown'>
     <a href = 'javascript:void(0);' class = 'navbar-sm-icon pull-left dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='true'><i class="fa fa-bars fa-lg"></i></a>
     <ul class = 'dropdown-menu'>
-      <li class='dropdown-menu-item'> <a href='#'><strong>HOME</strong></a></li>
-      <li class='dropdown-menu-item'> <a href='#'><strong>OFFICERS</strong></a></li></a></li>
-      <li class='dropdown-menu-item'> <a href='#'><strong>HISTORY</strong></a></li></a></li>
+      <li class='dropdown-menu-item hide'> <a href='#'><strong>HOME</strong></a></li>
+      <li class='dropdown-menu-item hide'> <a href='#'><strong>OFFICERS</strong></a></li></a></li>
+      <li class='dropdown-menu-item hide'> <a href='#'><strong>HISTORY</strong></a></li></a></li>
       <li class='dropdown-menu-item'> <a href='/calendar'><strong>CALENDAR</strong></a></li></a></li>
       <li class='dropdown-menu-item'> <a href='/rush'><strong>RUSH</strong></a></li></a></li>
-      <li class='dropdown-menu-item'> <a href='#'><strong>ALUMNI BODY</strong></a></li></a></li>
-      <li class='dropdown-menu-item'> <a href='#'><strong>FORUM</strong></a></li></a></li>
+      <li class='dropdown-menu-item hide'> <a href='#'><strong>ALUMNI BODY</strong></a></li></a></li>
+      <li class='dropdown-menu-item hide'> <a href='#'><strong>FORUM</strong></a></li></a></li>
       <li class='dropdown-menu-item'> <a href='/projects_and_donations'><strong>PROJECTS & DONATIONS</strong></a></li></a></li>
-      <li class='dropdown-menu-item'> <a href='#'><strong>CONTACT</strong></a></li></a></li>
+      <li class='dropdown-menu-item hide'> <a href='#'><strong>CONTACT</strong></a></li></a></li>
     </ul>
     <div class='dropdown-backdrop' style='visibility:hidden'></div>
   </div>
@@ -29,11 +29,11 @@
   <div class='nav nav-lower'>
     <a href = '/'><h4 class = 'brand pull-left'><%=image_tag 'small_logo_white.png' %> <strong>TRIANGLE</strong></h4></a>
     <ul class='quick-links pull-right'>
-    <li> <a href='#'>ACTIVE BODY</a></li>
-    <li> <a href='#'>HISTORY</a></li>
+    <li class = 'hide'> <a href='#'>ACTIVE BODY</a></li>
+    <li class = 'hide'> <a href='#'>HISTORY</a></li>
     <li> <a href='/calendar'>CALENDAR</a></li>
     <li> <a href='/rush'>RUSH</a></li>
-    <li> <a href='#'>ALUMNI</a></li>
+    <li class = 'hide'> <a href='#'>ALUMNI</a></li>
     <li> <a href='#' data-toggle='popover' data-trigger='click'>FORUM</a>
     <center class='login-buttons' role='group' style='display:none'>
       <a href='http://rosetechtriangle.forumotion.com/' class='btn btn-primary'><i class="fa fa-sign-in"></i> Sign in</a>
@@ -41,7 +41,7 @@
       </center >
       </li>
       <li> <a href='/projects_and_donations'>GIVING BACK</a></li>
-      <li> <a href='#'>CONTACT</a></li>
+      <li class = 'hide'> <a href='#'>CONTACT</a></li>
       <li class = 'dropdown'>
       <a href='#' id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <%=current_member.try(:first_name) || 'SIGN IN'%>
@@ -55,6 +55,7 @@
         <% end %>
       </ul>
       </li>
+    <li> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  </li>
   </ul>
 </div>
 </div>
