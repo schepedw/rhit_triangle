@@ -1,0 +1,15 @@
+<div class = 'row'>
+  <div class = 'alumni-officer info-container'>
+    <div class = 'col-xs-12 col-sm-3 col-md-2'>
+      <div class = 'officer-picture col-sm-12 col-xs-3' style="background-image: url('<%=asset_url("alumni_officers/#{officer[:name].downcase.gsub(' ', '_')}.png")%>')" >
+      </div>
+    </div>
+    <div class = 'col-xs-12 col-sm-9 col-md-10'>
+      <span class='officer-name'> <%= officer[:name].upcase %></span>
+      <span class='officer-title'><%= title.titleize  %></span>
+      <span class='officer-email'><%= officer[:email] %></span>
+      <span class='officer-phone'><%= officer[:phone] %></span>
+      <p    class = 'officer-bio'><%= officer[:bio]   %></p>
+    </div>
+  </div>
+</div>

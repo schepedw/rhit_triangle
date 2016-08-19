@@ -1,0 +1,26 @@
+#alumni-hero{
+  background-image:  image-url('alumni_hero');
+  background-position-y: initial;
+}
+
+div.alumni-body{
+  background-color: #ECECEC;
+  padding-left: 65px;
+  padding-top: 20px;
+  padding-bottom: 20px
+}
+
+.info-container.alumni-officer{
+  background: white;
+  width: 95%;
+  .officer-title { padding-bottom: initial; }
+  .officer-picture {
+    width: 175px;
+    height: 150px;
+    display: block;
+    padding: initial;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: center;
+}
+}

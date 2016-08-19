@@ -23,22 +23,6 @@
   padding-top: 20vh;
   &.item1{
     background-image:  image-url('new_house');
-    h1, h2, h3, h4, h5{
-      font-family: 'oswald';
-      letter-spacing: 2.5px;
-      color: white;
-      margin: 0;
-    }
-    h4{
-      padding-top: 60px;
-      padding-bottom: 10px;
-    }
-    h1{
-      font-size: 22px;
-      font-weight: bold;
-      padding-bottom: 10px;
-    }
-    h3{ font-size: 20px; }
   }
   &.item2{ background-image:  image-url('pledge_class_2013_2'); }
   &.item3{ background-image:  image-url('ski_trip_2'); }

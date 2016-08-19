@@ -1,0 +1,25 @@
+president:
+  name: 'Andy Cheung'
+  email: 'awcheung4@gmail.com'
+  phone: '(843) 597-2120'
+  bio: "Andy graduated in 2010 as a mechanical engineer. Afterward, he earned his Master's in Environmental Science from SPEA at Indiana University. He currently lives in Indianapolis, Indiana and has been working for BSA Lifestructures since January 2016. When he is not working, he spends time playing soccer, basketball, and volleyball. You can find him in downtown Indianapolis and other big cities hanging out with his Pledge class brothers."
+vice_president:
+  name: 'Evan Land'
+  email: 'evanland90@gmail.com'
+  phone: '(317) 701-9917'
+  bio: "Evan is a 2013 Civil Engineering grad living downtown Indianapolis. He works for a private transportation consulting firm called Corradino in Indianapolis as well. Currently, he is an engineering supervisor on construction project in Fishers, IN. His other duties include bridge design, environmental permitting, traffic modeling, and accounting. On the weekends, Evan bar tends at a local brewery, Flat12. Evan enjoys travelling, music festivals, and running in his free time."
+treasurer:
+  name: 'Spencer Johnson'
+  email: 'spencerdavisjohnson@gmail.com'
+  phone: '(630) 639-8547'
+  bio: "Spencer is a mechanical engineering graduate now living in southeast Michigan.  Spencer is in the middle of the Ford College Graduate rotational development program in the transmission design group at Ford Motor Company.  He is also pursuing a master's degree in engineering at the University of Michigan.  Away from work and school, Spencer spends his time traveling, running, and playing soccer."
+secretary:
+  name: 'Michael Ehrstein'
+  email: 'mdehrstein@gmail.com'
+  phone: '(219) 263-8277'
+  bio: "Michael resides in Terre Haute, IN, working for Midwest Compliance Laboratories as an analytical chemist.  He’s a huge sports fan, and loves following the Chicago Bears and Cubs.  He’s currently going back to graduate school to earn his MBA from Kelley School of Business at IU."
+house_manager:
+  name: 'Jordan Ridgley'
+  email: 'ridgleyjs@gmail.com'
+  phone: '(513) 739-1106'
+  bio: "Jordan is a mechanical engineer currently working in beautiful East Tennessee for Tate & Lyle (a corn manufacturing company). He graduated from RHIT in 2015 and loved every second he spent in Triangle. Outside of work Jordan tries to spend as much time as possible in the great outdoors. Jordan spends most of the spring chasing fish and turkeys around, and when fall rolls around he spends time sitting out in a deer stand. Jordan also spends a significant time back home with family in Cincinnati, Ohio.  If you're ever in Gatlinburg, let Jordan know he would be happy to see you!"
