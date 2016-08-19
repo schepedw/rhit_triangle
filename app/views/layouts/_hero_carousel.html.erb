@@ -7,15 +7,15 @@
   </ol>
 
   <div class='carousel-inner' role='listbox'>
-    <div class='item item1 active'>
-      <center>
+    <div class='item item1 active hero-container'>
+      <center class='hero-text'>
         <h4> Welcome to </h4>
         <h1> TRIANGLE FRATERNITY </h1>
         <h3> ROSE-TECH CHAPTER </h3>
       </center>
     </div>
     <% (2..6).each do |i| %>
-      <div class='item item<%=i%>'> </div>
+      <div class='item item<%=i%> hero-container'> </div>
     <% end %>
   </div>
 

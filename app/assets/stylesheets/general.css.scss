@@ -64,3 +64,30 @@ h4{ // this is really for 'section-header'
     text-decoration: none;
   }
 }
+
+.hero-container{
+  padding-top: 20vh;
+  height: 80vh;
+  background-position-x: center;
+  background-position-y: center;
+  background-size: cover;
+  width: 100%;
+  .hero-text{
+    h1, h2, h3, h4, h5{
+      font-family: 'oswald';
+      letter-spacing: 2.5px;
+      color: white;
+      margin: 0;
+    }
+    h4{
+      padding-top: 60px;
+      padding-bottom: 10px;
+    }
+    h1{
+      font-size: 22px;
+      font-weight: bold;
+      padding-bottom: 10px;
+    }
+    h3{ font-size: 20px; }
+  }
+}

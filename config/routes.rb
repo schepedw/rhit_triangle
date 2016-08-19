@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   get '/projects/:project_id/donations'     => 'donations#index'
   post '/projects/:project_id/donations'    => 'donations#create'
   get '/projects_and_donations'             => 'projects#index'
+  get '/alumni_body'                        => 'alumni#show'
 end

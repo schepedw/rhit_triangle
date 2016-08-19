@@ -1,0 +1,12 @@
+<div id = 'alumni-hero' class = 'hero-container'>
+  <center class = 'hero-text'>
+    <h4> Triangle Fraternity </h4>
+    <h1> ALUMNI BODY </h1>
+    <h3> ROSE-TECH CHAPTER </h3>
+  </center>
+</div>
+<div class = 'container-fluid alumni-body'>
+  <% @alumni_officers.each do |(title, officer)| %>
+    <%= render 'bio', officer: officer, title: title %>
+  <% end %>
+</div>
