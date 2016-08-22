@@ -3,13 +3,13 @@ $(function(){
     backdrop = $('<div class="dropdown-backdrop">')
     $('.dropdown').append(backdrop);
   });
-  $('[data-toggle="popover"]').popover({
+  $('.forum-toggle[data-toggle="popover"]').popover({
     placement: 'bottom',
     title: 'You must be signed in to view the forum',
     animation: false,
     popout: true
   });
-  $('[data-toggle="popover"]').on('shown.bs.popover', function () {
+  $('.forum-toggle[data-toggle="popover"]').on('shown.bs.popover', function () {
       $('.popover-content').append($('.login-buttons'));
       $('.login-buttons').show();
    })

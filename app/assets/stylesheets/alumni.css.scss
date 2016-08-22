@@ -7,20 +7,34 @@ div.alumni-body{
   background-color: #ECECEC;
   padding-left: 65px;
   padding-top: 20px;
-  padding-bottom: 20px
+  padding-bottom: 20px;
 }
 
 .info-container.alumni-officer{
+  @media(max-width: 768px){ padding-top: 15px; }
   background: white;
   width: 95%;
-  .officer-title { padding-bottom: initial; }
+  .info {
+    padding: 15px 35px 0px 15px;
+    @media(max-width: 768px){ text-align: center; }
+  }
+  .officer-title {
+    cursor: help;
+    padding-bottom: initial;
+    font-family: 'Source Sans Pro', sans-serif;
+    @media(min-width: 768px) { width: 60px; }
+    &:hover{ cursor: help; }
+    &:focus{ outline: none; }
+  }
+  .officer-bio { text-align: justify; }
   .officer-picture {
     width: 175px;
-    height: 150px;
+    height: 168px;
     display: block;
     padding: initial;
     background-size: cover;
     background-position-x: center;
     background-position-y: center;
-}
+    @media(max-width: 768px){ margin-left: calc(50% - 87px); }
+  }
 }
