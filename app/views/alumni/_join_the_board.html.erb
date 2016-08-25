@@ -1,0 +1,42 @@
+<div id='info-carousel' class='carousel slide' data-ride='carousel' data-carousel='false'>
+  <ol class='carousel-indicators'>
+    <li data-target='#info-carousel' data-slide-to='0' class='active'></li>
+    <li data-target='#info-carousel' data-slide-to='1'></li>
+    <li data-target='#info-carousel' data-slide-to='2'></li>
+  </ol>
+
+  <div class='carousel-inner' role='listbox'>
+    <div class='item item1 active step-container'>
+      <center class='info-text'>
+        <%= image_tag 'scroll_icon' %>
+        <h6 class = 'keyword'> READ </h6 >
+        <p> Read the roles and responsibilities of each member on the alumni board (see above) </p> <!-- TODO: make 'above' a link -->
+      </center>
+    </div>
+    <div class='item item2 step-container'>
+      <center class='info-text'>
+        <%= image_tag 'phone_icon' %>
+        <h6 class = 'keyword'> CONTACT </h6 >
+        <p> Contact current alumni officers and understand what they do and how they are helping the house </p>
+      </center>
+    </div>
+    <div class='item item3 step-container'>
+      <center class='info-text'>
+        <%= image_tag 'voting_icon' %>
+        <h6 class = 'keyword'> GET NOMINATED </h6 >
+        <p> Be nominated and elected to the board during the annual alumni chapter meeting, which is held over homecoming weekend </p>
+      </center>
+    </div>
+  </div>
+
+  <!--
+  <a class='left carousel-control' href='#info-carousel' role='button' data-slide='prev'>
+    <span class='fa fa-chevron-left' aria-hidden='true'></span>
+    <span class='sr-only'>Previous</span>
+  </a>
+  <a class='right carousel-control' href='#info-carousel' role='button' data-slide='next'>
+    <span class='fa fa-chevron-right' aria-hidden='true'></span>
+    <span class='sr-only'>Next</span>
+  </a>
+  -->
+</div>

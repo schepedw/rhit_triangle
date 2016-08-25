@@ -38,3 +38,29 @@ div.alumni-body{
     @media(max-width: 768px){ margin-left: calc(50% - 87px); }
   }
 }
+
+#info-carousel{
+  ol.carousel-indicators{ bottom: 45px;
+    li {
+    background-color: #ECECEC;
+    &.active{
+      background-color: #C43237;
+    }
+  }
+}
+
+  .step-container{
+    img {
+      max-width: 300px;
+      padding-top: 30px;
+    }
+  .keyword{
+    padding-top: 20px;
+    display: block;
+    color: #C43237;
+  }
+  p {
+    size: 17px;
+  }
+}
+}
