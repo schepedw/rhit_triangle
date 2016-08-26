@@ -20,9 +20,10 @@ div.alumni-body{
   }
   .officer-title {
     cursor: help;
+    text-decoration: 'underline';
     padding-bottom: initial;
     font-family: 'Source Sans Pro', sans-serif;
-    @media(min-width: 768px) { width: 60px; }
+    @media(min-width: 768px) { width: 100px; }
     &:hover{ cursor: help; }
     &:focus{ outline: none; }
   }
@@ -39,21 +40,12 @@ div.alumni-body{
   }
 }
 
-#info-carousel{
-  ol.carousel-indicators{ bottom: 45px;
-    li {
-    background-color: #ECECEC;
-    &.active{
-      background-color: #C43237;
-    }
-  }
-}
 
-  .step-container{
-    img {
-      max-width: 300px;
-      padding-top: 30px;
-    }
+.step-container{
+  img {
+    max-width: 90%;
+    padding-top: 30px;
+  }
   .keyword{
     padding-top: 20px;
     display: block;
@@ -63,4 +55,6 @@ div.alumni-body{
     size: 17px;
   }
 }
-}
+
+#alumni_representative .officer-title { @media(min-width: 768px) { width: 130px  }}
+a[href='#president'] { text-decoration: underline; }
