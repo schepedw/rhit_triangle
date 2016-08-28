@@ -1,0 +1,5 @@
+<div class = 'channel-aside col-md-3 col-lg-2 hidden-xs'>
+  <% @channels.each do |channel| %>
+    <a href = 'javascript:void(0)' class = 'channel-title'><%= channel.subject %></a>
+  <% end %>
+</div>

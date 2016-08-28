@@ -1,0 +1,60 @@
+.channel-aside{
+  padding-top: 10px;
+  background-color: #B30D0D;
+  height: calc(100vh - 42px);
+  overflow: scroll;
+  .channel-title{
+    padding-left: 7%;
+    display: block;
+    margin-bottom: 2px;
+    color: white;
+    &:before{ content: '#' }
+  }
+}
+
+.forum-container{ padding-left: 0px; }
+
+.forum-subject {
+  &:before{ content: '#' }
+  display: block;
+  font-family: 'oswald';
+  font-size: small;
+  font-weight: 100;
+  letter-spacing: 0.4px;
+}
+
+.posts-container{
+  height: calc(100vh - 128px);
+  overflow: scroll;
+}
+
+.post-metadata{ display: block; }
+
+
+.post-reply{ margin-left: 2%; }
+
+.post-author-name {
+  font-family: 'oswald';
+  font-size: small;
+  font-weight: 100;
+  letter-spacing: 0.4px;
+  font-weight: bold;
+}
+
+.post-created-at {
+    font-size: 11px;
+    font-weight: bold;
+    color: #BBBBBB;
+}
+
+.post-reactions{
+  margin-top: -8px;
+  padding-bottom: 6px;
+  a, span {
+    font-size: 11px;
+    color: #BBBBBB;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+}
+
+.post-content { margin-bottom: 5px; }

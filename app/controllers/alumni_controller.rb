@@ -1,5 +1,5 @@
 class AlumniController < ApplicationController
-  def show
+  def index
     @alumni_officers = AppConfig.alumni_officers
   end
 end
