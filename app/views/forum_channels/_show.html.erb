@@ -1,8 +1,0 @@
-<div class = 'col-lg-10 col-md-9 col-xs-12'>
-  <%= render 'nav', subject: channel.subject, description: channel.description, member_count: channel.member_count %>
-  <div class = 'posts-container'>
-    <% (@posts || channel.posts).each do |post|%>
-      <%= render 'posts/show', post: post %>
-    <% end %>
-  </div>
-</div>

@@ -1,0 +1,7 @@
+<div class = 'new-post'>
+  <%= form_tag forum_channel_posts_path(channel.id) do %>
+    <%= hidden_field_tag :channel_id, value: channel.id %>
+    <%= hidden_field_tag :author_id, value: current_member.try(:id) %> <!-- TODO: get rid of try, require auth -->
+    <%= text_field_tag   :content %>
+  <% end %>
+</div>
