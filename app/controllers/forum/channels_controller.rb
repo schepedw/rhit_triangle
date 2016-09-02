@@ -2,8 +2,13 @@ module Forum
   class ChannelsController < ApplicationController
     def index
       @current_channel = default_channel
-      @all_channel_subjects = Forum::Channel.publik.pluck(:subject) #TODO: add scope for public + private channels I can see
+      @all_channels = Forum::Channel.publik.select(:subject, :channel_id) #TODO: add scope for public + private channels I can see
       @posts = posts
+    end
+
+    def show
+      @current_channel = Forum::Channel.find(params[:id])
+      @posts = posts(@current_channel)
     end
 
     private

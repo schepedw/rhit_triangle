@@ -1,5 +1,5 @@
 <div class = 'channel-aside col-md-3 col-lg-2 hidden-xs'>
-  <% @all_channel_subjects.each do |subject| %>
-    <a href = 'javascript:void(0)' class = 'channel-title'><%= subject %></a>
+  <% @all_channels.each do |channel| %>
+    <%= link_to channel.subject, channel, class: 'channel-title', remote: true %>
   <% end %>
 </div>
