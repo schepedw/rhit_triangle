@@ -1,9 +1,10 @@
 <div class = 'col-lg-10 col-md-9 col-xs-12'>
   <%= render 'nav', subject: channel.subject, description: channel.description, member_count: channel.members.count %> <!-- TODO: does this do a select count(*), or do we first marshall to ruby objects? -->
-  <div class = 'posts-container'>
+  <div class = 'posts-container' data-post-id='0'>
     <% (@posts || channel.posts).each do |post|%>
       <%= render 'forum/posts/show', post: post %>
     <% end %>
+    <div class = 'post-0-replies'></div>
   </div>
-  <%= render 'forum/posts/new', channel: @channels.first %>
+  <%= render 'forum/posts/new', channel: channel %>
 </div>

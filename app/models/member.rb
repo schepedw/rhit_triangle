@@ -18,7 +18,7 @@ class Member < ActiveRecord::Base
   private
 
   def update_primary_phone
-    return unless @primary_phone_number != primary_phone_number
+    return unless @primary_phone_number.present? && @primary_phone_number != primary_phone_number
     # TODO: test this method.
     phone_numbers.update_all(primary: false)
     PhoneNumber.create!(member_id: id, phone_number: @primary_phone_number.gsub(/[^0-9]/, ''), primary: true)

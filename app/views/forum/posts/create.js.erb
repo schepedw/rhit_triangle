@@ -1,0 +1,3 @@
+$('.new-post-content').val('');
+$('.post-<%=@parent_id.to_i%>-replies').append("<%= j (render 'forum/posts/show', post: @post) %>");
+$('.post-<%=@parent_id.to_i%>-replies').animate({ scrollTop: $('.post-<%=@parent_id.to_i%>-replies').prop("scrollHeight")}, 100);
