@@ -10,6 +10,11 @@
     color: white;
     &:before{ content: '#' }
   }
+
+  hr {
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
 }
 
 .forum-container{ padding-left: 0px; }
@@ -26,6 +31,7 @@
 .posts-container{
   height: calc(100vh - 168px);
   overflow: scroll;
+  padding-right: 15px;
 }
 
 .post-metadata{ display: block; }
@@ -65,6 +71,35 @@
   height: 35px;
   border-radius: 3px;
   border-width: 3px;
-  margin-left: -10px;
+  border-color: #9a9a9a;
+  padding-top: 5px;
   &:focus { outline: initial; }
+}
+
+#newChannelModal{
+  .modal-dialog{  width: 325px; }
+  input[type=submit]{
+    background-color: #C1252A;
+    color: white;
+    border-color: #ab5c5e;
+    &:hover {
+      background-color: #881115;
+      border-color: #3c2425;
+    }
+    &:active{
+      background-color: #881115;
+      border-color: #3c2425;
+    }
+    &:focus{
+      background-color: #881115;
+      border-color: #3c2425;
+    }
+  }
+}
+
+[data-target='#newChannelModal']{
+  color: white;
+  padding-left: 7%;
+  display: block;
+  margin-bottom: 5px;
 }

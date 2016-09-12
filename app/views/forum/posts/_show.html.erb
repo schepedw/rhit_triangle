@@ -6,19 +6,21 @@
       <span class = 'post-created-at' ><%= post.formatted_created_at %></span>
     </div>
     <p class = 'post-content'><%= post.content %></p>
-    <div class = 'post-reactions'>
+    <div class = 'post-reactions' data-reply-to-id = "<%=post.id%>">
       <a href = 'javscript:void(0);' class = 'like-post'>Like </a>
       <span class = 'vertical-divider'> · </span>
-      <a href = 'javscript:void(0);' class = 'reply-to-post'> Reply</a>
+      <a href = 'javascript:void(0);' class = 'reply-to-post' onClick='insertReplyFormAfter($(this).parent()); return false'> Reply</a>
+      <% if post.author_id == current_member.id %>
+        <span class = 'vertical-divider'> · </span>
+        <%= link_to 'Delete', "/forum/channels/#{post.channel_id}/posts/#{post.id}", remote: true, method: :delete %>
+      <% end %>
       <% Array(post.try(:reactions)).each do |reaction| %>
         <span class = 'posted-reactions'> <%= reaction.reaction %> </span>
       <% end %>
     </div>
     <div class = 'post-<%=post.id%>-replies'>
       <% post.replies.each do |reply| %>
-        <div class = 'col-xs-11 post-reply'>
-          <%= render 'forum/posts/show', post: reply %>
-        </div>
+        <%= render 'forum/posts/reply', reply: reply %>
       <% end %>
     </div>
   </div>

@@ -1,5 +1,8 @@
 module Forum
   class ChannelsController < ApplicationController
+
+    before_action :store_location, :authenticate_member!
+
     def index
       @current_channel = default_channel
       @all_channels = Forum::Channel.publik.select(:subject, :channel_id) #TODO: add scope for public + private channels I can see
@@ -9,6 +12,12 @@ module Forum
     def show
       @current_channel = Forum::Channel.find(params[:id])
       @posts = posts(@current_channel)
+    end
+
+    def create
+      @current_channel = Forum::Channel.where('lower(subject) = ?', channel_params[:subject]).first
+      @current_channel ||= Forum::Channel.create(channel_params)
+      @posts = []
     end
 
     private
@@ -21,8 +30,15 @@ module Forum
     end
 
     def posts(channel = default_channel)
-      #This only gets us a depth of 1 reply.. need to get to at least 2
       Forum::Post.includes(:author, replies: [:author, replies: :author]).where(channel_id: channel.id, depth: 0).order(:created_at)
+    end
+
+    def channel_params
+      params.require(:forum_channel).permit(:subject, :description, :visibility)
+    end
+
+    def store_location
+      store_location_for(:member, request.path)
     end
   end
 end

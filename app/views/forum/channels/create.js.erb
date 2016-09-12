@@ -1,0 +1,3 @@
+$('#newChannelModal').modal('hide');
+$('.channels').append("<%= j (link_to @current_channel.subject, @current_channel, class: 'channel-title', remote: true) %>");
+$('.current-channel-container').html("<%= j (render 'show', channel: @current_channel) %>");

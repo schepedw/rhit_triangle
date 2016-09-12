@@ -14,7 +14,12 @@ module Forum
     end
 
     def destroy
-
+      @post = Forum::Post.find(params[:id])
+      if @post.author_id != current_member.id
+        render json: { errors: 'not allowed' }, status: :forbidden and return
+      else
+        @post.destroy!
+      end
     end
 
     private
