@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830015110) do
+ActiveRecord::Schema.define(version: 20160908025846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -204,7 +204,7 @@ ActiveRecord::Schema.define(version: 20160830015110) do
   add_foreign_key "phone_numbers", "members", primary_key: "member_id"
   add_foreign_key "posts", "channels", primary_key: "channel_id", name: "channel_id_fk"
   add_foreign_key "posts", "members", column: "author_id", primary_key: "member_id", name: "author_id_fk"
-  add_foreign_key "posts", "posts", column: "parent_id", primary_key: "post_id", name: "parent_id_fk"
+  add_foreign_key "posts", "posts", column: "parent_id", primary_key: "post_id", name: "parent_id_fk", on_delete: :cascade
   add_foreign_key "project_pictures", "projects", primary_key: "project_id"
   add_foreign_key "projects", "project_statuses", primary_key: "project_status_id"
 end
