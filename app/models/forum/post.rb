@@ -8,7 +8,7 @@ module Forum
     belongs_to :parent, class_name: 'Forum::Post'
     has_many   :replies, class_name: 'Forum::Post', foreign_key: 'parent_id'
 
-    def formatted_created_at
+    def formatted_created_at # rubocop:disable Metrics/AbcSize
       if created_at.to_date == Time.zone.today
         created_at.strftime(clock_time_format)
       elsif created_at.to_date > Time.zone.today - 7.days

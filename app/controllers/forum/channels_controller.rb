@@ -1,11 +1,11 @@
 module Forum
   class ChannelsController < ApplicationController
-
     before_action :store_location, :authenticate_member!
 
     def index
       @current_channel = default_channel
-      @all_channels = Forum::Channel.publik.select(:subject, :channel_id) #TODO: add scope for public + private channels I can see
+      # TODO: add scope for public + private channels I can see
+      @all_channels = Forum::Channel.publik.select(:subject, :channel_id)
       @posts = posts
     end
 
@@ -26,11 +26,16 @@ module Forum
       return @default_channel unless @default_channel.nil?
       channel_id = Forum::Post.select('count(*)', :channel_id).group(:channel_id).order(count: :desc).first.channel_id
       most_active_channel = Forum::Channel.find(channel_id)
-      @default_channel = most_active_channel.publik? ? most_active_channel : Forum::Channel.publik.order(:created_at).first
+      if most_active_channel.publik?
+        @default_channel = most_active_channel
+      else
+        Forum::Channel.publik.order(:created_at).first
+      end
     end
 
     def posts(channel = default_channel)
-      Forum::Post.includes(:author, replies: [:author, replies: :author]).where(channel_id: channel.id, depth: 0).order(:created_at)
+      Forum::Post.includes(:author, replies: [:author, replies: :author]).
+        where(channel_id: channel.id, depth: 0).order(:created_at)
     end
 
     def channel_params

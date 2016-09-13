@@ -14,7 +14,7 @@ module Forum
     end
 
     def member_count
-      #TODO: this is a temporary method, until I figure out what exactly 'joining a channel' looks like
+      # TODO: this is a temporary method, until I figure out what exactly 'joining a channel' looks like
       posts.select(:author_id).uniq.count
     end
   end

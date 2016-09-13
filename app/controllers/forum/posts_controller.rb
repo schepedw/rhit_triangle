@@ -10,13 +10,13 @@ module Forum
     end
 
     def update
-
+      # TODO
     end
 
     def destroy
       @post = Forum::Post.find(params[:id])
       if @post.author_id != current_member.id
-        render json: { errors: 'not allowed' }, status: :forbidden and return
+        render json: { errors: 'not allowed' }, status: :forbidden
       else
         @post.destroy!
       end
