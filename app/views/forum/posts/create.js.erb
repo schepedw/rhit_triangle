@@ -1,0 +1,11 @@
+$('.new-post-content').val('');
+$('.new-reply').addClass('hide');
+<% if @post.depth == 0 %>
+    post = "<%= j (render 'forum/posts/show', post: @post) %>"
+    $('.posts-container').append(post);
+    $('.posts-container').animate({scrollTop: $('.posts-container').prop('scrollHeight')}, 100);
+<% else %>
+    post = "<%= j (render 'forum/posts/reply', reply: @post) %>"
+    $('.post-<%=@parent_id.to_i%>-replies').append(post);
+    $('.post-<%=@parent_id.to_i%>-replies').animate({ scrollTop: $('.post-<%=@parent_id.to_i%>-replies').prop("scrollHeight")}, 100);
+<% end %>

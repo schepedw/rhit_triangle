@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160816025930) do
+ActiveRecord::Schema.define(version: 20160908025846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,22 @@ ActiveRecord::Schema.define(version: 20160816025930) do
     t.string  "city",          null: false
     t.string  "state",         null: false
     t.string  "zip_code",      null: false
+  end
+
+  create_table "channel_members", id: false, force: :cascade do |t|
+    t.integer "channel_id", null: false
+    t.integer "member_id",  null: false
+  end
+
+  add_index "channel_members", ["channel_id"], name: "index_channel_members_on_channel_id", using: :btree
+  add_index "channel_members", ["member_id"], name: "index_channel_members_on_member_id", using: :btree
+
+  create_table "channels", primary_key: "channel_id", force: :cascade do |t|
+    t.text     "subject",                        null: false
+    t.text     "description",                    null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "visibility",  default: "public", null: false
   end
 
   create_table "contacts", primary_key: "contact_id", force: :cascade do |t|
@@ -130,6 +146,18 @@ ActiveRecord::Schema.define(version: 20160816025930) do
     t.datetime "updated_at"
   end
 
+  create_table "posts", primary_key: "post_id", force: :cascade do |t|
+    t.text     "content",    null: false
+    t.integer  "author_id",  null: false
+    t.integer  "parent_id"
+    t.integer  "channel_id", null: false
+    t.integer  "depth",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "posts", ["channel_id"], name: "index_posts_on_channel_id", using: :btree
+
   create_table "project_pictures", primary_key: "project_picture_id", force: :cascade do |t|
     t.string  "image_path", null: false
     t.integer "project_id", null: false
@@ -160,6 +188,8 @@ ActiveRecord::Schema.define(version: 20160816025930) do
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
 
   add_foreign_key "addresses", "members", primary_key: "member_id"
+  add_foreign_key "channel_members", "channels", primary_key: "channel_id", name: "channel_id_fk"
+  add_foreign_key "channel_members", "members", primary_key: "member_id", name: "member_id_fk"
   add_foreign_key "donations", "members", primary_key: "member_id"
   add_foreign_key "donations", "projects", primary_key: "project_id"
   add_foreign_key "installments", "donations", primary_key: "donation_id"
@@ -172,6 +202,9 @@ ActiveRecord::Schema.define(version: 20160816025930) do
   add_foreign_key "message_recipients", "messages", primary_key: "message_id"
   add_foreign_key "messages", "contacts", column: "sender_contact_id", primary_key: "contact_id"
   add_foreign_key "phone_numbers", "members", primary_key: "member_id"
+  add_foreign_key "posts", "channels", primary_key: "channel_id", name: "channel_id_fk"
+  add_foreign_key "posts", "members", column: "author_id", primary_key: "member_id", name: "author_id_fk"
+  add_foreign_key "posts", "posts", column: "parent_id", primary_key: "post_id", name: "parent_id_fk", on_delete: :cascade
   add_foreign_key "project_pictures", "projects", primary_key: "project_id"
   add_foreign_key "projects", "project_statuses", primary_key: "project_status_id"
 end

@@ -29,3 +29,13 @@ Style/PercentLiteralDelimiters:
 
 Performance/StringReplacement:
   Enabled: false
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
+Style/AndOr:
+  Exclude:
+    - 'app/controllers/**/*'
+
+Style/DotPosition:
+  EnforcedStyle: trailing

@@ -16,5 +16,12 @@ Rails.application.routes.draw do
   get '/projects/:project_id/donations'     => 'donations#index'
   post '/projects/:project_id/donations'    => 'donations#create'
   get '/projects_and_donations'             => 'projects#index'
-  get '/alumni'                             => 'alumni#show'
+  get '/alumni'                             => 'alumni#index'
+
+  namespace :forum do
+    get '/'                              => 'channels#index'
+    resources :channels, only: [:create, :update, :new, :destroy, :show] do
+      resources :posts, only: [:create, :update, :destroy]
+    end
+  end
 end

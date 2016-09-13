@@ -1,0 +1,14 @@
+<div class = 'channel-aside col-md-3 col-lg-2 hidden-xs'>
+  <div class = 'channels'>
+    <% @all_channels.each do |channel| %>
+      <%= link_to channel.subject, channel, class: 'channel-title', remote: true %>
+    <% end %>
+  </div>
+  <hr />
+  <a href='javascript:void(0);' data-toggle="modal" data-target="#newChannelModal">
+    Create New Channel
+  </a>
+</div>
+
+
+<%= render 'new' %>

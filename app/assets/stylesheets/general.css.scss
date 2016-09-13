@@ -92,3 +92,8 @@ h4{ // this is really for 'section-header'
   }
 }
 .no-left-padding { padding-left: 0px }
+.vertical-divider {
+  padding-left: 3px;
+  padding-right: 3px;
+  font-weight: bold;
+}

@@ -30,3 +30,36 @@ Project.create([
     project_status: unstarted,
     price: 0 },
 ])
+
+20.times.map do |_|
+  Forum::Channel.create(subject: Faker::Lorem.word, description: Faker::Lorem.sentence)
+end
+
+def random_select(model_class)
+  offset = rand(model_class.count)
+  model_class.offset(offset).first
+end
+
+400.times.map do |_|
+  channel=  random_select(Forum::Channel)
+  Forum::Post.create(content: Random.rand > 0.5 ? Faker::Lorem.sentence : Faker::Lorem.paragraph,
+                     author: Member.first,
+                     created_at: Date.today - [7,8,9].sample.days,
+                     channel: channel,
+                     depth: 0,
+                     replies: (Random.rand * 5).to_i.times.map {
+                       Forum::Post.create(
+                         content: Random.rand > 0.5 ? Faker::Lorem.sentence : Faker::Lorem.paragraph,
+                         author: Member.first,
+                         created_at: Date.today - [4,5,6].sample.days,
+                         channel: channel,
+                         depth: 1,
+                         replies: (Random.rand * 5).to_i.times.map {
+                           Forum::Post.create(
+                             content: Random.rand > 0.5 ? Faker::Lorem.sentence : Faker::Lorem.paragraph,
+                             author: Member.first,
+                             channel: channel,
+                             created_at: Date.today - [1,2,3].sample.days,
+                             depth: 2,
+                           )})})
+end

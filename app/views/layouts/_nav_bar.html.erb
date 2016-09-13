@@ -27,19 +27,30 @@
 </div>
 <div class='visible-md visible-lg'>
   <div class='nav nav-lower'>
-    <a href = '/'><h4 class = 'brand pull-left'><%=image_tag 'small_logo_white.png' %> <strong>TRIANGLE</strong></h4></a>
+    <a href='/'>
+      <h4 class = 'brand pull-left'>
+        <%=image_tag 'small_logo_white.png' %>
+        <strong>TRIANGLE</strong>
+        <!--
+      -->
+      </h4>
+    </a>
     <ul class='quick-links pull-right'>
-    <li class = 'hide'> <a href='#'>ACTIVE BODY</a></li>
-    <li class = 'hide'> <a href='#'>HISTORY</a></li>
-    <li> <a href='/calendar'>CALENDAR</a></li>
-    <li> <a href='/rush'>RUSH</a></li>
-    <li class = '/'> <a href='/alumni'>ALUMNI</a></li>
-    <li> <a href='#' data-toggle='popover' data-trigger='click' class='forum-toggle'>FORUM</a>
-    <center class='login-buttons' role='group' style='display:none'>
-      <a href='http://rosetechtriangle.forumotion.com/' class='btn btn-primary'><i class="fa fa-sign-in"></i> Sign in</a>
-      <a href='/members/sign_up' class='btn btn-primary'><i class="fa fa-edit"></i> Register</a>
-      </center >
-      </li>
+      <li class = 'hide'> <a href='#'>ACTIVE BODY</a></li>
+      <li class = 'hide'> <a href='#'>HISTORY</a></li>
+      <li> <a href='/calendar'>CALENDAR</a></li>
+      <li> <a href='/rush'>RUSH</a></li>
+      <li> <a href='/alumni'>ALUMNI</a></li>
+      <% if current_member.present? %>
+        <li> <a href='/forum'>FORUM</a></li>
+      <% else %>
+        <li> <a href='#' data-toggle='popover' data-trigger='click' class='forum-toggle'>FORUM</a>
+        <center class='login-buttons' role='group' style='display:none'>
+          <a href='/forum' class='btn btn-primary'><i class="fa fa-sign-in"></i> Sign in</a>
+          <a href='/members/sign_up' class='btn btn-primary'><i class="fa fa-edit"></i> Register</a>
+          </center >
+          </li>
+      <% end %>
       <li> <a href='/projects_and_donations'>GIVING BACK</a></li>
       <li class = 'hide'> <a href='#'>CONTACT</a></li>
       <li class = 'dropdown'>
@@ -48,14 +59,14 @@
       </a>
       <ul class="dropdown-menu" aria-labelledby="dLabel">
         <% if current_member.present? %>
-          <li> <%= link_to 'Sign Out', destroy_member_session_path, :method => :delete  %> </li>
+          <li> <%= link_to 'Sign Out', destroy_member_session_path, method: :delete  %> </li>
         <% else %>
           <li> <%= link_to 'Sign In', new_member_session_path %> </li>
           <li> <%= link_to 'Sign Up', new_member_registration_path %> </li>
         <% end %>
       </ul>
       </li>
-    <li> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  </li>
-  </ul>
-</div>
+      <li> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  </li>
+    </ul>
+  </div>
 </div>
