@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   namespace :forum do
     get '/'                              => 'channels#index'
     resources :channels, only: [:create, :update, :new, :destroy, :show] do
-      resources :posts, only: [:create, :update, :destroy]
+      resources :posts, only: [:create, :update, :destroy] do
+        resources :reactions, only: [:create, :destroy]
+      end
     end
   end
 end

@@ -7,15 +7,12 @@
     </div>
     <p class = 'post-content'><%= post.content %></p>
     <div class = 'post-reactions' data-reply-to-id = "<%=post.id%>">
-      <a href = 'javscript:void(0);' class = 'like-post'>Like </a>
+      <%= render 'forum/reactions/show', post: post %>
       <span class = 'vertical-divider'> · </span>
       <a href = 'javascript:void(0);' class = 'reply-to-post' onClick='insertReplyFormAfter($(this).parent()); return false'> Reply</a>
       <% if post.author_id == current_member.id %>
         <span class = 'vertical-divider'> · </span>
         <%= link_to 'Delete', "/forum/channels/#{post.channel_id}/posts/#{post.id}", remote: true, method: :delete %>
-      <% end %>
-      <% Array(post.try(:reactions)).each do |reaction| %>
-        <span class = 'posted-reactions'> <%= reaction.reaction %> </span>
       <% end %>
     </div>
     <div class = 'post-<%=post.id%>-replies'>

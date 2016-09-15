@@ -20,7 +20,6 @@ gem 'jquery-ui-rails'
 gem 'therubyracer'
 
 gem 'figgy'
-gem 'faker' # TODO: remove this when we get to a 'real' release
 
 gem 'google-api-client', require: false
 
@@ -43,9 +42,9 @@ group :development do
 end
 
 group :test do
-  # NOTE: None of the test gems have been properly initialized
   gem 'rspec-rails'
-  gem 'cucumber-rails', require: false
-  gem 'database_cleaner'
   gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'cucumber-rails', require: false # NOTE: Cucumber has not been properly initialized
+  gem 'database_cleaner'
 end

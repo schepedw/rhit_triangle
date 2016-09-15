@@ -1,0 +1,7 @@
+<div class = 'reaction-container' data-reactions-for-post-id=<%= post.id%> >
+<% if reaction = post.reactions.find{ |r| r.member_id == current_member.id } %>
+  <%= link_to "Unlike(#{post.reactions.count})", "/forum/channels/#{post.channel_id}/posts/#{post.id}/reactions/#{reaction.id}", remote: true, method: :delete, class: 'reaction unlike-post' %>
+<% else %>
+  <%= link_to "Like#{" (#{post.reactions.count})" if post.reactions.count.nonzero?}", "/forum/channels/#{post.channel_id}/posts/#{post.id}/reactions", remote: true, method: :post, class: 'reaction like-post' %>
+<% end %>
+</div>

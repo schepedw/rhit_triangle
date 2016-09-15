@@ -103,3 +103,9 @@
   display: block;
   margin-bottom: 5px;
 }
+
+.reaction-container{
+  display: inline;
+  .like-post{ color: #BBBBBB }
+  .unlike-post{ color: #B30D0D }
+}

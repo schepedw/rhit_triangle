@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160908025846) do
+ActiveRecord::Schema.define(version: 20160914234614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -176,6 +176,15 @@ ActiveRecord::Schema.define(version: 20160908025846) do
     t.datetime "updated_at",                                null: false
   end
 
+  create_table "reactions", primary_key: "reaction_id", force: :cascade do |t|
+    t.string  "reaction_text", null: false
+    t.integer "member_id",     null: false
+    t.integer "post_id",       null: false
+  end
+
+  add_index "reactions", ["member_id"], name: "index_reactions_on_member_id", using: :btree
+  add_index "reactions", ["post_id"], name: "index_reactions_on_post_id", using: :btree
+
   create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.integer  "resource_id"
@@ -207,4 +216,6 @@ ActiveRecord::Schema.define(version: 20160908025846) do
   add_foreign_key "posts", "posts", column: "parent_id", primary_key: "post_id", name: "parent_id_fk", on_delete: :cascade
   add_foreign_key "project_pictures", "projects", primary_key: "project_id"
   add_foreign_key "projects", "project_statuses", primary_key: "project_status_id"
+  add_foreign_key "reactions", "members", primary_key: "member_id"
+  add_foreign_key "reactions", "posts", primary_key: "post_id"
 end

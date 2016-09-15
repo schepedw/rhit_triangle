@@ -34,7 +34,7 @@ module Forum
     end
 
     def posts(channel = default_channel)
-      Forum::Post.includes(:author, replies: [:author, replies: :author]).
+      Forum::Post.includes(:author, :reactions, replies: [:author, :reactions, replies: [:author, :reactions]]).
         where(channel_id: channel.id, depth: 0).order(:created_at)
     end
 
