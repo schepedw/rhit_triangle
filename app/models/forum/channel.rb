@@ -4,6 +4,10 @@ module Forum
     has_and_belongs_to_many :members, join_table: 'channel_members'
     scope :publik, -> { where(visibility: 'public') }
 
+    def self.nil_channel
+      new(id: -1)
+    end
+
     def publik?
       visibility == 'public'
     end
