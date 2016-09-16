@@ -34,6 +34,7 @@ end
 
 group :development, :test do
   gem 'pry'
+  gem 'pry-byebug'
   gem 'rubocop', '~> 0.39.0', require: false
 end
 

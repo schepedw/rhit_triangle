@@ -42,6 +42,7 @@ GEM
     bcrypt (3.1.11)
     buftok (0.2.0)
     builder (3.2.2)
+    byebug (8.2.2)
     capistrano (2.15.4)
       highline
       net-scp (>= 1.0.0)
@@ -207,6 +208,9 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (3.3.0)
+      byebug (~> 8.0)
+      pry (~> 0.10)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -357,6 +361,7 @@ DEPENDENCIES
   jquery-ui-rails
   pg
   pry
+  pry-byebug
   rails (= 4.2.5.2)
   rolify
   rspec-rails
