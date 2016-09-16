@@ -5,4 +5,5 @@ namespace :db do
     sh "createuser --createdb --login #{role}|| echo role #{role} already exists."
   end
 end
+
 task 'db:create' => 'db:create_roles'
