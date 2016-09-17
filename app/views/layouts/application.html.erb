@@ -15,7 +15,9 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
   </head>
   <body>
-    <%= render 'layouts/flash_messages' %>
+    <div class = 'flash-container'>
+      <%= render 'layouts/flash_messages' %>
+    </div>
     <%= render 'layouts/nav_bar' %>
     <%= yield %>
   </body>

@@ -1,9 +1,11 @@
 .flash{
+  border-radius: 0px;
   &.notice{
-    background: #ECECEC;
+    background: #A9A9A9;
   }
 
   &.alert{
+    margin-bottom: 0px;
     background: #C1252A;
   }
 }

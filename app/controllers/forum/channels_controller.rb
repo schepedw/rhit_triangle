@@ -27,11 +27,8 @@ module Forum
       channel = Forum::Post.select('count(*)', :channel_id).group(:channel_id).order(count: :desc).first
       return Forum::Channel.nil_channel unless channel
       most_active_channel = Forum::Channel.find(channel.id)
-      if most_active_channel.publik?
-        @default_channel = most_active_channel
-      else
-        @default_channel = Forum::Channel.publik.order(:created_at).first
-      end
+      return @default_channel = most_active_channel if most_active_channel.publik?
+      @default_channel = Forum::Channel.publik.order(:created_at).first
     end
 
     def posts(channel = default_channel)

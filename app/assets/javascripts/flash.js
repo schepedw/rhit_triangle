@@ -1,7 +1,4 @@
+var hideFlash = function(){ $('.flash').slideUp(700)}
 $(function(){
-  setTimeout(
-    function(){
-      $('.flash').slideUp(700)}, 6000
-  )
-}
- )
+  setTimeout(hideFlash, 5000);
+})

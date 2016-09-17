@@ -26,6 +26,11 @@ module Forum
 
     def verify_visibility
       render :nothing, status: 403 and return unless channel.visible_to?(current_member)
+    rescue ActiveRecord::RecordNotFound
+      flash[:alert] = "We're sorry, something went wrong with saving your post"
+      render 'error', status: 404
+      flash.delete(:alert)
+      # TODO: notify error watchers
     end
 
     def channel

@@ -1,7 +1,6 @@
 <% flash.each do |key, value| %>
   <%= content_tag :div, value, class: "flash #{key}" %>
 <% end %>
-<div class='close-x' class='close-x'></div>
 <%- content_for :scripts do %>
   <%= javascript_tag do %>
     $(function() {
