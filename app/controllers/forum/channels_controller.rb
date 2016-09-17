@@ -39,6 +39,8 @@ module Forum
 
     def channel_from_session
       Forum::Channel.find(session[:channel_id]) if session[:channel_id]
+    rescue ActiveRecord::RecordNotFound
+      nil
     end
 
     def posts(channel = default_channel)
