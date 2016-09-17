@@ -5,6 +5,7 @@ AllCops:
     - 'script/**/*'
     - 'bin/**/*'
     - 'vendor/**/*'
+    - 'lib/tasks/rspec.rake'
 
 Rails:
   Enabled: true
