@@ -65,7 +65,7 @@
 
 .post-content { margin-bottom: 5px; }
 
-.new-post-content {
+.new-post-content, .edit-post-content {
   margin-top: 5px;
   width: 100%;
   height: 35px;
@@ -108,4 +108,10 @@
   display: inline;
   .like-post{ color: #BBBBBB }
   .unlike-post{ color: #B30D0D }
+}
+
+.post{
+  &:hover{
+    background-color: #f9f9f9;
+  }
 }

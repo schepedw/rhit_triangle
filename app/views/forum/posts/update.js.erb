@@ -1,0 +1,4 @@
+elem = $('[data-post-id="<%=@post.id%>"] .post-content').first()
+elem.text("<%= @post.content %>")
+elem.show();
+$('.edit-post-container').addClass('hide');

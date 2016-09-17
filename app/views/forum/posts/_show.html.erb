@@ -1,19 +1,23 @@
-<div class = 'row post' data-post-id ="<%=post.id%>">
+<div class = 'row' data-post-id ="<%=post.id%>">
   <div class = 'col-xs-12'>
-    <div class = 'post-metadata'>
-      <span class = 'post-author-name'><%= post.author.full_name %></span>
-      <span class = 'vertical-divider'> | </span>
-      <span class = 'post-created-at' ><%= post.formatted_created_at %></span>
-    </div>
-    <p class = 'post-content'><%= post.content %></p>
-    <div class = 'post-reactions' data-reply-to-id = "<%=post.id%>">
-      <%= render 'forum/reactions/show', post: post %>
-      <span class = 'vertical-divider'> · </span>
-      <a href = 'javascript:void(0);' class = 'reply-to-post' onClick='insertReplyFormAfter($(this).parent()); return false'> Reply</a>
-      <% if post.author_id == current_member.id %>
+    <div class = 'post'>
+      <div class = 'post-metadata'>
+        <span class = 'post-author-name'><%= post.author.full_name %></span>
+        <span class = 'vertical-divider'> | </span>
+        <span class = 'post-created-at' ><%= post.formatted_updated_at %></span>
+      </div>
+      <p class = 'post-content'><%= post.content %></p>
+      <div class = 'post-reactions' data-reply-to-id = "<%=post.id%>">
+        <%= render 'forum/reactions/show', post: post %>
         <span class = 'vertical-divider'> · </span>
-        <%= link_to 'Delete', "/forum/channels/#{post.channel_id}/posts/#{post.id}", remote: true, method: :delete %>
-      <% end %>
+        <a href = 'javascript:void(0);' class = 'reply-to-post' onClick='insertReplyFormAfter($(this).parent()); return false'> Reply</a>
+        <% if post.author_id == current_member.id %>
+          <span class = 'vertical-divider'> · </span>
+          <a href = 'javascript:void(0);' class = 'edit-post' onClick='editPost($(this).parent().parent()); return false'> Edit</a>
+          <span class = 'vertical-divider'> · </span>
+          <%= link_to 'Delete', "/forum/channels/#{post.channel_id}/posts/#{post.id}", remote: true, method: :delete %>
+        <% end %>
+      </div>
     </div>
     <div class = 'post-<%=post.id%>-replies'>
       <% post.replies.each do |reply| %>

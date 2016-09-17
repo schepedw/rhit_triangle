@@ -1,7 +1,6 @@
 <div class = 'new-post'>
   <%= form_tag forum_channel_posts_path(channel.id), remote: true do %>
     <%= hidden_field_tag request_forgery_protection_token.to_s, form_authenticity_token %>
-    <%= hidden_field_tag :channel_id, channel.id %>
     <%= hidden_field_tag :parent_id %>
     <%= text_area_tag   :content, '', placeholder: "Post in ##{channel.subject}", class: 'new-post-content' %>
   <% end %>

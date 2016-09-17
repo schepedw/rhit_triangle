@@ -1,4 +1,5 @@
 <div class = 'container-fluid forum-container'>
+  <%= image_tag 'loading.gif', class: 'hide loading-gif' %>
   <div class = 'row-fluid'>
     <%= render 'aside' %>
     <%= render 'show', channel: @current_channel %>

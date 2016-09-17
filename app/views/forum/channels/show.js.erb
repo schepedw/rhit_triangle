@@ -1,2 +1,6 @@
+$('img.loading-gif').addClass('hide');
+$('.current-channel-container').removeClass('loading');
 $('.current-channel-container').html("<%= j (render 'forum/channels/show', channel: @current_channel) %>")
 $(".posts-container").animate({ scrollTop: $('.posts-container').prop("scrollHeight")}, 100);
+bindNewPostKeyListener();
+bindEditPostKeyListener();

@@ -97,3 +97,12 @@ h4{ // this is really for 'section-header'
   padding-right: 3px;
   font-weight: bold;
 }
+
+.loading-gif{
+  position:fixed;
+  left: calc(50% - 98px);
+  top: calc(50% - 98px);
+  z-index: 1000;
+}
+
+.loading{ opacity: 0.4 }

@@ -1,0 +1,5 @@
+<%= form_tag forum_channel_posts_path(channel.id), method: :put, remote: true do %>
+  <%= hidden_field_tag request_forgery_protection_token.to_s, form_authenticity_token %>
+  <%= hidden_field_tag :channel_id, channel.id %>
+  <%= text_area_tag   :content, '', class: 'edit-post-content' %>
+<% end %>

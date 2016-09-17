@@ -10,7 +10,10 @@ module Forum
     end
 
     def update
-      # TODO
+      @post = Forum::Post.find_by!(post_params.except(:content, :depth))
+      @post.update(content: post_params[:content])
+    rescue ActiveRecord::RecordInvalid => e
+      render json: { errors: e.message }, status: :not_acceptable
     end
 
     def destroy
@@ -38,7 +41,11 @@ module Forum
     end
 
     def post_params
-      params.permit(:content, :channel_id, :parent_id).merge(author_id: current_member.id, depth: depth)
+      params.permit(:content, :channel_id, :parent_id).merge(
+        author_id: current_member.id,
+        depth: depth,
+        post_id: params[:id]
+      )
     end
 
     def parent
