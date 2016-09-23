@@ -33,7 +33,7 @@ after 'deploy:update', 'eye:start'
 namespace :eye do
   desc "Stop processes that eye is monitoring and quit eye"
   task :quit, :roles => [:app] do
-    run "cd #{latest_release} && #{EYE} quit -s"
+    run "cd #{latest_release} && #{EYE} stop rhit_triangle"
   end
 
   desc "Load eye configuration and start it"
