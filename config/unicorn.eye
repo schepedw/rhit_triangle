@@ -10,6 +10,7 @@ Eye.application(app_name) do
 
   # unicorn requires to be `ruby` in path (for soft restart)
   env 'PATH' => "#{File.dirname(RUBY)}:#{ENV['PATH']}"
+  env 'BUNDLE_GEMFILE' => "#{rails_root}/Gemfile"
   working_dir rails_root
 
   process('rhit_triangle') do
