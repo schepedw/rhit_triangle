@@ -30,6 +30,7 @@ gem 'rolify'
 group :production do
   gem 'unicorn-rails'
   gem 'eye'
+  gem 'airbrake'
 end
 
 group :development, :test do

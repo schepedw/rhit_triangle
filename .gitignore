@@ -16,7 +16,8 @@ tags
 
 # Ignore secrets
 etc/twitter.yml
-service_account_creds.json
 etc/default_password.yml
+etc/airbrake.yml
+service_account_creds.json
 public/uploads
 uploads/
