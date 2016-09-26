@@ -18,6 +18,7 @@ tags
 etc/twitter.yml
 etc/default_password.yml
 etc/airbrake.yml
+etc/production/
 service_account_creds.json
 public/uploads
 uploads/

@@ -92,6 +92,7 @@ namespace 'random' do
     `scp etc/twitter.yml deployuser@173.255.225.240:#{release_path}/etc`
     `scp etc/airbrake.yml deployuser@173.255.225.240:#{release_path}/etc`
     `scp etc/default_password.yml deployuser@173.255.225.240:#{release_path}/etc`
+    `scp -r etc/production deployuser@173.255.225.240:#{release_path}/etc/production`
   end
 end
 
