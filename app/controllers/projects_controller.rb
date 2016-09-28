@@ -1,5 +1,36 @@
 class ProjectsController < ApplicationController
   def index
-    @projects = Project.where.not(price: 0)
+    completed_status = ProjectStatus.find_or_create_by(status: 'Completed')
+    @projects = Project.includes(:donations).where.not(price: 0, project_status_id: completed_status.id)
+  end
+
+  def create
+    @project = Project.create(project_params.merge(project_status_id: ProjectStatus.find_by_status('Unstarted').id))
+  end
+
+  def destroy
+    @project = Project.find(params[:id])
+    @project.destroy!
+  end
+
+  def edit
+    @project = Project.find(params[:id])
+  end
+
+  def update
+    @project = Project.find(params[:id])
+    @project.update(project_params)
+  end
+
+  def complete
+    @project = Project.find(params[:project_id])
+    status = ProjectStatus.find_or_create_by(status: 'Complete')
+    @project.update(project_status_id: status.id)
+  end
+
+  private
+
+  def project_params
+    params.require(:project).permit(:title, :description, :price)
   end
 end

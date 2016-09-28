@@ -66,15 +66,23 @@
 }
 
 .nav li.dropdown.open{
-a {
-  text-decoration: none;
-  color: black;
-}
+  @media(min-width: 992px) {
+    a {
+      background-color: #1F1F1F;
+      text-decoration: none;
+      color: white;
+    }
+  }
+  @media(max-width: 992px) {
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
 }
 .nav .dropdown.open li{
-a {
-  color: black;
-}
+  @media(max-width: 992px) { a { color: black; }}
+  @media(min-width: 992px) { a { color: white; }}
 }
 
 .quick-links{
