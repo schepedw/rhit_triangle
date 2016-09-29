@@ -1,19 +1,14 @@
 <div class = 'row project'>
-  <%= form_for Project.new, remote: true do |f| %>
+    <%= form_for Project.new, remote: true, authenticity_token: true, html: { multipart: true } do |f| %>
   <div class = 'col-xs-12 col-md-6 project-pic-container'>
     <div id='project-carousel' class='carousel slide' data-ride='carousel' data-interval='false'>
       <div class='carousel-inner' role='listbox'>
         <div class='item item1 active' style="background-image: url('/uploads/project_images/create_a_new_project/upload_file.png')"> </div>
+        <%= file_field_tag 'project[pictures][]', required: 'required' %>
       </div>
-    <input name="imageupload" id="imageupload" type="file" />
     </div>
   </div>
 
-    <!--
-    <a href='javascript:void(0);' class='fileupload-mask' id="fileupload" type="file" name="files[]" data-url=/pictures.js"%> multiple=true>
-        <%# image_tag 'upload_file.jpeg' %>
-      </a>
-      -->
     <div class = 'col-xs-12 col-md-6 project-description-container'>
       <%= f.text_field :title, placeholder: 'Title', required: 'required' %>
     </div>

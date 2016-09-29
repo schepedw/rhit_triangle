@@ -1,4 +1,7 @@
 class ProjectsController < ApplicationController
+  before_action :require_admin_role, except: :index
+  before_action :set_admin_flag
+
   def index
     completed_status = ProjectStatus.find_or_create_by(status: 'Completed')
     @projects = Project.includes(:donations).where.not(price: 0, project_status_id: completed_status.id)
@@ -31,6 +34,10 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:title, :description, :price)
+    params.require(:project).permit(:title, :description, :price, pictures: [])
+  end
+
+  def set_admin_flag
+    @admin_flag = current_member.present? && current_member.has_role?(:admin)
   end
 end
