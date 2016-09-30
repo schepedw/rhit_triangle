@@ -2,14 +2,14 @@
   <h4><strong>OFFICERS</strong></h4>
   <p> These are our elected officials for the <%=Date.today.year%> calendar year </p>
   <div class='row'>
-    <% @officers.each do |(title, details)| %>
+    <% @officers.each do |officer| %>
       <div class='officer-container col-xs-12 col-md-3'>
-        <%= image_tag "#{ details[:name].downcase.gsub(' ', '_')}.jpg", class: 'officer-picture' %>
+        <%= image_tag "active_officers/#{ officer.member.full_name.downcase.gsub(' ', '_')}.jpg", class: 'officer-picture' %>
         <div class = 'info-container'>
-          <span class='officer-name'><%= details[:name].upcase %></span>
-          <span class='officer-title'><%= title.titleize %></span>
-          <span class='officer-email'><%= details[:email] %></span>
-          <span class='officer-phone'><%= details[:phone] %></span>
+          <span class='officer-name'><%= officer.member.full_name.upcase %></span>
+          <span class='officer-title'><%= officer.title.titleize %></span>
+          <span class='officer-email'><%= officer.member.email %></span>
+          <span class='officer-phone'><%= officer.member.phone_number %></span>
         </div>
       </div>
       <hr class = 'officer-separator'/>

@@ -5,6 +5,7 @@ class Member < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :phone_numbers
   after_save :update_primary_phone
+
   attr_writer :primary_phone_number
 
   def primary_phone_number

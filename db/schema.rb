@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160917161303) do
+ActiveRecord::Schema.define(version: 20160930000137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_officers", force: :cascade do |t|
+    t.string  "title",     null: false
+    t.integer "member_id", null: false
+  end
 
   create_table "addresses", primary_key: "address_id", force: :cascade do |t|
     t.integer "member_id"
@@ -23,6 +28,13 @@ ActiveRecord::Schema.define(version: 20160917161303) do
     t.string  "city",          null: false
     t.string  "state",         null: false
     t.string  "zip_code",      null: false
+  end
+
+  create_table "alumni_officers", force: :cascade do |t|
+    t.string  "title",           null: false
+    t.integer "member_id",       null: false
+    t.text    "bio"
+    t.text    "job_description"
   end
 
   create_table "channel_members", id: false, force: :cascade do |t|
@@ -94,6 +106,7 @@ ActiveRecord::Schema.define(version: 20160917161303) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.string   "title"
+    t.string   "phone_number"
   end
 
   add_index "members", ["email"], name: "index_members_on_email", unique: true, using: :btree
@@ -196,7 +209,9 @@ ActiveRecord::Schema.define(version: 20160917161303) do
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
 
+  add_foreign_key "active_officers", "members", primary_key: "member_id", name: "memberfk"
   add_foreign_key "addresses", "members", primary_key: "member_id"
+  add_foreign_key "alumni_officers", "members", primary_key: "member_id", name: "memberfk"
   add_foreign_key "channel_members", "channels", primary_key: "channel_id", name: "channel_id_fk"
   add_foreign_key "channel_members", "members", primary_key: "member_id", name: "member_id_fk"
   add_foreign_key "donations", "members", primary_key: "member_id"
