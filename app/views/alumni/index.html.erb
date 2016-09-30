@@ -6,8 +6,8 @@
   </center>
 </div>
 <div class = 'container-fluid alumni-body'>
-  <% @alumni_officers.each do |(title, officer)| %>
-    <%= render 'bio', officer: officer, title: title %>
+  <% @alumni_officers.each do |position| %>
+    <%= render 'bio', officer: position.member, title: position.title, bio: position.bio, job_description: position.job_description%>
   <% end %>
 </div>
 <div class='full-cal'>

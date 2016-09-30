@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-    @officers = AppConfig.officers
+    @officers = ActiveOfficer.all
   end
 end
