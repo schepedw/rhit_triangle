@@ -14,7 +14,7 @@ class CreateOfficers < ActiveRecord::Migration
 
     execute("ALTER TABLE active_officers ADD CONSTRAINT memberfk FOREIGN KEY (member_id) REFERENCES members (member_id)")
     execute("ALTER TABLE alumni_officers ADD CONSTRAINT memberfk FOREIGN KEY (member_id) REFERENCES members (member_id)")
-#    add_column :members, :phone_number, :string
+    add_column :members, :phone_number, :string
     ActiveOfficer.create!(title: 'President', member_id:
                          Member.create!(first_name: 'Dean', last_name: 'Thomas', email: 'thomasda@rose-hulman.edu', initiation_year: 2014, phone_number: '7655710844', password: AppConfig.default_password).id)
     ActiveOfficer.create!(title: 'Vice President', member_id:
