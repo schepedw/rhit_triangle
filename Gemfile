@@ -27,6 +27,9 @@ gem 'google-api-client', require: false
 gem 'devise'
 gem 'rolify'
 
+# File upload
+gem 'remotipart'
+
 group :production do
   gem 'unicorn-rails'
   gem 'eye'

@@ -1,0 +1,22 @@
+<% if remotipart_submitted? %>
+  $('#project_price').val(null);
+  $('#project_description').val(null);
+  $('#project_title').val(null);
+  $('#project_pictures').val(null);
+  $('.project-container').append('<%= j(render'show', project: @project, index: @project.title.gsub(' ', '_')).gsub('&quot;', "'") %>')
+<% end %>
+
+$('[data-project-id=<%=@project.id%>] .project-slider').each(function(){
+  progress = $(this).find('.capital-progress');
+  totalCost = $(this).find('.total-cost');
+  $(this).find('#project-slider').slider({
+    value: parseInt(progress.html().replace('$', '')),
+    max: parseInt(totalCost.html().replace('$', '')),
+    disabled: true,
+    range: "min"
+  });
+  progressWidth = parseInt($(this).find('.ui-slider-range').css('width').replace('px', ''));
+  offset = progressWidth - charBasedOffset(progress.html().length);
+  progress.css('left', offset > 0 ? (offset + 'px') : 0 );
+});
+$('[data-project-id=<%=@project.id%>] .ui-slider-handle').hide();
