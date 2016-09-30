@@ -1,6 +1,6 @@
 class AlumniOfficer < ActiveRecord::Base
   belongs_to :member
-  default_scope  { includes(:member) }
+  default_scope { includes(:member) }
 
   private
 

@@ -1,6 +1,6 @@
 class ActiveOfficer < ActiveRecord::Base
   belongs_to :member
-  default_scope  { includes(:member) }
+  default_scope { includes(:member) }
   around_update :update_admin_role
 
   private
@@ -12,5 +12,4 @@ class ActiveOfficer < ActiveRecord::Base
     Member.find(old_member_id).remove_role(:admin)
     Member.find(member_id).add_role(:admin)
   end
-
 end
