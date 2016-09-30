@@ -9,6 +9,7 @@
         <h5 class='event-title'><%= event.summary %> </h5>
         <span class='event-date'>
           <% start_date = event.start.try(:date_time) || event.start.try(:date) %> <!-- TODO: presenter, perhaps? -->
+          <% start_date = Date.parse(start_date) if start_date.is_a? String %>
           <%= start_date.strftime("%b #{start_date.day.ordinalize}, %Y") %>
         </span>
         <br />
