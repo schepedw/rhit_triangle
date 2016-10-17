@@ -1,0 +1,37 @@
+<div id='image-carousel' class='carousel slide' data-ride='carousel' data-interval="false" data-resource-id=<%= @resource.id %>>
+  <% if @pictures.count > 1 %>
+    <ol class='carousel-indicators'>
+      <% @pictures.each_with_index do |picture, i| %>
+        <li data-target='#image-carousel' data-slide-to='<%=i%>' data-picture-url='<%=URI.encode(picture)%>' class=<%='active' if i == 0%>></li>
+      <% end %>
+      <li data-target='#image-carousel' data-slide-to='<%=@pictures.count%>'></li>
+    </ol>
+  <% end %>
+
+  <div class='carousel-inner' role='listbox'>
+    <% @pictures.each_with_index do |picture, i| %>
+      <div class='item image-container <%='active' if i == 0%>' data-picture-url='<%=URI.encode(picture)%>'>
+        <%= image_tag picture %>
+        <%= link_to picture_path(picture.gsub('.', '%2E'), format: :js), remote: true, method: :delete, class: 'delete-picture' do %>
+          <i class = 'fa fa-times-circle-o'></i>
+        <% end %>
+      </div>
+    <% end %>
+    <div class='item image-container'>
+      <a href='javascript:void(0);' class='fileupload-mask' data-form-data='{"script": "true"}' data-remote='true' id="fileupload" type="file" name="pictures[]" data-url=<%="/pictures.js?resource_type=#{@resource.class}&resource_id=#{@resource.id}"%> multiple=true>
+        <%= image_tag 'upload_file.jpeg' %>
+      </a>
+      </div>
+    </div>
+
+    <% if @pictures.count > 1 %>
+      <a class='left carousel-control' href='#image-carousel' role='button' data-slide='prev'>
+        <span class='fa fa-chevron-left' aria-hidden='true'></span>
+        <span class='sr-only'>Previous</span>
+      </a>
+      <a class='right carousel-control' href='#image-carousel' role='button' data-slide='next'>
+        <span class='fa fa-chevron-right' aria-hidden='true'></span>
+        <span class='sr-only'>Next</span>
+      </a>
+    <% end %>
+  </div>

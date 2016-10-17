@@ -20,6 +20,10 @@ Rails.application.routes.draw do
     post '/complete'                        => 'projects#complete'
   end
   get '/alumni'                             => 'alumni#index'
+  resources 'alumni_officers', only: %i[edit update]
+  resources 'pictures', only: %i[new create destroy]
+  get '/profile'                            => 'members#edit'
+  patch '/profile'                          => 'members#update'
 
   namespace :forum do
     get '/'                              => 'channels#index'

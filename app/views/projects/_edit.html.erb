@@ -1,5 +1,7 @@
 <div class = 'row project' data-project-id='<%=@project.id%>'>
   <%= form_for @project, remote: true do |f| %>
+    <%= render 'pictures/index', pictures: project.pictures, resource: project %>
+    <!--
     <div class = 'col-xs-12 col-md-6 project-pic-container'>
 
       <div id='project-carousel-<%=@project.description.gsub(' ', '_')%>' class='carousel slide' data-ride='carousel' data-interval='false'>
@@ -31,6 +33,7 @@
         <% end %>
       </div>
     </div>
+    -->
 
     <div class = 'col-xs-12 col-md-6 project-description-container'>
       <%= f.text_field :title, placeholder: 'Title', required: 'required' %>

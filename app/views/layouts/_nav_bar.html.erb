@@ -18,6 +18,7 @@
   <a href = 'javascript:void(0);' class = 'navbar-sm-icon pull-right' id="clabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i></a>
     <ul class="dropdown-menu pull-right" aria-labelledby="clabel">
       <% if current_member.present? %>
+        <li> <%= link_to 'Edit Profile', profile_path %> </li>
         <li> <%= link_to 'Sign Out', destroy_member_session_path  %> </li>
       <% else %>
         <li> <%= link_to 'Sign In', new_member_session_path %> </li>
@@ -59,6 +60,7 @@
       </a>
       <ul class="dropdown-menu" aria-labelledby="dLabel">
         <% if current_member.present? %>
+          <li> <%= link_to 'Edit Profile', profile_path %> </li>
           <li> <%= link_to 'Sign Out', destroy_member_session_path, method: :delete  %> </li>
         <% else %>
           <li> <%= link_to 'Sign In', new_member_session_path %> </li>

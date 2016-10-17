@@ -1,6 +1,8 @@
 <div class = 'row project' data-project-id='<%=project.id%>'>
   <div class = 'col-xs-12 col-md-6 project-pic-container'>
 
+    <%= render 'pictures/index', pictures: project.pictures, resource: project %>
+    <!--
     <div id='project-carousel-<%=index%>' class='carousel slide' data-ride='carousel' data-interval='false'>
       <% if project.pictures.count > 1 %>
         <ol class='carousel-indicators'>
@@ -29,6 +31,7 @@
         </a>
       <% end %>
     </div>
+    -->
   </div>
 
   <div class = 'col-xs-12 col-md-6 project-description-container'>
@@ -60,4 +63,3 @@
     </div>
   </div>
 </div>
-

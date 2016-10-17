@@ -1,0 +1,27 @@
+<div id='<%=@officer.title%>' class = 'row' data-position-id=<%=@officer.id%> >
+  <%= form_for @officer, remote: true do |f| %>
+    <div class = 'alumni-officer info-container'>
+      <div class = 'col-xs-12 col-sm-3 col-md-2 no-left-padding'>
+        <div class = 'officer-picture col-sm-12 col-xs-3' style="background-image: url('<%=@officer.member.profile_picture%>')" >
+        </div>
+        <%= file_field_tag 'alumni_officer[profile_picture]' %>
+      </div>
+      <div class = 'col-xs-12 col-sm-9 col-md-10 info'>
+        <div class='field officer-name'>
+          <%= select_tag 'alumni_officer[member_id]', options_from_collection_for_select(@members, "id", "full_name", @officer.member.id) %>
+        </div>
+        <a class='officer-title' data-toggle="popover"
+          tabindex='10'
+          title='<%= @officer.title.titleize %>'
+          data-placement='bottom'
+          data-trigger='focus'
+          data-content='<%= @officer.job_description%>'><%= @officer.title.titleize %>
+      </a>
+      <div class='officer-bio field'>
+        <%= f.text_area :bio, autofocus: false, required: true %>
+      </div>
+      <%= f.submit 'SAVE', class: 'btn btn-primary btn-sm btn-square' %>
+    </div>
+  </div>
+<% end %>
+</div>

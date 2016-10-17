@@ -1,0 +1,43 @@
+<div id='image-carousel-<%="#{resource.class}-#{resource.id}"%>' class='carousel slide' data-ride='carousel' data-interval="false">
+  <% if pictures.count > 1 || @admin_flag %>
+    <ol class='carousel-indicators'>
+      <% pictures.each_with_index do |picture, i| %>
+        <li data-target='#image-carousel-<%="#{resource.class}-#{resource.id}"%>' data-slide-to='<%=i%>' data-picture-url='<%=URI.encode(picture)%>' class=<%='active' if i == 0%>></li>
+      <% end %>
+      <% if @admin_flag %>
+        <li data-target='#image-carousel-<%="#{resource.class}-#{resource.id}"%>' data-slide-to='<%=pictures.count%>'></li>
+      <% end %>
+    </ol>
+  <% end %>
+
+  <div class='carousel-inner' role='listbox'>
+    <% pictures.each_with_index do |picture, i| %>
+      <div class='item image-container <%='active' if i == 0%>' data-picture-url='<%=URI.encode(picture)%>'>
+        <%= image_tag picture %>
+        <% if @admin_flag %>
+          <%= link_to picture_path(picture.gsub('.', '%2E'), resource_type: resource.class, resource_id: resource.id, format: :js), remote: true, method: :delete, class: 'delete-picture' do %>
+            <i class = 'fa fa-times-circle-o'></i>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+    <% if @admin_flag %>
+      <div class='item image-container'>
+        <a href='javascript:void(0);' class='fileupload-mask' id="fileupload" type="file" name="pictures[]" data-url=<%="/pictures.js?resource_type=#{resource.class}&resource_id=#{resource.id}"%> multiple=true>
+          <%= image_tag 'upload_file.png' %>
+        </a>
+      </div>
+    <% end %>
+  </div>
+
+  <% if pictures.count > 1 || @admin_flag %>
+    <a class='left carousel-control' href='#image-carousel-<%="#{resource.class}-#{resource.id}"%>' role='button' data-slide='prev'>
+      <span class='fa fa-chevron-left' aria-hidden='true'></span>
+      <span class='sr-only'>Previous</span>
+    </a>
+    <a class='right carousel-control' href='#image-carousel-<%="#{resource.class}-#{resource.id}"%>' role='button' data-slide='next'>
+      <span class='fa fa-chevron-right' aria-hidden='true'></span>
+      <span class='sr-only'>Next</span>
+    </a>
+  <% end %>
+</div>

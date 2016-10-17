@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
 
   def index
     completed_status = ProjectStatus.find_or_create_by(status: 'Completed')
-    @projects = Project.includes(:donations).where.not(price: 0, project_status_id: completed_status.id)
+    @projects = Project.includes(:donations).where.not(price: 0, project_status_id: completed_status.id).limit 3
   end
 
   def create

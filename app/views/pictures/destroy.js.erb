@@ -1,0 +1,4 @@
+activeIndex = $('#image-carousel-<%="#{@resource.class}-#{@resource.id}"%> div.active').index();
+$("[data-picture-url='<%= URI.encode(params[:id]).gsub('%252E', '.') %>']").remove();
+var nextElement = $('#image-carousel-<%="#{@resource.class}-#{@resource.id}"%> .item')[activeIndex + 1] || $('#image-carousel-<%="#{@resource.class}-#{@resource.id}"%> .item')[activeIndex - 1];
+$(nextElement).addClass('active');
