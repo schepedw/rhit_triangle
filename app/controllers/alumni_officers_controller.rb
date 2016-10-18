@@ -1,10 +1,6 @@
 class AlumniOfficersController < ApplicationController
   before_action :authenticate_member!, :require_admin_role
 
-  def index
-    @alumni_officers = AlumniOfficer.includes(:member).all
-  end
-
   def edit
     @members = Member.all
     @officer = AlumniOfficer.find(params[:id])

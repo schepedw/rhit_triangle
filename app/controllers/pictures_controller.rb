@@ -4,7 +4,8 @@ class PicturesController < ApplicationController
   def create
     new_pictures = @resource.add_pictures_from_io(params[:files])
     render json: {
-      newHTML: render_to_string(partial: 'index', locals: { pictures: @resource.pictures, resource: @resource }).html_safe,
+      newHTML: render_to_string(partial: 'index', locals:
+                                { pictures: @resource.pictures, resource: @resource }).html_safe,
       newPicture: new_pictures.last.gsub(File.join(Rails.root, 'public'), ''),
       resourceClass: @resource.class.to_s,
       resourceId: @resource.id
@@ -13,7 +14,7 @@ class PicturesController < ApplicationController
 
   def destroy
     file = Rails.root.join("public/#{URI.decode(params[:id])}")
-    render(nothing: true, status: 404) unless File.exists?(file)
+    render(nothing: true, status: 404) unless File.exist?(file)
     File.delete(file)
   end
 

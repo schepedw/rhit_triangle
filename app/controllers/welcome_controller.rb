@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-    @officers = ActiveOfficer.all.includes(:member)
+    @officers = ActiveOfficer.all
   end
 end

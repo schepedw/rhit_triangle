@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   end
   get '/alumni'                             => 'alumni#index'
   resources 'alumni_officers', only: %i[edit update]
-  resources 'pictures', only: %i[new create destroy]
+  resources 'pictures', only: %i[create destroy]
   get '/profile'                            => 'members#edit'
   patch '/profile'                          => 'members#update'
 
