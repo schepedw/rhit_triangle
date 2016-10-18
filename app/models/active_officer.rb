@@ -9,7 +9,10 @@ class ActiveOfficer < ActiveRecord::Base
     return yield unless changes[:member_id].present?
     old_member_id = changes[:member_id].first
     yield
-    Member.find(old_member_id).remove_role(:admin)
+    binding.pry
+    unless ActiveOfficer.find_by_member_id(old_member_id) || AlumniOfficer.find_by_member_id(old_member_id)
+      Member.find(old_member_id).remove_role(:admin)
+    end
     Member.find(member_id).add_role(:admin)
   end
 end

@@ -1,0 +1,12 @@
+<div class='container-fluid container-lg-padded'>
+  <h4><strong>OFFICERS</strong></h4>
+  <p> These are our elected officials for the <%=Date.today.year%> calendar year </p>
+  <div class='row'>
+    <% @officers.each do |officer| %>
+      <div class='officer-container col-xs-12 col-md-3' data-officer-id=<%=officer.id%>>
+        <%= render 'active_officers/show', officer: officer %>
+      </div>
+      <hr class = 'officer-separator'/>
+    <% end %>
+  </div>
+</div>

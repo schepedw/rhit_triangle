@@ -1,0 +1,13 @@
+<%= image_tag officer.member.profile_picture, class: 'officer-picture' %>
+  <div class = 'info-container'>
+    <%= form_for officer, authenticity_token: true, remote: true, url: active_officer_path(format: :js) do |f| %>
+    <span class='officer-name'>
+      <%= select_tag 'active_officer[member_id]', options_from_collection_for_select(members, "id", "full_name", officer.member.id), onchange: "$(this).closest('form').trigger('submit.rails');" %>
+    </span>
+    <span class='officer-title'><%= officer.title.titleize %></span>
+    <span class='officer-email'><%= mail_to officer.member.email %></span>
+    <span class='officer-phone'>
+      <%= link_to officer.member.phone_number, "tel:#{officer.member.phone_number}" if officer.member.phone_number %>
+    </span>
+  <% end %>
+</div>
