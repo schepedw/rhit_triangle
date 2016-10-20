@@ -2,9 +2,9 @@
   <h4><strong>OFFICERS</strong></h4>
   <p> These are our elected officials for the <%=Date.today.year%> calendar year </p>
   <div class='row'>
-    <% @officers.each do |officer| %>
-      <div class='officer-container col-xs-12 col-md-3' data-officer-id=<%=officer.id%>>
-        <%= render 'active_officers/show', officer: officer %>
+    <% @active_roles.each do |role| %>
+      <div class='officer-container col-xs-12 col-md-3' data-role-id=<%=role.id%>>
+        <%= render 'active_officers/show', role: role %>
       </div>
       <hr class = 'officer-separator'/>
     <% end %>

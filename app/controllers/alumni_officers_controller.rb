@@ -1,5 +1,5 @@
 class AlumniOfficersController < ApplicationController
-  before_action :authenticate_member!, :require_admin_role
+  before_action :authenticate_member!, :require_admin_role, :set_admin_flag
 
   def edit
     @members = Member.all

@@ -1,1 +1,1 @@
-$('[data-position-id=<%=@officer.id%>]').html('<%= j render('edit')%>')
+$('[data-role-id=<%=@role.id%>]').html('<%= j render('alumni_officers/edit', role: @role, members: @members)%>')

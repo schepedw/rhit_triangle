@@ -1,28 +1,26 @@
-<div id='<%=position.title%>' class = 'row' data-position-id=<%=position.id%> >
-  <div class = 'alumni-officer info-container'>
-    <div class = 'col-xs-12 col-sm-3 col-md-2 no-left-padding'>
-      <div class = 'officer-picture col-sm-12 col-xs-3' style="background-image: url('<%=position.member.profile_picture%>')" >
-      </div>
+<div class = 'alumni-officer info-container'>
+  <div class = 'col-xs-12 col-sm-3 col-md-2 no-left-padding'>
+    <div class = 'officer-picture col-sm-12 col-xs-3' style="background-image: url('<%=role.member.profile_picture%>')" >
     </div>
-    <div class = 'col-xs-12 col-sm-9 col-md-10 info'>
-      <span class='officer-name'> <%= position.member.full_name.upcase %></span>
-      <% if @admin_flag %>
-        <%= link_to "/alumni_officers/#{position.id}/edit", remote: true, method: :get, class: 'edit-officer pull-right' do %>
-          <i class = 'fa fa-edit'></i>
-        <% end %>
-      <% end %>
-      <a class='officer-title' data-toggle="popover"
-        tabindex='10'
-        title='<%= position.title.titleize %>'
-        data-placement='bottom'
-        data-trigger='focus'
-        data-content='<%= position.job_description%>'><%= position.title.titleize %>
-    </a>
-    <span class='officer-email'><%= mail_to position.member.email %></span>
-    <span class='officer-phone'>
-      <%= link_to position.member.phone_number, "tel:#{position.member.phone_number}" if position.member.phone_number %>
-    </span>
-    <p    class = 'officer-bio'><%= position.bio %></p>
   </div>
+  <div class = 'col-xs-12 col-sm-9 col-md-10 info'>
+    <span class='officer-name'> <%= role.member.full_name.upcase %></span>
+    <% if @admin_flag %>
+      <%= link_to edit_role_path(role), remote: true, method: :get, class: 'edit-officer pull-right' do %>
+        <i class = 'fa fa-edit'></i>
+      <% end %>
+    <% end %>
+    <a class='officer-title' data-toggle="popover"
+      tabindex='10'
+      title='<%= role.title.titleize %>'
+      data-placement='bottom'
+      data-trigger='focus'
+      data-content='<%= role.job_description%>'><%= role.title.titleize %>
+  </a>
+  <span class='officer-email'><%= mail_to role.member.email %></span>
+  <span class='officer-phone'>
+    <%= link_to role.member.phone_number, "tel:#{role.member.phone_number}" if role.member.phone_number %>
+  </span>
+  <p    class = 'officer-bio'><%= role.member.bio %></p>
 </div>
 </div>

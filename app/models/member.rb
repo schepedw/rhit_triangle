@@ -1,6 +1,6 @@
 class Member < ActiveRecord::Base
   rolify
-  has_many :roles, through: :members_roles
+  has_one :role
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :phone_numbers

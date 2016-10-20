@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161017013541) do
+ActiveRecord::Schema.define(version: 20161020022850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 20161017013541) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.string   "title"
+    t.text     "bio"
   end
 
   add_index "members", ["email"], name: "index_members_on_email", unique: true, using: :btree
@@ -198,15 +199,15 @@ ActiveRecord::Schema.define(version: 20161017013541) do
   add_index "reactions", ["post_id"], name: "index_reactions_on_post_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "resource_id"
-    t.string   "resource_type"
+    t.string   "title",           null: false
+    t.integer  "member_id",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "job_description"
+    t.string   "role_type"
   end
 
-  add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
-  add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
+  add_index "roles", ["title"], name: "index_roles_on_title", using: :btree
 
   add_foreign_key "active_officers", "members", primary_key: "member_id", name: "memberfk"
   add_foreign_key "addresses", "members", primary_key: "member_id"

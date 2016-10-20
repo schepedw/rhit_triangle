@@ -20,8 +20,7 @@ Rails.application.routes.draw do
     post '/complete'                        => 'projects#complete'
   end
   get '/alumni'                             => 'alumni#index'
-  resources 'alumni_officers', only: %i[edit update]
-  resources 'active_officers', only: %i[edit update]
+  resources 'roles', only: %i[edit update]
   resources 'pictures', only: %i[create destroy]
   get '/profile'                            => 'members#edit'
   patch '/profile'                          => 'members#update'
