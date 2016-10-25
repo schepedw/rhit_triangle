@@ -36,5 +36,6 @@ class FixOfficerRoles < ActiveRecord::Migration
     end
 
     drop_table :members_roles
+    Role.create(title: 'Nerd', role_type: 'alumni', member_id: Member.find_by_first_name('Daniel').id)
   end
 end

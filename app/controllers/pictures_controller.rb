@@ -20,10 +20,6 @@ class PicturesController < ApplicationController
 
   private
 
-  def set_admin_flag
-    @admin_flag = current_member.present? && current_member.has_role?(:admin)
-  end
-
   def identify_resource
     @resource = Object.const_get(params[:resource_type]).find(params[:resource_id])
   end

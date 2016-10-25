@@ -1,9 +1,7 @@
 class Role < ActiveRecord::Base
   belongs_to :member
 
-  validates :role_type, inclusion: { in: ['alumni', 'active'] }, allow_nil: true
-
-  scopify
+  validates :role_type, inclusion: { in: %w[alumni active] }, allow_nil: true
 
   def self.sort(roles)
     roles.sort_by(&:sort_val)

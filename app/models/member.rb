@@ -1,5 +1,4 @@
 class Member < ActiveRecord::Base
-  rolify
   has_one :role
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -26,6 +25,19 @@ class Member < ActiveRecord::Base
     files = Dir.glob(File.join(picture_dir, '*'))
     return if files.empty?
     files.last.gsub(/^#{File.join(Rails.root, 'public')}/, '')
+  end
+
+  def has_role?(title, role_type) # rubocop:disable Style/PredicateName
+    role.try(:title) == title && role.try(:role_type) == role_type
+  end
+
+  def add_role(title, role_type)
+    Role.create(member_id: id, title: title, role_type: role_type)
+  end
+
+  def remove_role(title, role_type)
+    return false unless has_role?(title, role_type)
+    role.destroy
   end
 
   private
