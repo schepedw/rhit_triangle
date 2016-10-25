@@ -25,6 +25,7 @@ class FixOfficerRoles < ActiveRecord::Migration
                  )
     end
 
+    ActiveOfficer.find_by_title('Advisor').update(title: 'Chapter Advisor')
     AppConfig.officers.active_officers.each do |title|
       officer = ActiveOfficer.find_by_title(title)
       member = officer.member

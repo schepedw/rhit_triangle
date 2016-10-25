@@ -1,4 +1,6 @@
 <%= form_for role, authenticity_token: true, remote: true, url: role_path(role, format: :js) do |f| %>
+  <%= f.hidden_field :role_type %>
+  <%= f.hidden_field :title %>
   <div class = 'alumni-officer info-container'>
     <div class = 'col-xs-12 col-sm-3 col-md-2 no-left-padding'>
       <div class = 'officer-picture col-sm-12 col-xs-3' style="background-image: url('<%=role.member.profile_picture%>')" >
@@ -6,7 +8,7 @@
     </div>
     <div class = 'col-xs-12 col-sm-9 col-md-10 info'>
       <div class='field officer-name'>
-        <%= select_tag 'alumni_officer[member_id]', options_from_collection_for_select(members, "id", "full_name", role.member_id), onchange: "$(this).closest('form').trigger('submit.rails');" %>
+        <%= select_tag 'role[member_id]', options_from_collection_for_select(members, "id", "full_name", role.member_id), onchange: "$(this).closest('form').trigger('submit.rails');" %>
       </div>
       <!-- TODO: make this editable -->
       <a class='officer-title' data-toggle="popover"
