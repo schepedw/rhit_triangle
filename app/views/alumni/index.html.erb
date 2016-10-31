@@ -6,8 +6,10 @@
   </center>
 </div>
 <div class = 'container-fluid alumni-body'>
-  <% @alumni_officers.each do |position| %>
-    <%= render 'bio', officer: position.member, title: position.title, bio: position.bio, job_description: position.job_description%>
+  <% @alumni_roles.each do |role| %>
+    <div id='<%=role.title%>' class = 'row' data-role-id=<%=role.id%> >
+      <%= render 'alumni_officers/show', role: role%>
+    </div>
   <% end %>
 </div>
 <div class='full-cal'>

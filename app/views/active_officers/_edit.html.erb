@@ -1,0 +1,15 @@
+<%= image_tag role.member.profile_picture, class: 'officer-picture' %>
+<div class = 'info-container'>
+  <%= form_for role, authenticity_token: true, remote: true, url: role_path(role, format: :js) do |f| %>
+    <%= f.hidden_field :role_type %>
+    <%= f.hidden_field :title %>
+    <span class='officer-name'>
+      <%= select_tag 'role[member_id]', options_from_collection_for_select(members, "id", "full_name", role.member.id), onchange: "$(this).closest('form').trigger('submit.rails');" %>
+    </span>
+    <span class='officer-title'><%= role.title.titleize %></span>
+    <span class='officer-email'><%= mail_to role.member.email %></span>
+    <span class='officer-phone'>
+      <%= link_to role.member.phone_number, "tel:#{role.member.phone_number}" if role.member.phone_number %>
+    </span>
+  <% end %>
+</div>

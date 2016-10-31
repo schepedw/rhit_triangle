@@ -1,0 +1,9 @@
+.delete-picture, .edit-picture {
+  color: #c1252a;
+  z-index: 1000;
+  position: absolute;
+  right: 7%;
+  top: 5%;
+  &:visited { color: #c1252a; }
+  &:hover { color: white; }
+}

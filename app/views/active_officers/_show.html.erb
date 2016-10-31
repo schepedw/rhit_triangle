@@ -1,0 +1,14 @@
+<%= image_tag role.member.profile_picture, class: 'officer-picture' %>
+<div class = 'info-container'>
+  <% if @admin_flag %>
+    <%= link_to edit_role_path(role), remote: true, method: :get, class: 'edit-officer pull-right' do %>
+      <i class = 'fa fa-edit'></i>
+    <% end %>
+  <% end %>
+  <span class='officer-name'><%= role.member.full_name.upcase %></span>
+  <span class='officer-title'><%= role.title.titleize %></span>
+  <span class='officer-email'><%= mail_to role.member.email %></span>
+  <span class='officer-phone'>
+    <%= link_to role.member.phone_number, "tel:#{role.member.phone_number}" if role.member.phone_number %>
+  </span>
+</div>

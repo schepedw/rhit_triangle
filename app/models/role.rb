@@ -1,9 +1,13 @@
 class Role < ActiveRecord::Base
-  has_many :members, through: :members_roles
+  belongs_to :member
 
-  belongs_to :resource, polymorphic: true, required: false
+  validates :role_type, inclusion: { in: %w[alumni active] }, allow_nil: true
 
-  validates :resource_type, inclusion: { in: Rolify.resource_types }, allow_nil: true
+  def self.sort(roles)
+    roles.sort_by(&:sort_val)
+  end
 
-  scopify
+  def sort_val
+    AppConfig.officers["#{role_type}_officers".to_sym].index(title)
+  end
 end

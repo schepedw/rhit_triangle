@@ -36,8 +36,4 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:title, :description, :price, pictures: [])
   end
-
-  def set_admin_flag
-    @admin_flag = current_member.present? && current_member.has_role?(:admin)
-  end
 end

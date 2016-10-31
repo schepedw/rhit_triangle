@@ -32,6 +32,16 @@ class Project < ActiveRecord::Base
     donations.to_a.sum(&:amount)
   end
 
+  def add_pictures_from_io(upload_stream)
+    upload_stream.map do |uploaded_io|
+      File.join(picture_dir, uploaded_io.original_filename).tap do |file|
+        File.open(file, 'wb') do |f|
+          f.write(uploaded_io.read)
+        end
+      end
+    end
+  end
+
   private
 
   def save_pictures
