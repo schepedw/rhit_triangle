@@ -4,7 +4,6 @@ alumni_officers:
   - Treasurer
   - Alumni Representative
   - Secretary
-  - Nerd
 
 active_officers:
   - President
@@ -15,3 +14,7 @@ active_officers:
   - Steward
   - Activities Director
   - Chapter Advisor
+
+admin:
+  - Active Admin
+  - Alumni Admin
