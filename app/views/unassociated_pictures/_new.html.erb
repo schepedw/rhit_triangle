@@ -1,0 +1,20 @@
+<div id='new-<%=resource_type%>-carousel' class='carousel slide' data-ride='carousel' data-interval='false' data-resource-type='<%=resource_type%>'>
+  <ol class='carousel-indicators'>
+    <li data-target='#new-<%=resource_type%>-carousel' data-slide-to='1'></li>
+  </ol>
+  <div class='carousel-inner' role='listbox'>
+    <div class='item image-container active'>
+      <a href='javascript:void(0);' class='fileupload-mask fileupload' type="file" name="pictures[]" data-url=<%="/unassociated_pictures.js?resource_type=#{resource_type}"%> multiple=true>
+        <%= image_tag 'upload_file.png' %>
+      </a>
+    </div>
+  </div>
+  <a class='left carousel-control hide' href='#new-<%=resource_type%>-carousel' role='button' data-slide='prev'>
+    <span class='fa fa-chevron-left' aria-hidden='true'></span>
+    <span class='sr-only'>Previous</span>
+  </a>
+  <a class='right carousel-control hide' href='#new-<%=resource_type%>-carousel' role='button' data-slide='next'>
+    <span class='fa fa-chevron-right' aria-hidden='true'></span>
+    <span class='sr-only'>Next</span>
+  </a>
+</div>

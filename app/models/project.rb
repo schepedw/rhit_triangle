@@ -1,7 +1,7 @@
 class Project < ActiveRecord::Base
   around_update :move_pictures
   after_destroy :delete_pictures
-  after_save    :save_pictures
+  after_create  :save_pictures
   belongs_to :project_status
   has_many :donations
   attr_writer :pictures
@@ -36,7 +36,7 @@ class Project < ActiveRecord::Base
     upload_stream.map do |uploaded_io|
       File.join(picture_dir, uploaded_io.original_filename).tap do |file|
         File.open(file, 'wb') do |f|
-          f.write(uploaded_io.read)
+         # f.write(uploaded_io.read)
         end
       end
     end
@@ -45,10 +45,10 @@ class Project < ActiveRecord::Base
   private
 
   def save_pictures
-    return unless @pictures.present?
     FileUtils.mkdir_p picture_dir
-    @pictures.each do |picture|
-      FileUtils.move picture.tempfile.path, picture_dir
+    return unless @pictures.present?
+    Array(@pictures).each do |picture|
+      FileUtils.mv(File.join(Rails.root, 'public', picture), picture_dir)
     end
   end
 end

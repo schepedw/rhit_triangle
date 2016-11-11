@@ -8,7 +8,9 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.create(project_params.merge(project_status_id: ProjectStatus.find_by_status('Unstarted').id))
+    @project = Project.create!(
+      project_params.merge(project_status_id: ProjectStatus.find_by_status('Unstarted').id)
+    )
   end
 
   def destroy

@@ -5,7 +5,7 @@
         <li data-target='#image-carousel-<%="#{resource.class}-#{resource.id}"%>' data-slide-to='<%=i%>' data-picture-url='<%=URI.encode(picture)%>' class=<%='active' if i == 0%>></li>
       <% end %>
       <% if @admin_flag %>
-        <li data-target='#image-carousel-<%="#{resource.class}-#{resource.id}"%>' data-slide-to='<%=pictures.count%>'></li>
+        <li data-target='#image-carousel-<%="#{resource.class}-#{resource.id}"%>' data-slide-to='<%=pictures.count%>' class=<%='active' if pictures.empty?%>></li>
       <% end %>
     </ol>
   <% end %>
@@ -22,8 +22,8 @@
       </div>
     <% end %>
     <% if @admin_flag %>
-      <div class='item image-container'>
-        <a href='javascript:void(0);' class='fileupload-mask' id="fileupload" type="file" name="pictures[]" data-url=<%="/pictures.js?resource_type=#{resource.class}&resource_id=#{resource.id}"%> multiple=true>
+      <div class='item image-container <%='active' if pictures.empty?%>'>
+        <a href='javascript:void(0);' class='fileupload-mask fileupload' type="file" name="pictures[]" data-url=<%="/pictures.js?resource_type=#{resource.class}&resource_id=#{resource.id}"%> multiple=true>
           <%= image_tag 'upload_file.png' %>
         </a>
       </div>
