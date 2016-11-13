@@ -3,8 +3,8 @@ class ProjectsController < ApplicationController
   before_action :set_admin_flag
 
   def index
-    completed_status = ProjectStatus.find_or_create_by(status: 'Completed')
-    @projects = Project.includes(:donations).where.not(price: 0, project_status_id: completed_status.id)
+    completed_status = ProjectStatus.find_or_create_by(status: 'Complete')
+    @projects = Project.includes(:donations).where.not("price = 0 or project_status_id = #{completed_status.id}")
   end
 
   def create
