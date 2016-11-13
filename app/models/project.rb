@@ -36,7 +36,7 @@ class Project < ActiveRecord::Base
     upload_stream.map do |uploaded_io|
       File.join(picture_dir, uploaded_io.original_filename).tap do |file|
         File.open(file, 'wb') do |f|
-         # f.write(uploaded_io.read)
+          f.write(uploaded_io.read)
         end
       end
     end

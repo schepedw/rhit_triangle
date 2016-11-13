@@ -2,9 +2,9 @@ $('#project_price').val(null);
 $('#project_description').val(null);
 $('#project_title').val(null);
 $('#project_pictures').val(null);
-debugger;
 $('.project-container').append('<%= j(render'show', project: @project, index: @project.title.gsub(' ', '_')).html_safe %>')
 $('#new-Project-carousel').replaceWith('<%= j(render 'unassociated_pictures/new', resource_type: 'Project') %>')
+setFileUpload();
 
 $('[data-project-id=<%=@project.id%>] .project-slider').each(function(){
   progress = $(this).find('.capital-progress');

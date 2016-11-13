@@ -3,14 +3,17 @@ $(function(){
 });
 
 var setUnassociatedFileUpload = function(){
-  $('.unassociated-fileupload').fileupload({
-    dataType: 'json',
-    done: function (_e, data) {
-      insertNewImages(data.result);
-      insertSlideIndices(data.result);
-      toggleCarouselControls();
-      insertHiddenInputs(data.result);
-    }
+  $.each($('.unassociated-fileupload'), function(_index, upload) {
+    $(upload).fileupload({
+      dropZone: $(upload),
+      dataType: 'json',
+      done: function (_e, data) {
+        insertNewImages(data.result);
+        insertSlideIndices(data.result);
+        toggleCarouselControls();
+        insertHiddenInputs(data.result);
+      }
+    });
   });
 };
 
@@ -62,6 +65,7 @@ var rm_unassociated_picture = function(image) {
   removeImage(image);
   selector = '#new-' + resourceType + '-carousel';
   $(selector).carousel(0);
+  $(selector + ' .image-container').first().addClass('active')
 };
 
 var removeImage = function(image){
@@ -69,7 +73,7 @@ var removeImage = function(image){
 };
 
 var removeHiddenInputs = function(image){
-  $("input[value='" + image.attr('src') + "']")
+  $("input[value='" + image.attr('src') + "']").remove();
 };
 
 var removeSlideIndices = function(image){

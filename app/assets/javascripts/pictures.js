@@ -9,7 +9,6 @@ var setFileUpload = function(){
       dataType: 'json',
       drop: function (e, data) {
         $.each(data.files, function (index, file) {
-          console.log('Dropped file: ' + file.name);
         });
       },
       done: function (_e, data) {
