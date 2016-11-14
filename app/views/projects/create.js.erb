@@ -5,6 +5,7 @@ $('#project_pictures').val(null);
 $('.project-container').append('<%= j(render'show', project: @project, index: @project.title.gsub(' ', '_')).html_safe %>')
 $('#new-Project-carousel').replaceWith('<%= j(render 'unassociated_pictures/new', resource_type: 'Project') %>')
 setFileUpload();
+setSortable();
 
 $('[data-project-id=<%=@project.id%>] .project-slider').each(function(){
   progress = $(this).find('.capital-progress');

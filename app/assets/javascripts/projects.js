@@ -13,4 +13,15 @@ $(function(){
     });
     table.css('margin-left', '0px');
   })
+  setSortable();
 });
+
+var setSortable = function(){
+  $('#project-list').sortable({
+    update: function(event, ui) {
+      newSortPosition = ui.item.prevAll().length;
+      ui.item.find('form input#project_sort_val').val(newSortPosition);
+      ui.item.find('form').submit()
+    }
+  });
+};
