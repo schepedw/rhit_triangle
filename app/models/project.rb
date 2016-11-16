@@ -25,9 +25,9 @@ class Project < ActiveRecord::Base
   end
 
   def update_sorting
-    sort_val = 10_000 if project_status_id == ProjectStatus.find_by(status: 'Complete')
-    changes[:sort_val] ||= [sort_val, self.class.maximum(:sort_val)]
-    self.class.decrement_sorting_between(*changes[:sort_val])
+    self.sort_val = 10_000 if project_status_id == ProjectStatus.find_by(status: 'Complete')
+    return(yield) unless changes[:sort_val].present?
+    self.class.shift_sorting_between(*changes[:sort_val])
     yield
   end
 
@@ -51,6 +51,7 @@ class Project < ActiveRecord::Base
 
   def self.shift_sorting_between(start, finish)
     operator = start > finish ? '+' : '-'
+    start, finish = [start, finish].sort
     connection.execute(
       "
       UPDATE projects SET sort_val = sort_val #{operator} 1
