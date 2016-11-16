@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161107004335) do
+ActiveRecord::Schema.define(version: 20161113230600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -181,12 +181,13 @@ ActiveRecord::Schema.define(version: 20161107004335) do
   end
 
   create_table "projects", primary_key: "project_id", force: :cascade do |t|
-    t.string   "title",                                     null: false
-    t.text     "description",                               null: false
-    t.integer  "project_status_id",                         null: false
-    t.decimal  "price",             precision: 7, scale: 2, null: false
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.string   "title",                                                                                            null: false
+    t.text     "description",                                                                                      null: false
+    t.integer  "project_status_id",                                                                                null: false
+    t.decimal  "price",             precision: 7, scale: 2,                                                        null: false
+    t.datetime "created_at",                                                                                       null: false
+    t.datetime "updated_at",                                                                                       null: false
+    t.integer  "sort_val",                                  default: "nextval('projects_sort_val_seq'::regclass)"
   end
 
   create_table "reactions", primary_key: "reaction_id", force: :cascade do |t|

@@ -4,7 +4,11 @@ class ProjectsController < ApplicationController
 
   def index
     completed_status = ProjectStatus.find_or_create_by(status: 'Complete')
-    @projects = Project.includes(:donations).where.not("price = 0 or project_status_id = #{completed_status.id}")
+    @projects =
+      Project.
+      includes(:donations).
+      where.not("price = 0 or project_status_id = #{completed_status.id}").
+      order('sort_val')
   end
 
   def create
@@ -36,6 +40,6 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:title, :description, :price, pictures: [])
+    params.require(:project).permit(:title, :sort_val, :description, :price, pictures: [])
   end
 end
