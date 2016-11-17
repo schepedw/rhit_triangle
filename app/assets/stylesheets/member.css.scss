@@ -1,0 +1,11 @@
+.member-profile-pic {
+  width: 175px;
+  height: 168px;
+  display: block;
+  padding: initial;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: center;
+  @media(max-width: 768px){ margin-left: calc(50% - 87px); }
+}
+

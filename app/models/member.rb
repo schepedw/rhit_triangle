@@ -27,6 +27,10 @@ class Member < ActiveRecord::Base
     files.last.gsub(/^#{File.join(Rails.root, 'public')}/, '')
   end
 
+  def pictures
+    [profile_picture].compact
+  end
+
   def has_role?(title, role_type) # rubocop:disable Style/PredicateName
     role.try(:title) == title && role.try(:role_type) == role_type
   end
@@ -38,6 +42,16 @@ class Member < ActiveRecord::Base
   def remove_role(title, role_type)
     return false unless has_role?(title, role_type)
     role.destroy
+  end
+
+  def add_pictures_from_io(upload_stream)
+    upload_stream.map do |uploaded_io|
+      File.join(picture_dir, uploaded_io.original_filename).tap do |file|
+        File.open(file, 'wb') do |f|
+          f.write(uploaded_io.read)
+        end
+      end
+    end
   end
 
   private
@@ -56,6 +70,6 @@ class Member < ActiveRecord::Base
     return unless @phone_number.present? && @phone_number != phone_number
     # TODO: test this method.
     phone_numbers.update_all(primary: false)
-    PhoneNumber.create!(member_id: id, phone_number: @primary_phone_number.gsub(/[^0-9]/, ''), primary: true)
+    PhoneNumber.create!(member_id: id, phone_number: @phone_number.gsub(/[^0-9]/, ''), primary: true)
   end
 end
