@@ -14,14 +14,14 @@
     <% pictures.each_with_index do |picture, i| %>
       <div class='item image-container <%='active' if i == 0%>' data-picture-url='<%=URI.encode(picture)%>'>
         <%= image_tag picture %>
-        <% if @admin_flag %>
+        <% if @admin_flag || @owner_flag %>
           <%= link_to picture_path(picture.gsub('.', '%2E'), resource_type: resource.class, resource_id: resource.id, format: :js), remote: true, method: :delete, class: 'delete-picture' do %>
             <i class = 'fa fa-times-circle-o'></i>
           <% end %>
         <% end %>
       </div>
     <% end %>
-    <% if @admin_flag %>
+    <% if @admin_flag || (@owner_flag && pictures.empty?)%>
       <div class='item image-container <%='active' if pictures.empty?%>'>
         <a href='javascript:void(0);' class='fileupload-mask fileupload' type="file" name="pictures[]" data-url=<%="/pictures.js?resource_type=#{resource.class}&resource_id=#{resource.id}"%> multiple=true>
           <%= image_tag 'upload_file.png' %>
