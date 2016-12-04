@@ -48,8 +48,11 @@ group :development do
 end
 
 group :test do
+  gem 'poltergeist'
+  gem 'webmock'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'cucumber-rails', require: false # NOTE: Cucumber has not been properly initialized
+  gem 'cucumber-rails', require: false
   gem 'database_cleaner'
+  gem 'factory_girl_rails'
 end

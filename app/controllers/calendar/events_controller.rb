@@ -14,11 +14,11 @@ class Calendar::EventsController < ApplicationController
   private
 
   def start_time
-    params[:start_time] || Time.new.beginning_of_month.iso8601
+    (params[:start_time] || Time.new.beginning_of_month.iso8601).tap { |time| time.gsub!('Z', '-04:00') }
   end
 
   def end_time
-    params[:end_time] || Time.new.end_of_month.iso8601
+    (params[:end_time] || Time.new.end_of_month.iso8601).tap { |time| time.gsub!('Z', '-04:00') }
   end
 
   def search_fields
