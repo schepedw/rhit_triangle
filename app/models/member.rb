@@ -8,6 +8,7 @@ class Member < ActiveRecord::Base
   attr_writer :phone_number, :profile_picture
 
   def phone_number
+    return @phone_number if @phone_number.present?
     number = phone_numbers.find_by(primary: true).try(:phone_number)
     return unless number.present?
     "#{number[0..2]}-#{number[2..4]}-#{number[4..7]}"
@@ -67,8 +68,7 @@ class Member < ActiveRecord::Base
   end
 
   def update_primary_phone
-    return unless @phone_number.present? && @phone_number != phone_number
-    # TODO: test this method.
+    return unless @phone_number.present?
     phone_numbers.update_all(primary: false)
     PhoneNumber.create!(member_id: id, phone_number: @phone_number.gsub(/[^0-9]/, ''), primary: true)
   end

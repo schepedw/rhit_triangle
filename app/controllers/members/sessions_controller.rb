@@ -8,7 +8,6 @@ class Members::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    # TODO: show flash. Flash is set by super()
     request.params[:member][:password] ||= AppConfig.default_password
     super
   end
