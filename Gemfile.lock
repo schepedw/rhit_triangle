@@ -315,6 +315,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.2)
+    timecop (0.8.1)
     timers (4.1.1)
       hitimes
     twitter (5.16.0)
@@ -392,6 +393,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   spring
   therubyracer
+  timecop
   twitter
   twitter-bootstrap-rails
   twitter-text
@@ -400,4 +402,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.11.2
+   1.13.6

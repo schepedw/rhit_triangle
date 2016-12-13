@@ -24,6 +24,7 @@ end
 
 Before do
   Warden.test_mode!
+  Timecop.freeze
   Mail.defaults { delivery_method :test }
   $cleaned ||= false #I'm sorry. This is actually how cucumber recommends doing this
   DatabaseCleaner.clean_with :truncation unless $cleaned
@@ -32,6 +33,7 @@ end
 
 After do |scenario|
   Warden.test_reset!
+  Timecop.return
   if scenario.failed? && Capybara.current_driver == :poltergeist
     desc = scenario.name
     filename = desc.downcase.split(/(?<=.)\.(?=[^.])(?!.*\.[^.])/m)

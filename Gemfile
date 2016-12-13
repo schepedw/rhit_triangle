@@ -37,6 +37,7 @@ group :production do
 end
 
 group :development, :test do
+  gem 'timecop'
   gem 'faker'
   gem 'pry'
   gem 'pry-byebug'

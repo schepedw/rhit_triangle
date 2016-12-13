@@ -52,3 +52,8 @@ Feature: Viewing the RHIT triangle homepage
     Given I am on the home page
     When I click 'GIVING BACK' in the nav bar
     Then I will be directed to the projects and donations page
+
+  Scenario: Viewing the active officers
+    Given there are active officers
+    When I am on the home page
+    Then I will be able to see details for all of the officers
