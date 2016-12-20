@@ -16,24 +16,21 @@ WebMock.disable_net_connect!(allow_localhost: true)
 
 ActionController::Base.allow_rescue = false
 
-begin
-  DatabaseCleaner.strategy = :transaction
-rescue NameError
-  raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
-end
-
 Before do
-  Warden.test_mode!
+  begin
+    DatabaseCleaner.strategy = :transaction
+  rescue NameError
+    raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
+  end
+
   Timecop.freeze
+  Warden.test_mode!
   Mail.defaults { delivery_method :test }
-  $cleaned ||= false #I'm sorry. This is actually how cucumber recommends doing this
-  DatabaseCleaner.clean_with :truncation unless $cleaned
-  $cleaned = true
 end
 
 After do |scenario|
-  Warden.test_reset!
   Timecop.return
+  Warden.test_reset!
   if scenario.failed? && Capybara.current_driver == :poltergeist
     desc = scenario.name
     filename = desc.downcase.split(/(?<=.)\.(?=[^.])(?!.*\.[^.])/m)

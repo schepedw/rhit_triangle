@@ -37,10 +37,10 @@ group :production do
 end
 
 group :development, :test do
-  gem 'timecop'
   gem 'faker'
   gem 'pry'
   gem 'pry-byebug'
+  gem 'timecop'
   gem 'rubocop', '~> 0.39.0', require: false
 end
 
