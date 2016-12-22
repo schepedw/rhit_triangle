@@ -17,12 +17,6 @@ WebMock.disable_net_connect!(allow_localhost: true)
 ActionController::Base.allow_rescue = false
 
 Before do
-  begin
-    DatabaseCleaner.strategy = :transaction
-  rescue NameError
-    raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
-  end
-
   Timecop.freeze
   Warden.test_mode!
   Mail.defaults { delivery_method :test }

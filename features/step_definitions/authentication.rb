@@ -1,6 +1,10 @@
+Given(/^I am not signed in$/) do
+  visit '/members/sign_out'
+end
+
 Given(/^I am signed in$/) do
-  member = create(:member)
-  login_as(member, scope: :member)
+  @member = create(:member)
+  login_as(@member, scope: :member)
 end
 
 Given(/^I am on the members (.*?)[page]*$/) do |current_page|
