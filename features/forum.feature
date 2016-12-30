@@ -17,7 +17,7 @@ Feature: Interacting with the forum
     And I am on the forum page
     When I visit that channel
     Then I will see the posts for the channel
-    And I will see the member count and subject of that channel
+    And I will see the member count and description of that channel
 
   @javascript
   Scenario: Changing channels
@@ -25,7 +25,7 @@ Feature: Interacting with the forum
     And I visit the forum page
     When I click a new channel
     Then I will see the posts for the channel
-    And I will see the member count and subject of that channel
+    And I will see the member count and description of that channel
 
   @javascript
   Scenario: Posting in a channel

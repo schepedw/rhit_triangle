@@ -32,7 +32,7 @@ end
 
 When(/^I (?:visit|am on) the forum page$/) do
   visit '/forum'
-  #TODO: Remove these three lines if we get db cleaning to work. @channel should be the only channel
+  # TODO: Remove these three lines if we get db cleaning to work. @channel should be the only channel
   if current_path == '/forum'
     click_link(@channel.subject)
     wait_for_ajax
@@ -65,14 +65,13 @@ When(/^I edit my post$/) do
   find(".edit-post[data-post-id='#{@post.id}']").click
   content_container = find('.edit-post-container #content')
   content_container.set(@new_post_content)
-  find('.edit-post-container #content').send_keys(:enter) #TODO: can we reuse content_container?
+  content_container.send_keys(:enter)
   wait_for_ajax
 end
 
 When(/^I delete my post$/) do
-  find(".delete-post[data-post-id='#{@post.id}']").click
+  click_link 'Delete'
   wait_for_ajax
-  binding.pry
 end
 
 When(/^I reply to a post$/) do
@@ -84,8 +83,9 @@ When(/^I reply to a post$/) do
   wait_for_ajax
 end
 
-Then(/^I will see the member count and subject of that channel$/) do
-    pending # express the regexp above with the code you wish you had
+Then(/^I will see the member count and description of that channel$/) do
+  expect(page).to have_content("#{@channel.member_count} Members")
+  expect(page).to have_content(@channel.description)
 end
 
 When(/^I unlike a post$/) do
@@ -99,7 +99,7 @@ end
 Then(/^I will see that the post has been unliked$/) do
   expect(@post.reactions).to be_empty
   within("[data-reactions-for-post-id='#{@post.id}']") do
-    expect(page).to have_content("Like")
+    expect(page).to have_content('Like')
   end
 end
 
@@ -130,7 +130,7 @@ end
 Then(/^I will see that the post has been liked$/) do
   expect(@post.reactions).to_not be_empty
   within("[data-reactions-for-post-id='#{@post.id}']") do
-    expect(page).to have_content("Unlike(1)")
+    expect(page).to have_content('Unlike(1)')
   end
 end
 
