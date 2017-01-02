@@ -10,12 +10,12 @@
       <div class = 'post-reactions' data-reply-to-id = "<%=post.id%>">
         <%= render 'forum/reactions/show', post: post %>
         <span class = 'vertical-divider'> · </span>
-        <a href = 'javascript:void(0);' class = 'reply-to-post' onClick='insertReplyFormAfter($(this).parent()); return false'> Reply</a>
+        <a href = 'javascript:void(0);' data-post-id=<%=post.id%> class = 'reply-to-post' onClick='insertReplyFormAfter($(this).parent()); return false'> Reply</a>
         <% if post.author_id == current_member.id %>
           <span class = 'vertical-divider'> · </span>
-          <a href = 'javascript:void(0);' class = 'edit-post' onClick='editPost($(this).parent().parent()); return false'> Edit</a>
+          <a href = 'javascript:void(0);' data-post-id=<%=post.id%> class = 'edit-post' onClick='editPost($(this).parent().parent()); return false'> Edit</a>
           <span class = 'vertical-divider'> · </span>
-          <%= link_to 'Delete', "/forum/channels/#{post.channel_id}/posts/#{post.id}", remote: true, method: :delete %>
+          <%= link_to 'Delete', "/forum/channels/#{post.channel_id}/posts/#{post.id}", remote: true, method: :delete, data: {post_id: post.id}, class: 'delete-post' %>
         <% end %>
       </div>
     </div>

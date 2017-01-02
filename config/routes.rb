@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources 'unassociated_pictures', only: %i[create destroy]
   get '/profile'                            => 'members#edit'
   patch '/profile'                          => 'members#update'
+  get '/members/sign_out'                   => 'members/sessions#destroy'
 
   namespace :forum do
     get '/'                              => 'channels#index'

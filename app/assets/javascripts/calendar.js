@@ -13,14 +13,6 @@ $(function(){
     displayed_date.setMonth(displayed_date.getMonth() + 1);
     populateCalendar(displayed_date);
   });
-
-  /*
-     $('.days_cal td').click(function(){
-     $('td.active').removeClass('active');
-     $(this).addClass('active');
-     });
-     */
-
 });
 
 function calendar(date) {
@@ -122,7 +114,7 @@ function retrieveInfo(date) {
   fields = ['id', 'start', 'summary', 'location', 'description']
   start = new Date(date);
   end = new Date(date);
-  end.setUTCHours(23, 59, 59, 999); // TODO: this isn't entirely correct. Triangle events are presumably in EST (UTC - 4)
+  end.setUTCHours(23, 59, 59, 999);
   data = { start_time: start.toISOString(), end_time: end.toISOString(), fields: fields }
   $('#calendar_data .event-date').text(formatDate(date));
   $.ajax({url: '/calendar/events.json', data: data, success: populate_event_detail});
@@ -134,7 +126,7 @@ function populate_event_detail(json_response) {
     return;
   }
   //TODO: what happens when we have multiple events on a day?
-  event = json_response[0]
+  event = json_response[0];
   $('#calendar_data .event-title').text(event.summary);
   event_info = event.description || 'No description available for this event'
   $('#calendar_data .event-info').text(event_info);
@@ -145,7 +137,7 @@ function populate_event_detail(json_response) {
 function no_event_info(){
   $('#calendar_data .event-title').text('No events today');
   $('#calendar_data .event-info').text("There's nothing on the calendar for today. Take a look at the calendar to find when" +
-                        " our next event is");
+                                       " our next event is");
 }
 
 function populate_event_days(json_response){
@@ -163,9 +155,9 @@ function resetToday(){
 }
 
 function formatDate(date){
-  // TODO: hack
   // TODO: make these ordinal numbers
-  return $.datepicker.formatDate("M d, yy", new Date(date + 'GMT-500'));
+  offset = -(new Date().getTimezoneOffset() / 60)
+  return $.datepicker.formatDate("M d, yy", new Date(date + 'GMT' + offset))
 }
 
 function monthBeginning(date){

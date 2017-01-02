@@ -40,6 +40,7 @@ group :development, :test do
   gem 'faker'
   gem 'pry'
   gem 'pry-byebug'
+  gem 'timecop'
   gem 'rubocop', '~> 0.39.0', require: false
 end
 
@@ -48,8 +49,11 @@ group :development do
 end
 
 group :test do
+  gem 'poltergeist'
+  gem 'webmock'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'cucumber-rails', require: false # NOTE: Cucumber has not been properly initialized
+  gem 'cucumber-rails', require: false
   gem 'database_cleaner'
+  gem 'factory_girl_rails'
 end
