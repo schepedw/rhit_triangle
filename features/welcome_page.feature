@@ -57,3 +57,9 @@ Feature: Viewing the RHIT triangle homepage
     Given there are active officers
     When I am on the home page
     Then I will be able to see details for all of the officers
+
+  Scenario: Viewing notifications
+    Given I am signed in
+    And I have notifications
+    When I am on the home page
+    Then I will be able to see my notifications

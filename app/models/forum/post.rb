@@ -23,7 +23,9 @@ module Forum
     end
 
     def tagged_members
-      screen_names = content.match(/(?:^| )@([\w.]*)/).captures.map{|name| name.chomp('.').strip }
+      matches = content.match(/(?:^| )@([\w.]*)/)
+      return [] unless matches.present?
+      screen_names = matches.captures.map { |name| name.strip.chomp('.') }
       Member.where(screen_name: screen_names)
     end
   end

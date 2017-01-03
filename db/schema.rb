@@ -110,6 +110,24 @@ ActiveRecord::Schema.define(version: 20170102222824) do
     t.string   "screen_name",                         null: false
   end
 
+  execute(<<-SQL
+            CREATE FUNCTION create_screen_name() RETURNS trigger AS $create_screen_name$
+                BEGIN
+                  IF NEW.screen_name IS NULL THEN
+                    NEW.screen_name := lower(NEW.first_name) || '.' || lower(NEW.last_name);
+                  END IF;
+                  RETURN NEW;
+                END;
+            $create_screen_name$ LANGUAGE plpgsql;
+
+            CREATE TRIGGER create_screen_name BEFORE INSERT OR UPDATE OF first_name, last_name ON members
+              FOR EACH ROW
+              EXECUTE PROCEDURE create_screen_name();
+
+            CREATE UNIQUE INDEX idx_member_screen_name ON members(lower(screen_name))
+            SQL
+         )
+
   add_index "members", ["email"], name: "index_members_on_email", unique: true, using: :btree
   add_index "members", ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
 

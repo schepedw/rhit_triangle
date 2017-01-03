@@ -8,7 +8,7 @@ class CleanMessageDataModel < ActiveRecord::Migration
     add_column :message_recipients, :owner_type, :string, null: false
     add_column :message_recipients, :notification_id, :integer
 
-    execute('ALTER TABLE messages DROP CONSTRAINT fk_rails_7d377cfeb9')
+    #execute('ALTER TABLE messages DROP CONSTRAINT fk_rails_7d377cfeb9')
     rename_column :messages, :sender_contact_id, :from_id
   end
 end

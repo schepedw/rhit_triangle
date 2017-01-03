@@ -80,3 +80,9 @@ Feature: Interacting with the forum
     And I am on the forum page
     When I reply to a post
     Then my reply will be visible
+
+  @javascript
+  Scenario: Being notified of a post I'm tagged in
+    Given I am on the forum page
+    When I tag a member in a post
+    Then a notification will be created for that member

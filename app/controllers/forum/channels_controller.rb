@@ -60,8 +60,8 @@ module Forum
     def acknowledge_notifications
       Notification.joins('JOIN POSTS p ON(notifications.post_id = p.post_id)
                           JOIN channels c ON (c.channel_id = p.channel_id)').
-      where("c.channel_id = #{@current_channel.id}").
-      update_all(acknowledged: true)
+        where("c.channel_id = #{@current_channel.id}").
+        update_all(acknowledged: true)
     end
   end
 end

@@ -53,6 +53,17 @@ When(/^I enter improper credentials$/) do
   click_button 'Log in'
 end
 
+When(/^I click the sign out button$/) do
+  within('.nav.nav-lower') do
+    click_link @member.first_name
+    click_link 'Sign Out'
+  end
+end
+
+Then(/^I will be signed out$/) do
+  expect(page).to have_content('SIGN IN')
+end
+
 Then(/^I will be signed in$/) do
   within('.nav.nav-lower') do
     expect(page).to have_content(@member.first_name)

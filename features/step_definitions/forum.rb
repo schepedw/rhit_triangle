@@ -83,9 +83,12 @@ When(/^I reply to a post$/) do
   wait_for_ajax
 end
 
-Then(/^I will see the member count and description of that channel$/) do
-  expect(page).to have_content("#{@channel.member_count} Members")
-  expect(page).to have_content(@channel.description)
+When(/^I tag a member in a post$/) do
+  @tagged_member = create(:member)
+  @new_post_content = "Hello, @#{@tagged_member.reload.screen_name}!"
+  fill_in('content', with: @new_post_content)
+  find('#content').send_keys(:enter)
+  wait_for_ajax
 end
 
 When(/^I unlike a post$/) do
@@ -94,6 +97,11 @@ When(/^I unlike a post$/) do
     click_link 'Unlike(1)'
   end
   wait_for_ajax
+end
+
+Then(/^I will see the member count and description of that channel$/) do
+  expect(page).to have_content("#{@channel.member_count} Members")
+  expect(page).to have_content(@channel.description)
 end
 
 Then(/^I will see that the post has been unliked$/) do
@@ -144,4 +152,9 @@ end
 Then(/^the change to my post will be saved$/) do
   expect(@post.reload.content).to eq @new_post_content
   expect(page).to have_content @new_post_content
+end
+
+Then(/^a notification will be created for that member$/) do
+  post = Forum::Post.find_by_content(@new_post_content)
+  expect(Notification.find_by(post_id: post.id, recipient_id: @tagged_member, notifier_id: @member.id)).to be_present
 end

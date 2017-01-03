@@ -31,8 +31,6 @@
       <h4 class = 'brand pull-left'>
         <%=image_tag 'small_logo_white.png' %>
         <strong>TRIANGLE</strong>
-        <!--
-      -->
       </h4>
     </a>
     <ul class='quick-links pull-right'>
@@ -67,7 +65,7 @@
         <% end %>
       </ul>
       </li>
-      <% if current_member.notifications.unacknowledged.present? %>
+      <% if current_member && current_member.notifications.unacknowledged.present? %>
       <li class = 'dropdown'>
         <a href = '#' class = 'notification-icon pull-right' id="my_notifications" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fa fa-bell fa-lg"></i>

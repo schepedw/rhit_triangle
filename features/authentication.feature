@@ -21,3 +21,10 @@ Feature: Signing into the website
     Then I will not be signed in
     And I will be redirected to the members sign in page
     And I will be notified of that I failed to login
+
+  Scenario: Logging out
+    Given I am on the members sign in page
+    And I have an account
+    And I enter the proper credentials
+    When I click the sign out button
+    Then I will be signed out
