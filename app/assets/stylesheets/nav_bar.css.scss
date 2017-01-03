@@ -71,6 +71,10 @@
       background-color: #1F1F1F;
       text-decoration: none;
       color: white;
+      &:hover{
+        background-color: white;
+        color: darkgrey;
+      }
     }
   }
   @media(max-width: 992px) {
@@ -80,6 +84,7 @@
     }
   }
 }
+
 .nav .dropdown.open li{
   @media(max-width: 992px) { a { color: black; }}
   @media(min-width: 992px) { a { color: white; }}
@@ -92,3 +97,17 @@
   }
 }
 .nav .login-buttons .btn{ font-size: 11px !important }
+.notification-icon {
+  padding-top: 9px;
+  i { color: #C43237; }
+}
+
+[aria-labelledby='my_notifications'] {
+  width: 275px;
+  right: -42px !important;
+  a {
+    padding-left: 15px;
+    background-color: white;
+    color: black;
+  }
+}

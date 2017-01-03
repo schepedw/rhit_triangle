@@ -2,8 +2,12 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.2'
+
 # Use postgres as the database for Active Record
 gem 'pg'
+
+# Use sidekiq for background jobs
+gem 'sidekiq'
 
 gem 'capistrano', '2.15.4'
 # Frontend things

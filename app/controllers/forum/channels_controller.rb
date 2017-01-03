@@ -1,6 +1,7 @@
 module Forum
   class ChannelsController < ApplicationController
     before_action :store_location, :authenticate_member!
+    after_action  :acknowledge_notifications, only: :show
 
     def index
       @current_channel = channel_from_session || default_channel
@@ -54,6 +55,13 @@ module Forum
 
     def store_location
       store_location_for(:member, request.path)
+    end
+
+    def acknowledge_notifications
+      Notification.joins('JOIN POSTS p ON(notifications.post_id = p.post_id)
+                          JOIN channels c ON (c.channel_id = p.channel_id)').
+      where("c.channel_id = #{@current_channel.id}").
+      update_all(acknowledged: true)
     end
   end
 end

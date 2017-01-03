@@ -18,6 +18,7 @@
 //= require jquery-ui/slider
 //= require jquery-ui/sortable
 //= require jquery.fileupload
+//= require jquery.autocomplete.js
 //= require twitter/bootstrap
 //= require calendar
 //= require_tree .

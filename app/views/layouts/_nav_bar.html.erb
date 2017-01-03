@@ -2,15 +2,14 @@
   <div class='dropdown'>
     <a href = 'javascript:void(0);' class = 'navbar-sm-icon pull-left dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='true'><i class="fa fa-bars fa-lg"></i></a>
     <ul class = 'dropdown-menu'>
-      <li class='dropdown-menu-item hide'> <a href='#'><strong>HOME</strong></a></li>
-      <li class='dropdown-menu-item hide'> <a href='#'><strong>OFFICERS</strong></a></li></a></li>
-      <li class='dropdown-menu-item hide'> <a href='#'><strong>HISTORY</strong></a></li></a></li>
+      <li class='dropdown-menu-item'> <a href='/'><strong>HOME</strong></a></li>
+      <li class='dropdown-menu-item'> <a href='/#officers'><strong>OFFICERS</strong></a></li></a></li>
+      <li class='dropdown-menu-item'> <a href='/#about-us'><strong>HISTORY</strong></a></li></a></li>
       <li class='dropdown-menu-item'> <a href='/calendar'><strong>CALENDAR</strong></a></li></a></li>
       <li class='dropdown-menu-item'> <a href='/rush'><strong>RUSH</strong></a></li></a></li>
       <li class='dropdown-menu-item'> <a href='/alumni'><strong>ALUMNI BODY</strong></a></li></a></li>
-      <li class='dropdown-menu-item hide'> <a href='#'><strong>FORUM</strong></a></li></a></li>
+      <li class='dropdown-menu-item'> <a href='/forum'><strong>FORUM</strong></a></li></a></li>
       <li class='dropdown-menu-item'> <a href='/projects_and_donations'><strong>PROJECTS & DONATIONS</strong></a></li></a></li>
-      <li class='dropdown-menu-item hide'> <a href='#'><strong>CONTACT</strong></a></li></a></li>
     </ul>
     <div class='dropdown-backdrop' style='visibility:hidden'></div>
   </div>
@@ -45,15 +44,15 @@
       <% if current_member.present? %>
         <li> <a href='/forum'>FORUM</a></li>
       <% else %>
-        <li> <a href='#' data-toggle='popover' data-trigger='click' class='forum-toggle'>FORUM</a>
-        <center class='login-buttons' role='group' style='display:none'>
-          <a href='/forum' class='btn btn-primary'><i class="fa fa-sign-in"></i> Sign in</a>
-          <a href='/members/sign_up' class='btn btn-primary'><i class="fa fa-edit"></i> Register</a>
+        <li>
+          <a href='#' data-toggle='popover' data-trigger='click' class='forum-toggle'>FORUM</a>
+          <center class='login-buttons' role='group' style='display:none'>
+            <a href='/forum' class='btn btn-primary'><i class="fa fa-sign-in"></i> Sign in</a>
+            <a href='/members/sign_up' class='btn btn-primary'><i class="fa fa-edit"></i> Register</a>
           </center >
-          </li>
+        </li>
       <% end %>
       <li> <a href='/projects_and_donations'>GIVING BACK</a></li>
-      <li class = 'hide'> <a href='#'>CONTACT</a></li>
       <li class = 'dropdown'>
       <a href='#' id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <%=current_member.try(:first_name) || 'SIGN IN'%>
@@ -67,6 +66,18 @@
           <li> <%= link_to 'Sign Up', new_member_registration_path %> </li>
         <% end %>
       </ul>
+      </li>
+      <% if current_member.notifications.unacknowledged.present? %>
+      <li class = 'dropdown'>
+        <a href = '#' class = 'notification-icon pull-right' id="my_notifications" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-bell fa-lg"></i>
+        </a>
+        <ul class="dropdown-menu pull-right" aria-labelledby="my_notifications">
+          <% current_member.notifications.unacknowledged.each do |notification| %>
+            <li> <%= link_to notification.to_s, notification.url%> </li>
+          <% end %>
+        </ul>
+      <% end %>
       </li>
       <li> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  </li>
     </ul>

@@ -21,5 +21,10 @@ module Forum
         updated_at.strftime(legible_timestamp_format)
       end
     end
+
+    def tagged_members
+      screen_names = content.match(/(?:^| )@([\w.]*)/).captures.map{|name| name.chomp('.').strip }
+      Member.where(screen_name: screen_names)
+    end
   end
 end
