@@ -83,7 +83,7 @@ end
 Then(/^I will be notified of that I failed to login$/) do
   error = 'Invalid Email, First name, Middle name, Last name, Initiation year,
   Graduation year, Title, Bio, Hometown, Phone number or password'
-  expect(page).to have_content(error.compact)
+  expect(page).to have_content(error)
 end
 
 Then(/^I will have created an account$/) do

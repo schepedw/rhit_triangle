@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   private
 
   def set_admin_flag
-    @admin_flag = (current_member.present? && Role.all.pluck(:member_id).include?(current_member.id))
+    @admin_flag = (current_member.present? && current_member.admin?)
   end
 
   def require_admin_role

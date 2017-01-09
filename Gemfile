@@ -9,7 +9,6 @@ gem 'pg'
 # Use sidekiq for background jobs
 gem 'sidekiq'
 
-gem 'capistrano', '2.15.4'
 # Frontend things
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -50,6 +49,7 @@ end
 
 group :development do
   gem 'spring'
+  gem 'capistrano', '2.15.4'
 end
 
 group :test do

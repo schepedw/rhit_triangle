@@ -41,6 +41,10 @@ class Member < ActiveRecord::Base
     Role.create(member_id: id, title: title, role_type: role_type)
   end
 
+  def admin?
+    Role.all.pluck(:member_id).include?(id)
+  end
+
   def remove_role(title, role_type)
     return false unless has_role?(title, role_type)
     role.destroy

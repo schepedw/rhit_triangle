@@ -34,11 +34,13 @@ namespace :eye do
   desc "Stop processes that eye is monitoring and quit eye"
   task :quit, :roles => [:app] do
     run "cd #{latest_release} && #{EYE} stop rhit_triangle"
+    run "cd #{latest_release} && #{EYE} stop rhit_triangle_sidekiq"
   end
 
   desc "Load eye configuration and start it"
   task :start, :roles => [:app] do
     run "cd #{release_path} && #{EYE} load #{latest_release}/config/unicorn.eye && #{EYE} start rhit_triangle"
+    run "cd #{release_path} && #{EYE} load #{latest_release}/config/sidekiq.eye && #{EYE} start rhit_triangle_sidekiq"
   end
 
   desc "Prints eyes monitored processes statuses"
