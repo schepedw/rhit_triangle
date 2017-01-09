@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161113230600) do
+ActiveRecord::Schema.define(version: 20170102222824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,7 +107,26 @@ ActiveRecord::Schema.define(version: 20161113230600) do
     t.string   "unconfirmed_email"
     t.string   "title"
     t.text     "bio"
+    t.string   "screen_name",                         null: false
   end
+
+  execute(<<-SQL
+            CREATE FUNCTION create_screen_name() RETURNS trigger AS $create_screen_name$
+                BEGIN
+                  IF NEW.screen_name IS NULL THEN
+                    NEW.screen_name := lower(NEW.first_name) || '.' || lower(NEW.last_name);
+                  END IF;
+                  RETURN NEW;
+                END;
+            $create_screen_name$ LANGUAGE plpgsql;
+
+            CREATE TRIGGER create_screen_name BEFORE INSERT OR UPDATE OF first_name, last_name ON members
+              FOR EACH ROW
+              EXECUTE PROCEDURE create_screen_name();
+
+            CREATE UNIQUE INDEX idx_member_screen_name ON members(lower(screen_name))
+            SQL
+         )
 
   add_index "members", ["email"], name: "index_members_on_email", unique: true, using: :btree
   add_index "members", ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
@@ -119,35 +138,32 @@ ActiveRecord::Schema.define(version: 20161113230600) do
 
   add_index "members_roles", ["member_id", "role_id"], name: "index_members_roles_on_member_id_and_role_id", using: :btree
 
-  create_table "message_bcc_recipients", primary_key: "message_bcc_recipient_id", force: :cascade do |t|
-    t.integer  "message_id", null: false
-    t.integer  "contact_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "message_cc_recipients", force: :cascade do |t|
-    t.integer  "message_id", null: false
-    t.integer  "contact_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "message_recipients", force: :cascade do |t|
-    t.integer  "message_id", null: false
-    t.integer  "contact_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "message_id",                      null: false
+    t.integer  "contact_id",                      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "bcc",             default: false, null: false
+    t.boolean  "cc",              default: false, null: false
+    t.string   "owner_type",                      null: false
+    t.integer  "notification_id"
   end
 
   create_table "messages", primary_key: "message_id", force: :cascade do |t|
-    t.integer  "sender_contact_id", null: false
-    t.string   "direction",         null: false
-    t.string   "subject",           null: false
-    t.text     "content",           null: false
+    t.integer  "from_id",     null: false
+    t.string   "direction",   null: false
+    t.string   "subject",     null: false
+    t.text     "content",     null: false
     t.text     "attachments"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "notifications", primary_key: "notification_id", force: :cascade do |t|
+    t.integer "post_id",                      null: false
+    t.integer "recipient_id",                 null: false
+    t.integer "notifier_id",                  null: false
+    t.boolean "acknowledged", default: false, null: false
   end
 
   create_table "phone_numbers", primary_key: "phone_number_id", force: :cascade do |t|
@@ -219,13 +235,10 @@ ActiveRecord::Schema.define(version: 20161113230600) do
   add_foreign_key "donations", "projects", primary_key: "project_id"
   add_foreign_key "installments", "donations", primary_key: "donation_id"
   add_foreign_key "members", "members", column: "pledge_father_id", primary_key: "member_id"
-  add_foreign_key "message_bcc_recipients", "contacts", primary_key: "contact_id"
-  add_foreign_key "message_bcc_recipients", "messages", primary_key: "message_id"
-  add_foreign_key "message_cc_recipients", "contacts", primary_key: "contact_id"
-  add_foreign_key "message_cc_recipients", "messages", primary_key: "message_id"
   add_foreign_key "message_recipients", "contacts", primary_key: "contact_id"
   add_foreign_key "message_recipients", "messages", primary_key: "message_id"
-  add_foreign_key "messages", "contacts", column: "sender_contact_id", primary_key: "contact_id"
+  add_foreign_key "notifications", "members", column: "notifier_id", primary_key: "member_id", name: "recipient_member_fk"
+  add_foreign_key "notifications", "members", column: "recipient_id", primary_key: "member_id", name: "notifier_member_fk"
   add_foreign_key "phone_numbers", "members", primary_key: "member_id"
   add_foreign_key "posts", "channels", primary_key: "channel_id", name: "channel_id_fk"
   add_foreign_key "posts", "members", column: "author_id", primary_key: "member_id", name: "author_id_fk"

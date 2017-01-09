@@ -2,10 +2,13 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.2'
+
 # Use postgres as the database for Active Record
 gem 'pg'
 
-gem 'capistrano', '2.15.4'
+# Use sidekiq for background jobs
+gem 'sidekiq'
+
 # Frontend things
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -46,6 +49,7 @@ end
 
 group :development do
   gem 'spring'
+  gem 'capistrano', '2.15.4'
 end
 
 group :test do

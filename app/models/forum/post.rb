@@ -21,5 +21,12 @@ module Forum
         updated_at.strftime(legible_timestamp_format)
       end
     end
+
+    def tagged_members
+      matches = content.match(/(?:^| )@([\w.]*)/)
+      return [] unless matches.present?
+      screen_names = matches.captures.map { |name| name.strip.chomp('.') }
+      Member.where(screen_name: screen_names)
+    end
   end
 end

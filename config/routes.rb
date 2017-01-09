@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   devise_for :members, controllers: { registrations: 'members/registrations', sessions: 'members/sessions' }
   devise_scope :member do
     get 'members/sign_out' => 'members/sessions#destroy'
+    get 'members'          => 'members#index'
   end
+
   resources :messages, only: [:create] # TODO - this controller doesn't exist
   get '/rush' => 'rush#index'
   get '/tweets' => 'tweets#index'
@@ -33,6 +35,12 @@ Rails.application.routes.draw do
       resources :posts, only: [:create, :update, :destroy] do
         resources :reactions, only: [:create, :destroy]
       end
+    end
+  end
+  if Rails.env.production?
+    require 'sidekiq/web'
+    authenticate :user, lambda { |u| u.admin? } do
+      mount Sidekiq::Web => '/sidekiq'
     end
   end
 end

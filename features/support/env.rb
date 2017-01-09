@@ -12,6 +12,7 @@ require 'capybara/poltergeist'
 require File.expand_path("../../../config/environments/test.rb",  __FILE__)
 require 'webmock/cucumber'
 require_relative '../../spec/support/factory_girl'
+require 'sidekiq/testing'
 WebMock.disable_net_connect!(allow_localhost: true)
 
 ActionController::Base.allow_rescue = false
@@ -19,6 +20,7 @@ ActionController::Base.allow_rescue = false
 Before do
   Timecop.freeze
   Warden.test_mode!
+  Sidekiq::Testing.inline!
   Mail.defaults { delivery_method :test }
 end
 

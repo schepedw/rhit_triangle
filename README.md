@@ -43,3 +43,8 @@ When a user encounters an error,
 it. These errors are aggregated and can be inspected at
 http://rose-triangle.com:8081/.
 
+### Sidekiq
+[Sidekiq](https://github.com/mperham/sidekiq) is used to process
+background jobs. The status of jobs & workers can be seen via the [web
+ui](https://github.com/mperham/sidekiq/wiki/Monitoring#web-ui) at
+`/sidekiq`. You'll need admin privileges to view it.

@@ -3,6 +3,7 @@ class Member < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :phone_numbers
+  has_many :notifications, foreign_key: :recipient_id
   after_save :update_primary_phone, :update_profile_picture
 
   attr_writer :phone_number, :profile_picture
@@ -38,6 +39,10 @@ class Member < ActiveRecord::Base
 
   def add_role(title, role_type)
     Role.create(member_id: id, title: title, role_type: role_type)
+  end
+
+  def admin?
+    Role.all.pluck(:member_id).include?(id)
   end
 
   def remove_role(title, role_type)
