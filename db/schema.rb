@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170102222824) do
+ActiveRecord::Schema.define(version: 20170112025511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,24 +110,6 @@ ActiveRecord::Schema.define(version: 20170102222824) do
     t.string   "screen_name",                         null: false
   end
 
-  execute(<<-SQL
-            CREATE FUNCTION create_screen_name() RETURNS trigger AS $create_screen_name$
-                BEGIN
-                  IF NEW.screen_name IS NULL THEN
-                    NEW.screen_name := lower(NEW.first_name) || '.' || lower(NEW.last_name);
-                  END IF;
-                  RETURN NEW;
-                END;
-            $create_screen_name$ LANGUAGE plpgsql;
-
-            CREATE TRIGGER create_screen_name BEFORE INSERT OR UPDATE OF first_name, last_name ON members
-              FOR EACH ROW
-              EXECUTE PROCEDURE create_screen_name();
-
-            CREATE UNIQUE INDEX idx_member_screen_name ON members(lower(screen_name))
-            SQL
-         )
-
   add_index "members", ["email"], name: "index_members_on_email", unique: true, using: :btree
   add_index "members", ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
 
@@ -157,13 +139,16 @@ ActiveRecord::Schema.define(version: 20170102222824) do
     t.text     "attachments"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "to_id",       null: false
   end
 
   create_table "notifications", primary_key: "notification_id", force: :cascade do |t|
-    t.integer "post_id",                      null: false
-    t.integer "recipient_id",                 null: false
-    t.integer "notifier_id",                  null: false
-    t.boolean "acknowledged", default: false, null: false
+    t.integer  "post_id",                      null: false
+    t.integer  "recipient_id",                 null: false
+    t.integer  "notifier_id",                  null: false
+    t.boolean  "acknowledged", default: false, null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "phone_numbers", primary_key: "phone_number_id", force: :cascade do |t|
@@ -237,6 +222,8 @@ ActiveRecord::Schema.define(version: 20170102222824) do
   add_foreign_key "members", "members", column: "pledge_father_id", primary_key: "member_id"
   add_foreign_key "message_recipients", "contacts", primary_key: "contact_id"
   add_foreign_key "message_recipients", "messages", primary_key: "message_id"
+  add_foreign_key "messages", "members", column: "from_id", primary_key: "member_id", name: "from_memberfk"
+  add_foreign_key "messages", "members", column: "to_id", primary_key: "member_id", name: "to_memberfk"
   add_foreign_key "notifications", "members", column: "notifier_id", primary_key: "member_id", name: "recipient_member_fk"
   add_foreign_key "notifications", "members", column: "recipient_id", primary_key: "member_id", name: "notifier_member_fk"
   add_foreign_key "phone_numbers", "members", primary_key: "member_id"
@@ -247,4 +234,24 @@ ActiveRecord::Schema.define(version: 20170102222824) do
   add_foreign_key "projects", "project_statuses", primary_key: "project_status_id"
   add_foreign_key "reactions", "members", primary_key: "member_id", name: "member_id_fk", on_delete: :cascade
   add_foreign_key "reactions", "posts", primary_key: "post_id", name: "post_id_fk", on_delete: :cascade
+
+  execute(<<-SQL
+      ALTER TABLE members ALTER COLUMN screen_name SET NOT NULL;
+
+      CREATE FUNCTION create_screen_name() RETURNS trigger AS $create_screen_name$
+          BEGIN
+            IF NEW.screen_name IS NULL THEN
+              NEW.screen_name := lower(NEW.first_name) || '.' || lower(NEW.last_name);
+            END IF;
+            RETURN NEW;
+          END;
+      $create_screen_name$ LANGUAGE plpgsql;
+
+      CREATE TRIGGER create_screen_name BEFORE INSERT OR UPDATE OF first_name, last_name ON members
+        FOR EACH ROW
+        EXECUTE PROCEDURE create_screen_name();
+
+      CREATE UNIQUE INDEX idx_member_screen_name ON members(lower(screen_name))
+          SQL
+     )
 end

@@ -1,7 +1,6 @@
 module Forum
   class PostsController < ApplicationController
     before_action :authenticate_member!, :verify_visibility
-    after_action  :create_notifications, only: [:create, :update]
 
     def create
       @post = Forum::Post.create!(post_params)
@@ -39,10 +38,6 @@ module Forum
 
     def channel
       @channel ||= Forum::Channel.find(params[:channel_id])
-    end
-
-    def create_notifications
-      ForumNotificationWorker.perform_async(@post.id)
     end
 
     def post_params
