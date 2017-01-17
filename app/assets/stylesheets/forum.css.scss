@@ -115,3 +115,9 @@
     background-color: #f9f9f9;
   }
 }
+
+.channel-metadata{
+  @media(max-width: 768px){
+    padding-left: 15px;
+  }
+}

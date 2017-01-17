@@ -15,9 +15,10 @@ module Forum
       @current_channel ||= Forum::Channel.find(params[:id])
       session[:channel_id] = params[:id]
       @posts = posts(@current_channel)
+      @all_channels = Forum::Channel.publik.select(:subject, :channel_id)
       respond_to do |format|
         format.js
-        format.html { @all_channels = Forum::Channel.publik.select(:subject, :channel_id) }
+        format.html
       end
     end
 
