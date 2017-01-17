@@ -1,7 +1,19 @@
 <nav>
-<span class = 'forum-subject'> <%= subject %> </span>
-<span> <%= "#{member_count} #{'Member'.pluralize(member_count) }" %> </span>
-<span class = 'vertical-divider'>|</span>
-<span> <%= description %> </span>
+  <span class = 'forum-subject hidden-xs'> <%= channel.subject %> </span>
+  <div class='dropdown visible-xs col-xs-12'>
+    <a href = 'javascript:void(0);' class = 'navbar-sm-icon pull-left dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='true'>#<%=channel.subject%> </a>
+    <ul class = 'dropdown-menu'>
+      <% all_channels.each do |channel| %>
+        <li class='dropdown-menu-item'><%= link_to "##{channel.subject}", channel, class: 'channel-title', remote: true %></li>
+      <% end %>
+    </ul>
+    <div class='dropdown-backdrop' style='visibility:hidden'></div>
+  </div>
+
+  <div class = 'channel-metadata'>
+    <span> <%= "#{channel.member_count} #{'Member'.pluralize(channel.member_count) }" %> </span>
+    <span class = 'vertical-divider'>|</span>
+    <span> <%= channel.description %> </span>
+  </div>
 </nav>
 <hr />
