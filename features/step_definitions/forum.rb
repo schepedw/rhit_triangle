@@ -11,6 +11,10 @@ Given(/^I have written at least one post$/) do
   @post = create(:post, author_id: @member.id, channel_id: @channel.id)
 end
 
+Given(/^I have tagged a member in a post$/) do
+  step 'I tag a member in a post'
+end
+
 Given(/^there is a forum channel$/) do
   @channel = create(:channel)
 end
@@ -115,7 +119,7 @@ Then(/^I will not have the ability to edit that post$/) do
   expect(page).to_not have_selector(".edit-post[data-post-id='#{@post.id}']")
 end
 
-Then(/^then the post will be deleted$/) do
+Then(/^the post will be deleted$/) do
   expect(page).to_not have_content(@post.content)
   expect(Forum::Post.find_by_post_id(@post.id)).to be_nil
 end
@@ -157,4 +161,8 @@ end
 Then(/^a notification will be created for that member$/) do
   post = Forum::Post.find_by_content(@new_post_content)
   expect(Notification.find_by(post_id: post.id, recipient_id: @tagged_member, notifier_id: @member.id)).to be_present
+end
+
+Then(/^the associated notification will be deleted$/) do
+  expect(Notification.all).to be_empty
 end
