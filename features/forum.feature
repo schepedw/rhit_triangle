@@ -66,7 +66,14 @@ Feature: Interacting with the forum
     Given I have written at least one post
     And I am on the forum page
     When I delete my post
-    Then then the post will be deleted
+    Then the post will be deleted
+
+  @javascript @no_bg_jobs
+  Scenario: Deleting notifications associated with posts
+    Given I am on the forum page
+    And I have tagged a member in a post
+    When I delete my post
+    Then the associated notification will be deleted
 
   @javascript
   Scenario: Trying to delete someone else's posts

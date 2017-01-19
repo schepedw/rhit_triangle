@@ -24,6 +24,10 @@ Before do
   Mail.defaults { delivery_method :test }
 end
 
+Before('@no_bg_jobs') do
+  Sidekiq::Testing.fake!
+end
+
 After do |scenario|
   Timecop.return
   Warden.test_reset!

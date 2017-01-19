@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170112025511) do
+ActiveRecord::Schema.define(version: 20170119030602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -182,12 +182,12 @@ ActiveRecord::Schema.define(version: 20170112025511) do
   end
 
   create_table "projects", primary_key: "project_id", force: :cascade do |t|
-    t.string   "title",                                                                                            null: false
-    t.text     "description",                                                                                      null: false
-    t.integer  "project_status_id",                                                                                null: false
-    t.decimal  "price",             precision: 7, scale: 2,                                                        null: false
-    t.datetime "created_at",                                                                                       null: false
-    t.datetime "updated_at",                                                                                       null: false
+    t.string   "title",                                                 null: false
+    t.text     "description",                                           null: false
+    t.integer  "project_status_id",                                     null: false
+    t.decimal  "price",             precision: 7, scale: 2,             null: false
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
     t.integer  "sort_val",                                  default: "nextval('projects_sort_val_seq'::regclass)"
   end
 
@@ -226,6 +226,7 @@ ActiveRecord::Schema.define(version: 20170112025511) do
   add_foreign_key "messages", "members", column: "to_id", primary_key: "member_id", name: "to_memberfk"
   add_foreign_key "notifications", "members", column: "notifier_id", primary_key: "member_id", name: "recipient_member_fk"
   add_foreign_key "notifications", "members", column: "recipient_id", primary_key: "member_id", name: "notifier_member_fk"
+  add_foreign_key "notifications", "posts", primary_key: "post_id", on_delete: :cascade
   add_foreign_key "phone_numbers", "members", primary_key: "member_id"
   add_foreign_key "posts", "channels", primary_key: "channel_id", name: "channel_id_fk"
   add_foreign_key "posts", "members", column: "author_id", primary_key: "member_id", name: "author_id_fk"
@@ -236,22 +237,22 @@ ActiveRecord::Schema.define(version: 20170112025511) do
   add_foreign_key "reactions", "posts", primary_key: "post_id", name: "post_id_fk", on_delete: :cascade
 
   execute(<<-SQL
-      ALTER TABLE members ALTER COLUMN screen_name SET NOT NULL;
+          ALTER TABLE members ALTER COLUMN screen_name SET NOT NULL;
 
-      CREATE FUNCTION create_screen_name() RETURNS trigger AS $create_screen_name$
-          BEGIN
-            IF NEW.screen_name IS NULL THEN
-              NEW.screen_name := lower(NEW.first_name) || '.' || lower(NEW.last_name);
-            END IF;
-            RETURN NEW;
-          END;
-      $create_screen_name$ LANGUAGE plpgsql;
+          CREATE FUNCTION create_screen_name() RETURNS trigger AS $create_screen_name$
+           BEGIN
+             IF NEW.screen_name IS NULL THEN
+               NEW.screen_name := lower(NEW.first_name) || '.' || lower(NEW.last_name);
+             END IF;
+             RETURN NEW;
+           END;
+          $create_screen_name$ LANGUAGE plpgsql;
 
-      CREATE TRIGGER create_screen_name BEFORE INSERT OR UPDATE OF first_name, last_name ON members
-        FOR EACH ROW
-        EXECUTE PROCEDURE create_screen_name();
+          CREATE TRIGGER create_screen_name BEFORE INSERT OR UPDATE OF first_name, last_name ON members
+          FOR EACH ROW
+          EXECUTE PROCEDURE create_screen_name();
 
-      CREATE UNIQUE INDEX idx_member_screen_name ON members(lower(screen_name))
+          CREATE UNIQUE INDEX idx_member_screen_name ON members(lower(screen_name))
           SQL
-     )
+         )
 end
