@@ -16,13 +16,13 @@ module Forum
     def formatted_updated_at # rubocop:disable Metrics/AbcSize
       # TODO: this is poorly implemented and mislocated and.. I'm feeling lazy
       if updated_at.to_date == Time.zone.today
-        updated_at.strftime(clock_time_format)
+        updated_at.localtime.strftime(clock_time_format)
       elsif updated_at.to_date > Time.zone.today - 7.days
-        updated_at.strftime(this_week_format)
+        updated_at.localtime.strftime(this_week_format)
       elsif updated_at.year > Time.zone.today.year
-        updated_at.strftime(this_year_format)
+        updated_at.localtime.strftime(this_year_format)
       else
-        updated_at.strftime(legible_timestamp_format)
+        updated_at.localtime.strftime(legible_timestamp_format)
       end
     end
 
