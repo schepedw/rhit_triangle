@@ -16,6 +16,7 @@ require 'sidekiq/testing'
 WebMock.disable_net_connect!(allow_localhost: true)
 
 ActionController::Base.allow_rescue = false
+include Mail::Matchers
 
 Before do
   Timecop.freeze

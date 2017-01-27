@@ -60,6 +60,11 @@ When(/^I click the sign out button$/) do
   end
 end
 
+When(/^I submit my email$/) do
+  fill_in 'member_email', with: @member.email
+  click_button 'Send me my info'
+end
+
 Then(/^I will be signed out$/) do
   expect(page).to have_content('SIGN IN')
 end
@@ -90,4 +95,8 @@ Then(/^I will have created an account$/) do
   attrs = %w[email first_name middle_name last_name initiation_year graduation_year hometown bio]
   expect(@member.attributes.slice(*attrs)).to eql Member.first.attributes.slice(*attrs)
   expect(PhoneNumber.first.phone_number).to eql @member.phone_number.gsub(/[^0-9]/, '')
+end
+
+Then(/^I will receive an email with my information$/) do
+  expect(Mail).to have_sent_email.to(@member.email)
 end

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_scope :member do
     get 'members/sign_out' => 'members/sessions#destroy'
     get 'members'          => 'members#index'
+    post 'member/email_info' => 'members/registrations#email'
   end
 
   resources :messages, only: [:create] # TODO - this controller doesn't exist
