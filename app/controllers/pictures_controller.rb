@@ -25,6 +25,6 @@ class PicturesController < ApplicationController
   end
 
   def authorize
-    render nothing: true, status: 403 unless @admin_flag || @resource == current_user
+    render nothing: true, status: 403 unless @admin_flag || @resource == current_member
   end
 end
