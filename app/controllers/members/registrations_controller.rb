@@ -9,6 +9,12 @@ class Members::RegistrationsController < Devise::RegistrationsController
     super
   end
 
+  def email
+    MemberInfoMailer.email_info(params[:member][:email]).deliver_later
+    flash[:success] = "Your info will be sent to #{params[:member][:email]} shortly"
+    redirect_to root_path
+  end
+
   # GET /resource/edit
   # def edit
   #   super

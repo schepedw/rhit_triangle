@@ -1,0 +1,31 @@
+<h2>Update your info</h2>
+
+<%= form_for(resource, as: resource_name, url: members_path(resource), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class='field'>
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autofocus: false, required: true %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :middle_name %><br />
+    <%= f.text_field :middle_name, autofocus: false %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autofocus: false, required: true %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :initiation_year %><br />
+    <%= f.number_field :initiation_year, autofocus: false, required: true, min: 1968, max: Date.today.year %>
+  </div>
+
+  <br />
+  <div class="actions">
+    <%= f.submit "Update my info" %>
+  </div>
+<% end %>
+<%= render 'members/shared/links' %>

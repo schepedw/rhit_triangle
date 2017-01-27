@@ -28,3 +28,9 @@ Feature: Signing into the website
     And I enter the proper credentials
     When I click the sign out button
     Then I will be signed out
+
+  Scenario: Forgetting my login info
+    Given I have an account
+    And I am on the new password page
+    When I submit my email
+    Then I will receive an email with my information

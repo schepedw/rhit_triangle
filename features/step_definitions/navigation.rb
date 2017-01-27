@@ -6,6 +6,10 @@ Given(/^I am on the home page$/) do
   visit '/'
 end
 
+Given(/^I am on the new password page$/) do
+  visit '/members/password/new'
+end
+
 When(/^I click '(.*)' in the nav bar$/) do |target|
   within('.nav.nav-lower') { click_link target }
 end
